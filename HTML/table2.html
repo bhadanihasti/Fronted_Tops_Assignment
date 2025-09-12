@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML TABLE</title>
+    <style>
+      td {
+        text-align: center;
+      }
+      .table1 {
+        display: flex;
+      }
+    </style>
+    <link rel="icon" href="images.png" />
+  </head>
+  <body>
+    <h1 align="center">HTML Table Rowspan And Colspan</h1>
+    <div class="table1">
+      <h1>Table 1</h1>
+      <table border="1" cellspacing="10px" cellpadding="5px" align="center">
+        <tr>
+          <th>Name</th>
+          <th>Class</th>
+          <th rowspan="3">MVM School</th>
+        </tr>
+        <tr>
+          <td>Hasti</td>
+          <td>TyBCA-A</td>
+        </tr>
+        <tr>
+          <td>Vishva</td>
+          <td>TyBCA-A</td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <table border="1" align="center" cellspacing="10px" width="50%">
+      <tr>
+        <th colspan="2">Name</th>
+        <th>Class</th>
+        <th>School</th>
+      </tr>
+      <tr>
+        <td rowspan="2">Mahima</td>
+        <td rowspan="2">Gupta</td>
+        <td>11</td>
+        <td rowspan="2">MVM School</td>
+      </tr>
+      <tr>
+        <td>A</td>
+      </tr>
+      <tr>
+        <td rowspan="2">shri</td>
+        <td rowspan="2">krishna</td>
+        <td>3</td>
+        <td rowspan="2">LMS School</td>
+      </tr>
+      <tr>
+        <td>B</td>
+      </tr>
+      <tr>
+        <td rowspan="2">Shivika</td>
+        <td rowspan="2">goyal</td>
+        <td>5</td>
+        <td rowspan="2">SCPM School</td>
+      </tr>
+      <tr>
+        <td>A</td>
+      </tr>
+    </table>
+    <br />
+    <hr />
+    <br />
+    <table border="1" align="center" cellspacing="10px" width="50%">
+      <tr>
+        <th rowspan="2">Group 1</th>
+        <td>Data1</td>
+        <td>Data2</td>
+      </tr>
+      <tr>
+        <td>Data3</td>
+        <td>Data4</td>
+      </tr>
+      <tr>
+        <th rowspan="3">Group2</th>
+        <td>Data5</td>
+        <td>Data6</td>
+      </tr>
+      <tr>
+        <td>Data7</td>
+        <td>Data8</td>
+      </tr>
+      <tr>
+        <td>Data9</td>
+        <td>Data10</td>
+      </tr>
+    </table>
+    <br />
+    <hr />
+    <br />
+    <table border="1" align="center" cellspacing="10px" width="50%">
+      <tr>
+        <th rowspan="2">State of Health</th>
+        <th colspan="2">Fasting Value</th>
+        <th>After Eating</th>
+      </tr>
+      <tr>
+        <td>Minimum</td>
+        <td>Maximum</td>
+        <td>2 hours after eating</td>
+      </tr>
+      <tr>
+        <td>Healthy</td>
+        <td>70</td>
+        <td>100</td>
+        <td>Less than 140</td>
+      </tr>
+      <tr>
+        <td>Pre-Diabetes</td>
+        <td>101</td>
+        <td>126</td>
+        <td>140 to 200</td>
+      </tr>
+      <tr>
+        <td>Diabetes</td>
+        <td>More than 126</td>
+        <td>N/A</td>
+        <td>More than 200</td>
+      </tr>
+    </table>
+
+    <br />
+    <hr />
+    <br />
+    <table border="1" align="center" cellspacing="10px" width="50%">
+      <tr>
+        <th colspan="6">Time Table</th>
+      </tr>
+      <tr>
+        <th rowspan="6">Hours</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+      </tr>
+      <tr>
+        <td>Science</td>
+        <td>Maths</td>
+        <td>Science</td>
+        <td>Maths</td>
+        <td>Arts</td>
+      </tr>
+      <tr>
+        <td>Science</td>
+        <td>Maths</td>
+        <td>Science</td>
+        <td>Maths</td>
+        <td>Arts</td>
+      </tr>
+      <tr>
+        <th colspan="5">LUNCH</th>
+      </tr>
+      <tr>
+        <td>Science</td>
+        <td>Maths</td>
+        <td>Science</td>
+        <td>Maths</td>
+        <td rowspan="2">Project</td>
+      </tr>
+      <tr>
+        <td>Science</td>
+        <td>Maths</td>
+        <td>Science</td>
+        <td>Maths</td>
+      </tr>
+    </table>
+
+    <br />
+    <hr />
+    <br />
+    <table border="1" align="center" cellspacing="10px" width="50%">
+      <tr>
+        <th colspan="4">TITLE</th>
+      </tr>
+      <tr>
+        <th colspan="2">Subtitle</th>
+        <th colspan="2">Subtitle</th>
+      </tr>
+      <tr>
+        <th>1 Item</th>
+        <th>123</th>
+        <th>1 Item</th>
+        <th>123</th>
+      </tr>
+      <tr>
+        <th>1 Item</th>
+        <th>123</th>
+        <th>1 Item</th>
+        <th>123</th>
+      </tr>
+      <tr>
+        <th>1 Item</th>
+        <th>123</th>
+        <th>1 Item</th>
+        <th>123</th>
+      </tr>
+      <tr>
+        <th colspan="2">Sub Subtitle</th>
+        <th colspan="2">Sub Subtitle</th>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Product Catalog</title>
+  </head>
+  <body>
+    <h2 style="text-align: center">Product Catalog</h2>
+
+    <table
+      style="
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-family: Arial, sans-serif;
+      "
+    >
+      <thead>
+        <tr style="background-color: #f2f2f2">
+          <th style="border: 1px solid #ccc; padding: 10px">Product Name</th>
+          <th style="border: 1px solid #ccc; padding: 10px">Image</th>
+          <th style="border: 1px solid #ccc; padding: 10px">Price</th>
+          <th style="border: 1px solid #ccc; padding: 10px">Description</th>
+          <th style="border: 1px solid #ccc; padding: 10px">Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- First Product -->
+        <tr>
+          <td style="border: 1px solid #ccc; padding: 10px">
+            Wireless Headphones
+          </td>
+          <td style="border: 1px solid #ccc; padding: 10px">
+            <img src="https://via.placeholder.com/100" alt="Headphones" />
+          </td>
+          <td style="border: 1px solid #ccc; padding: 10px">$99.99</td>
+          <td style="border: 1px solid #ccc; padding: 10px" rowspan="2">
+            High-quality wireless headphones with noise cancellation.
+          </td>
+          <td style="border: 1px solid #ccc; padding: 10px">In Stock</td>
+        </tr>
+
+        <!-- Second Product (rowspan used for description) -->
+        <tr>
+          <td style="border: 1px solid #ccc; padding: 10px">
+            Bluetooth Speaker
+          </td>
+          <td style="border: 1px solid #ccc; padding: 10px">
+            <img src="https://via.placeholder.com/100" alt="Speaker" />
+          </td>
+          <td style="border: 1px solid #ccc; padding: 10px">$49.99</td>
+          <td style="border: 1px solid #ccc; padding: 10px">In Stock</td>
+        </tr>
+
+        <!-- Third Product -->
+        <tr>
+          <td style="border: 1px solid #ccc; padding: 10px">Smart Watch</td>
+          <td style="border: 1px solid #ccc; padding: 10px">
+            <img src="https://via.placeholder.com/100" alt="Smart Watch" />
+          </td>
+          <td style="border: 1px solid #ccc; padding: 10px">$129.99</td>
+          <td style="border: 1px solid #ccc; padding: 10px">
+            Fitness tracking, heart rate monitor, and more.
+          </td>
+          <td style="border: 1px solid #ccc; padding: 10px">Out of Stock</td>
+        </tr>
+
+        <!-- Fourth Product (colspan used for merged description and availability) -->
+        <tr>
+          <td style="border: 1px solid #ccc; padding: 10px">USB-C Charger</td>
+          <td style="border: 1px solid #ccc; padding: 10px">
+            <img src="https://via.placeholder.com/100" alt="Charger" />
+          </td>
+          <td style="border: 1px solid #ccc; padding: 10px">$19.99</td>
+          <td colspan="2" style="border: 1px solid #ccc; padding: 10px">
+            Compact USB-C charger compatible with most devices. In Stock.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
