@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main {
+        background-color: aqua;
+        padding: 10px;
+        display: grid;
+        grid-template-areas:
+          "header header header header header"
+          "aside  Content Content Content right "
+          "footer footer footer footer footer";
+        gap: 10px;
+      }
+      .header {
+        background-color: brown;
+        padding: 20px;
+        grid-area: header;
+      }
+      .aside {
+        background-color: rgb(165, 91, 42);
+        padding: 20px;
+        grid-area: aside;
+        height: 400px;
+      }
+      .content {
+        background-color: rgb(42, 165, 118);
+        padding: 20px;
+        display: flex;
+        align-items: end;
+        grid-area: Content;
+        height: 400px;
+      }
+      .right {
+        background-color: rgb(165, 132, 42);
+        padding: 20px;
+        grid-area: right;
+        height: 400px;
+      }
+      .footer {
+        background-color: rgb(165, 42, 149);
+        padding: 20px;
+        grid-area: footer;
+      }
+      .inner {
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 200px;
+        width: 100%;
+        display: grid;
+        gap: 20px;
+      }
+      .box {
+        background-color: brown;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">Header</div>
+      <div class="aside">Aside</div>
+      <div class="content">
+        <div class="inner">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+      </div>
+      <div class="right">Right</div>
+      <div class="footer">Footer</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Grid</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      h1 {
+        text-align: center;
+        font-size: 32px;
+        color: black;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      .card {
+        background-color: white;
+        height: 600px;
+        width: 450px;
+        display: flex;
+        margin: 10px auto;
+        border-radius: 10%;
+        position: relative;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      .box {
+        height: 250px;
+        width: 450px;
+        border-radius: 15%;
+        background-color: rgb(150, 128, 240);
+        position: absolute;
+        top: -50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .box1 {
+        height: 200px;
+        width: 200px;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        border: 10px solid white;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -100px;
+      }
+      .round {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        /* background-color: red; */
+        object-fit: cover;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+
+        position: absolute;
+        bottom: -0px;
+      }
+      .card-body {
+        margin-top: 70px;
+        padding: 20px;
+        /* background-color: aquamarine; */
+        position: absolute;
+        bottom: -300px;
+      }
+
+      .card-body h2 {
+        margin: 10px 0 5px;
+        font-size: 22px;
+        display: flex;
+
+        justify-content: center;
+      }
+
+      .card-body h3 {
+        margin: 0;
+        color: #555;
+        font-size: 16px;
+        font-weight: 600;
+
+        display: flex;
+        justify-content: center;
+      }
+
+      .divider {
+        width: 80%;
+        height: 2px;
+        background-color: rgb(150, 128, 240);
+        margin: 15px auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      p {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 12px;
+        text-align: center;
+      }
+      .icon {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .icon a {
+        color: rgb(150, 128, 240);
+        font-size: 24px;
+        margin: 10px;
+      }
+      .icon a:hover {
+        color: black;
+      }
+      .bt1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: -320px;
+      }
+      .btn {
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #5148d8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Profile Card</h1>
+    <div class="card">
+      <div class="box">
+        <div class="box1">
+          <img src="hasti.jpeg" alt="" class="round" />
+        </div>
+        <div class="card-body">
+          <h2>Hasti Bhadani</h2>
+          <h3>frontend developer</h3>
+          <div class="divider"></div>
+          <p>
+            I am a BCA student with a strong passion for software development
+            and problem-solving. I have experience with programming languages
+            like HTML,css,C/C++,C#, Asp.net, enjoy building innovative projects
+            and working in collaborative environments.
+          </p>
+        </div>
+        <div class="bt1"><button class="btn">Follow</button></div>
+      </div>
+
+      <div class="icon">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </body>
+</html>

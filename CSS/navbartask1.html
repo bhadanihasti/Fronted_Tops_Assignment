@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar Example</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      nav {
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        display: inline-block;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 8px 10px;
+        border-radius: 4px;
+      }
+
+      li:hover {
+        background-color: white;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">MyLogo</div>
+      <ul>
+        <li>Home</li>
+        <li>Services</li>
+        <li>Portfolio</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main {
+        height: 100%;
+        border: 10px solid black;
+      }
+      .header {
+        text-align: center;
+        padding: 50px;
+        background-color: aqua;
+      }
+      .sec {
+        display: flex;
+      }
+      .aside {
+        flex-grow: 1;
+        height: 500px;
+        background-color: rgb(164, 99, 99);
+      }
+      .content {
+        flex-grow: 5;
+        height: 500px;
+        background-color: burlywood;
+      }
+      .right {
+        flex-grow: 1;
+        height: 500px;
+        background-color: rgb(164, 99, 99);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">Header</div>
+      <div class="sec">
+        <div class="aside">Aside</div>
+        <div class="content">Content</div>
+        <div class="right">Right</div>
+      </div>
+      <div class="header">Footer</div>
+    </div>
+  </body>
+</html>

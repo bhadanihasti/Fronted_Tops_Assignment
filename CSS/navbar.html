@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlowEssence Cosmetics</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* ---------------- GLOBAL ---------------- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fff;
+        color: #333;
+        margin-top: 80px; /* header height */
+        display: flex;
+      }
+
+      /* ---------------- HEADER ---------------- */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background-color: #fff;
+        border-bottom: 2px solid #ff8ac6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        z-index: 1000;
+      }
+
+      /* Logo */
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Brush Script MT", cursive;
+        font-size: 24px;
+        color: #ff4fa0;
+      }
+      .logo-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: radial-gradient(circle, gold, pink);
+        box-shadow: 0 0 10px pink;
+      }
+
+      /* Navigation */
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+      }
+      nav ul li a {
+        background-color: #ffb6d9;
+        padding: 8px 14px;
+        border-radius: 20px;
+        color: #fff;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+      nav ul li a:hover {
+        text-decoration: underline;
+        text-decoration-color: #ff4fa0;
+        background-color: #ff8fc8;
+      }
+
+      /* Header Right Icons */
+      .right-icons {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .icon {
+        color: #ff4fa0;
+        font-size: 20px;
+        cursor: pointer;
+        position: relative;
+      }
+      .cart::after {
+        content: "0 items";
+        position: absolute;
+        top: -8px;
+        right: -35px;
+        font-size: 12px;
+        color: #fff;
+        background: #ff4fa0;
+        padding: 2px 6px;
+        border-radius: 10px;
+      }
+      .cta-btn {
+        background-color: #ff4fa0;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        padding: 8px 18px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .cta-btn:hover {
+        background-color: #e03c90;
+      }
+
+      /* ---------------- SIDEBAR ---------------- */
+      .sidebar {
+        position: sticky;
+        top: 80px;
+        width: 250px;
+        height: calc(100vh - 80px);
+        overflow-y: auto;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      /* Accordion Filters */
+      .sidebar h3 {
+        color: #ff4fa0;
+        font-size: 18px;
+        margin: 10px 0;
+        cursor: pointer;
+      }
+      .filter-section ul {
+        list-style: none;
+        margin-bottom: 10px;
+      }
+      .filter-section li {
+        margin: 6px 0;
+      }
+      input[type="checkbox"] {
+        accent-color: #ff4fa0;
+      }
+
+      /* Price Range */
+      .price-range {
+        margin: 10px 0;
+      }
+      .price-range input[type="range"] {
+        width: 100%;
+        accent-color: #ff4fa0;
+      }
+
+      /* Featured Products (Sidebar) */
+      .featured-products {
+        margin-top: 20px;
+      }
+      .product-card {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .product-card img {
+        width: 100%;
+        border-radius: 10px;
+      }
+      .product-card h4 {
+        font-size: 16px;
+        margin-top: 8px;
+        color: #333;
+      }
+      .product-card p {
+        font-size: 14px;
+        color: #777;
+      }
+      .rating {
+        color: gold;
+        margin: 5px 0;
+      }
+      .product-card button {
+        background-color: #ff4fa0;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+
+      /* Newsletter */
+      .newsletter {
+        margin-top: 25px;
+      }
+      .newsletter input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+      }
+      .newsletter button {
+        background-color: #ff4fa0;
+        color: white;
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      /* ---------------- MAIN CONTENT ---------------- */
+      .main {
+        flex: 1;
+        padding: 20px;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        background: url("https://images.unsplash.com/photo-1600180758890-6ec2e2f2e6f6?auto=format&fit=crop&w=1920&q=80")
+          center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-bottom: 40px;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 79, 160, 0.3);
+      }
+      .hero-content {
+        position: relative;
+        text-align: center;
+        z-index: 1;
+      }
+      .hero-content h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .hero-content button {
+        background-color: #ff4fa0;
+        color: #fff;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      /* Product Grid */
+      .section-title {
+        color: #ff4fa0;
+        font-size: 32px;
+        font-weight: 700;
+        margin: 20px 0;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+      }
+      .product {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+      .product img {
+        width: 100%;
+        border-radius: 10px;
+        transition: transform 0.3s;
+      }
+      .product:hover img {
+        transform: scale(1.05);
+      }
+      .product button {
+        background-color: #ff4fa0;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        padding: 8px 20px;
+        cursor: pointer;
+      }
+      .pagination {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      /* Blog Section */
+      .blog {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 40px 0;
+      }
+      .blog img {
+        width: 100%;
+        border-radius: 10px;
+      }
+      .blog h3 {
+        color: #ff4fa0;
+      }
+
+      /* Testimonials */
+      .testimonials {
+        text-align: center;
+        background-color: #fff4fa;
+        padding: 40px;
+        border-radius: 10px;
+      }
+      .quote {
+        font-style: italic;
+        margin: 10px 0;
+      }
+      .user {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #ff4fa0;
+      }
+
+      /* ---------------- FOOTER ---------------- */
+      footer {
+        width: 100%;
+        background: linear-gradient(to top, #ff4fa0, #fff);
+        padding: 30px 40px;
+        color: #444;
+        margin-top: 40px;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .footer-col h4 {
+        color: #ff4fa0;
+        margin-bottom: 10px;
+      }
+      .footer-col ul {
+        list-style: none;
+      }
+      .footer-col ul li {
+        margin: 6px 0;
+      }
+      .footer-col ul li a {
+        color: #333;
+        font-size: 14px;
+      }
+      .footer-bottom {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        body {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          position: static;
+          height: auto;
+        }
+        .blog {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+        <div class="logo-icon"></div>
+        GlowEssence
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="right-icons">
+        <i class="fas fa-search icon"></i>
+        <i class="fas fa-shopping-cart icon cart"></i>
+        <i class="fas fa-user icon"></i>
+        <button class="cta-btn">Shop Now</button>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="filter-section">
+        <h3>Skincare</h3>
+        <ul>
+          <li>
+            <label><input type="checkbox" /> Cleansers</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Moisturizers</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Serums</label>
+          </li>
+        </ul>
+        <h3>Makeup</h3>
+        <ul>
+          <li>
+            <label><input type="checkbox" /> Lipsticks</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Foundations</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Eyeshadows</label>
+          </li>
+        </ul>
+        <h3>Haircare</h3>
+        <ul>
+          <li>
+            <label><input type="checkbox" /> Shampoos</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Conditioners</label>
+          </li>
+        </ul>
+
+        <h3>Price Range</h3>
+        <div class="price-range">
+          <input type="range" min="10" max="100" value="50" />
+        </div>
+      </div>
+
+      <div class="featured-products">
+        <h3>Featured Products</h3>
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=300&q=80"
+            alt=""
+          />
+          <h4>Hydra Lip Balm</h4>
+          <p>$19.99</p>
+          <div class="rating">★★★★☆</div>
+          <button>Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1603652621575-57a6f5c66ff1?auto=format&fit=crop&w=300&q=80"
+            alt=""
+          />
+          <h4>Glow Serum</h4>
+          <p>$45.00</p>
+          <div class="rating">★★★★★</div>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="newsletter">
+        <h3>Subscribe for Beauty Tips</h3>
+        <input type="email" placeholder="Enter your email" />
+        <button>Sign Up</button>
+        <small>We respect your privacy.</small>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Discover Natural Glow</h1>
+          <button>Explore Collection</button>
+        </div>
+      </section>
+
+      <!-- Product Grid -->
+      <h2 class="section-title">Featured Cosmetics Collection</h2>
+      <div class="product-grid">
+        <div class="product">
+          <img
+            src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=400&q=80"
+            alt=""
+          />
+          <h4>Vitamin C Glow Serum</h4>
+          <p>$45</p>
+          <p>Brightens skin in 7 days. Natural ingredients.</p>
+          <div class="rating">★★★★★</div>
+          <button>Buy Now</button>
+        </div>
+        <!-- Repeat similar cards -->
+      </div>
+      <div class="pagination">
+        <p>Showing 9 of 50 products</p>
+        <p>1 2 3 ></p>
+      </div>
+
+      <!-- Blog -->
+      <section class="blog">
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80"
+            alt=""
+          />
+        </div>
+        <div>
+          <h3>Top 5 Summer Lip Colors</h3>
+          <p>
+            Find out which shades are trending this summer!
+            <a href="#">Read more →</a>
+          </p>
+          <h3>Why Go Natural?</h3>
+          <ul>
+            <li>No parabens</li>
+            <li>Cruelty-free</li>
+            <li>Eco-friendly packaging</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials">
+        <h2 class="section-title">Testimonials</h2>
+        <p class="quote">"Love the glow! My skin feels amazing." – Sarah</p>
+        <div class="rating">★★★★★</div>
+        <div class="user">
+          <img
+            src="https://randomuser.me/api/portraits/women/65.jpg"
+            width="40"
+            style="border-radius: 50%"
+          />
+          Sarah
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="footer-top">
+          <div class="footer-col">
+            <h4>About</h4>
+            <ul>
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Sustainability</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Follow Us</h4>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-pinterest"></i>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © 2023 GlowEssence Cosmetics. All rights reserved.
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

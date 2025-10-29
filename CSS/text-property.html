@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        text-transform: capitalize;
+      }
+      #first {
+        height: 100px;
+        width: 200px;
+        border: 1px solid black;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #sec {
+        width: 550px;
+        height: 200px;
+        border: 1px solid black;
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>text-transform: capitalize;</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+      voluptatibus deleniti quaerat laudantium ab non iusto maxime reprehenderit
+      perferendis earum accusamus placeat odit cumque recusandae nulla deserunt
+      cum, dignissimos quidem.
+    </p>
+    <h1>text-overflow: ellipsis;</h1>
+    <p id="first">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum cumque
+      omnis quas alias, nihil molestias quaerat voluptate sint placeat
+      consectetur, deserunt quam aliquam delectus non, officiis ab dolore et
+      deleniti.
+    </p>
+    <h1>text-orientation: upright;</h1>
+    <p id="sec">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum cumque
+      omnis quas alias, nihil molestias quaerat voluptate sint placeat
+      consectetur, deserunt quam aliquam delectus non, officiis ab dolore et
+      deleniti.
+    </p>
+  </body>
+</html>
