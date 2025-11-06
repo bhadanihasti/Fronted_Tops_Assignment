@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Webpage</title>
+    <style>
+      /* --- Global Styles --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* --- Navbar --- */
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #ffcc00;
+      }
+
+      /* --- Content Section --- */
+      .content {
+        display: flex;
+        flex: 1;
+        padding: 40px;
+        gap: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .left-column,
+      .right-column {
+        flex: 1;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .left-column h2,
+      .right-column h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .left-column p,
+      .right-column p {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* --- Footer --- */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      /* --- Responsive Design --- */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 10px;
+          margin-top: 10px;
+        }
+
+        .content {
+          flex-direction: column;
+          padding: 20px;
+        }
+
+        .left-column,
+        .right-column {
+          padding: 15px;
+        }
+
+        h2 {
+          font-size: 1.2rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="logo">MyWebsite</div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="content">
+      <div class="left-column">
+        <h2>About Us</h2>
+        <p>
+          We are a creative agency focused on delivering high-quality web and
+          marketing solutions. Our mission is to empower businesses to grow and
+          succeed in the digital age.
+        </p>
+      </div>
+
+      <div class="right-column">
+        <h2>Our Services</h2>
+        <p>
+          We provide a range of services including web development, SEO, social
+          media marketing, and branding. Our team ensures each project is
+          tailored to your unique needs.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 MyWebsite. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
