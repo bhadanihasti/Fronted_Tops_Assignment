@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Data Type Tasks</title>
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #1cb5e0, #000851);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+        font-family: Arial, sans-serif;
+      }
+
+      button {
+        width: 260px;
+        padding: 15px;
+        border-radius: 10px;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        background: #fff;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background: #1cb5e0;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="task1()">Task 1: Check String</button>
+    <button onclick="task2()">Task 2: Number Double</button>
+    <button onclick="task3()">Task 3: Boolean</button>
+    <button onclick="task4()">Task 4: Null</button>
+    <button onclick="task5()">Task 5: Undefined</button>
+    <button onclick="task6()">Task 6: Array</button>
+    <button onclick="task7()">Task 7: Object</button>
+    <button onclick="task8()">Task 8: Function</button>
+    <button onclick="task9()">Task 9: BigInt</button>
+    <button onclick="task10()">Task 10: Symbol</button>
+
+    <script>
+      function task1() {
+        let value = prompt("Enter any string:");
+        alert("Value is: " + value + "| Type:" + typeof value);
+      }
+
+      function task2() {
+        let n = Number(prompt("Enter any number:"));
+        alert("Double is: " + n * 2);
+      }
+
+      function task3() {
+        let ans = confirm("Are you student?");
+        alert("Result: " + ans);
+      }
+
+      function task4() {
+        let a = null;
+        alert("Value: " + a + " | Type: " + typeof a);
+      }
+
+      function task5() {
+        let x;
+        alert("Value: " + x + " | Type: " + typeof x);
+      }
+
+      function task6() {
+        let f1 = prompt("Fruit 1:");
+        let f2 = prompt("Fruit 2:");
+        let f3 = prompt("Fruit 3:");
+
+        let fruits = [f1, f2, f3];
+        alert("Your Fruits: " + fruits);
+        console.log(fruits);
+      }
+
+      function task7() {
+        let nm = prompt("Enter Name:");
+        let ag = Number(prompt("Enter Age:"));
+
+        let user = { name: nm, age: ag };
+        alert("User Object Created! Check Console");
+        console.log(user);
+      }
+
+      function task8() {
+        function hello() {
+          return "Hello JavaScript!";
+        }
+
+        alert(hello());
+        alert("Type of hello is: " + typeof hello);
+      }
+
+      function task9() {
+        let big = 12345678901234567890n;
+        alert("Value: " + big + " | Type: " + typeof big);
+      }
+
+      function task10() {
+        let id = Symbol("userID");
+        alert("Symbol Created! Type: " + typeof id);
+        console.log(id);
+      }
+    </script>
+  </body>
+</html>

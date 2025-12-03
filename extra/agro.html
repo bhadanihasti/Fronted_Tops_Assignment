@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GreenHarvest — Agriculture Template</title>
+    <style>
+      :root {
+        --primary: #2e7d32; /* dark green */
+        --accent: #66bb6a; /*light green */
+        --muted: #e8f5e9; /* pale */
+        --dark: #263238; /* text */
+        --card: #ffffff;
+        --glass: rgba(255, 255, 255, 0.6);
+        --radius: 16px;
+        --max-width: 1200px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color: var(--dark);
+        background: linear-gradient(180deg, #f8fff8 0%, #ffffff 100%);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* NAV */
+      header {
+        background: linear-gradient(180deg, #f8fff8 100%, #ffffff 10%);
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-family: "Poppins";
+      }
+      .brand h1 {
+        margin: 0;
+        font-size: 18px;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+      nav a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .cta {
+        background: var(--primary);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      /* Mobile menu */
+      .menu-btn {
+        display: none;
+        background: none;
+        border: 0;
+        font-size: 20px;
+      }
+
+      /* HERO */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 460px;
+        gap: 40px;
+        align-items: center;
+        padding: 60px 0;
+      }
+      .hero-left h2 {
+        font-family: "Poppins";
+        font-size: 38px;
+        margin: 0 0 12px;
+      }
+      .hero-left p {
+        margin: 0 0 20px;
+        color: #425;
+        opacity: 0.9;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+      }
+      .btn {
+        padding: 12px 18px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .btn-outline {
+        border: 2px solid var(--primary);
+        background: transparent;
+        color: var(--primary);
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .hero-card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.9),
+          var(--glass)
+        );
+        border-radius: 20px;
+        padding: 18px;
+        box-shadow: 0 6px 30px rgba(30, 60, 20, 0.08);
+      }
+      .hero-card img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+      .stats {
+        display: flex;
+        gap: 14px;
+        margin-top: 12px;
+      }
+      .stat {
+        flex: 1;
+        background: transparent;
+        padding: 8px;
+        border-radius: 10px;
+        text-align: center;
+      }
+      .stat strong {
+        display: block;
+        font-size: 18px;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 60px 0;
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+      .section-title h3 {
+        margin: 0;
+        font-family: "Poppins";
+      }
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      /* Services */
+      .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .service {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(30, 60, 20, 0.06);
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .service .icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--primary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+      }
+      .service h4 {
+        margin: 0 0 6px;
+      }
+
+      /* Products / Cards */
+      .products {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .card {
+        background: var(--card);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(20, 40, 10, 0.06);
+      }
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .card-body {
+        padding: 14px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--muted);
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      /* Gallery */
+      .gallery {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .gallery img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 24px;
+      }
+      .form input,
+      .form textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #e8efe7;
+        margin-bottom: 12px;
+        font-family: inherit;
+      }
+      .form textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      /* Footer */
+      footer {
+        padding: 40px 0;
+        background: linear-gradient(180deg, var(--muted), #fff);
+        border-top: 1px solid rgba(40, 80, 20, 0.04);
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      /* Responsiveness */
+      @media (max-width: 1000px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-card img {
+          height: 220px;
+        }
+        .services {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .products {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 700px) {
+        nav ul {
+          display: none;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .services {
+          grid-template-columns: 1fr;
+        }
+        .products {
+          grid-template-columns: 1fr;
+        }
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .hero-left h2 {
+          font-size: 28px;
+        }
+      }
+
+      /* small helpers */
+      .muted {
+        color: #455;
+        color: #3b3b3b;
+        opacity: 0.85;
+      }
+      .center {
+        text-align: center;
+      }
+      .small {
+        font-size: 13px;
+      }
+      .mb-8 {
+        margin-bottom: 32px;
+      }
+    </style>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;600&family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Basic SEO -->
+    <meta
+      name="description"
+      content="GreenHarvest — Simple & attractive agriculture website template (HTML + CSS). Clean, responsive, and easy to customize."
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ---------------------------------------------------
+   PRO HOVER PACK — Premium Smooth UI Animations
+--------------------------------------------------- */
+
+      /* Base easing for all */
+      * {
+        transition: 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      /* -----------------------------------
+   LOGO
+----------------------------------- */
+      .logo:hover {
+        transform: scale(1.12) rotate(1.5deg);
+        box-shadow: 0 8px 20px rgba(46, 125, 50, 0.35);
+      }
+
+      /* -----------------------------------
+   NAV LINKS
+----------------------------------- */
+      nav a {
+        position: relative;
+        padding-bottom: 3px;
+      }
+
+      /* underline animation */
+      nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0%;
+        height: 2px;
+        background: var(--primary);
+        transition: 0.3s ease;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      nav a:hover {
+        color: var(--primary);
+      }
+
+      /* -----------------------------------
+   BUTTONS
+----------------------------------- */
+
+      /* Primary */
+      .btn-primary:hover {
+        background: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(46, 125, 50, 0.35);
+      }
+
+      /* Outline */
+      .btn-outline:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(46, 125, 50, 0.35);
+      }
+
+      /* -----------------------------------
+   SERVICE CARDS
+----------------------------------- */
+      .service {
+        transition: 0.32s ease;
+        transform-origin: center;
+      }
+      .service:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 16px 36px rgba(20, 60, 20, 0.18);
+      }
+
+      /* Icon Glow */
+      .service .icon:hover {
+        transform: scale(1.15);
+        box-shadow: 0 6px 20px rgba(46, 125, 50, 0.25);
+      }
+
+      /* -----------------------------------
+   PRODUCT CARDS
+----------------------------------- */
+      .card {
+        transition: 0.35s ease;
+      }
+      .card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 22px 45px rgba(20, 60, 20, 0.2);
+      }
+
+      /* Image Zoom soft */
+      .card img {
+        transition: transform 0.4s ease;
+      }
+      .card:hover img {
+        transform: scale(1.08);
+      }
+
+      /* -----------------------------------
+   GALLERY IMAGES
+----------------------------------- */
+      .gallery img {
+        transition: 0.35s ease;
+        transform-origin: center;
+      }
+      .gallery img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+        border-radius: 14px;
+      }
+
+      /* -----------------------------------
+   STATS
+----------------------------------- */
+      .stat:hover {
+        background: var(--muted);
+        transform: translateY(-4px) scale(1.06);
+        box-shadow: 0 8px 20px rgba(46, 125, 50, 0.15);
+      }
+
+      /* -----------------------------------
+   SECTION TITLES
+----------------------------------- */
+      .section-title:hover h3 {
+        color: var(--primary);
+        transform: translateX(4px);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="logo">GH</div>
+          <div>
+            <h1>GreenHarvest</h1>
+            <div class="small muted">Sustainable Farming & Produce</div>
+          </div>
+        </div>
+
+        <nav>
+          <button class="menu-btn" id="menuBtn">☰</button>
+          <ul id="menuItems">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <a class="cta" href="#contact">Get Quote</a>
+      </div>
+    </header>
+
+    <main class="container" id="home">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <h2>Fresh. Local. Sustainable.</h2>
+          <p>
+            We grow certified organic produce using eco-friendly methods —
+            connecting farms to your table. Explore our services, fresh products
+            and farm tours.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#products">Shop Produce</a>
+            <a class="btn btn-outline" href="#services">Our Services</a>
+          </div>
+
+          <div class="mb-8"></div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>15+</strong>
+              <div class="small muted">Years Farming</div>
+            </div>
+            <div class="stat">
+              <strong>120+</strong>
+              <div class="small muted">Products Grown</div>
+            </div>
+            <div class="stat">
+              <strong>5000+</strong>
+              <div class="small muted">Happy Customers</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <img
+            src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef"
+            alt="farm-hero"
+          />
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-top: 12px;
+            "
+          >
+            <div>
+              <div class="tag">Organic</div>
+              <h4 style="margin: 8px 0 0">Farm Fresh Vegetables</h4>
+              <div class="small muted">From our fields to your plate</div>
+            </div>
+            <a class="btn btn-outline" href="#contact">Order Now</a>
+          </div>
+        </aside>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="section-title">
+          <h3>Our Services</h3>
+        </div>
+
+        <div class="grid services">
+          <div class="service">
+            <div class="icon">A</div>
+            <div>
+              <h4>Crop Consulting</h4>
+              <p class="small muted">
+                Expert agronomy advice to increase yield and soil health.
+              </p>
+            </div>
+          </div>
+
+          <div class="service">
+            <div class="icon">I</div>
+            <div>
+              <h4>Irrigation Setup</h4>
+              <p class="small muted">
+                Efficient drip & sprinkler solutions for water-wise farming.
+              </p>
+            </div>
+          </div>
+
+          <div class="service">
+            <div class="icon">S</div>
+            <div>
+              <h4>Supply Chain</h4>
+              <p class="small muted">
+                From harvest logistics to direct-to-store distribution.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section id="products">
+        <div class="section-title">
+          <h3>Featured Produce</h3>
+        </div>
+
+        <div class="grid products">
+          <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=aaa111"
+              alt="product"
+            />
+            <div class="card-body">
+              <div class="tag">Vegetable</div>
+              <h4 style="margin-top: 8px">Organic Spinach</h4>
+              <p class="small muted">
+                Leafy greens harvested daily. Rich in iron and vitamins.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 12px;
+                "
+              >
+                <strong>₹60 / kg</strong>
+                <a class="btn btn-outline" href="#contact">Buy Now</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1518976024611-486b2adf7fe0?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=bbb222"
+              alt="product"
+            />
+            <div class="card-body">
+              <div class="tag">Fruit</div>
+              <h4 style="margin-top: 8px">Fresh Strawberries</h4>
+              <p class="small muted">
+                Sweet and juicy — perfect for jams and desserts.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 12px;
+                "
+              >
+                <strong>₹220 / box</strong>
+                <a class="btn btn-outline" href="#contact">Buy Now</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ccc333"
+              alt="product"
+            />
+            <div class="card-body">
+              <div class="tag">Herbs</div>
+              <h4 style="margin-top: 8px">Organic Basil</h4>
+              <p class="small muted">
+                Aromatic leaves for cooking and herbal remedies.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 12px;
+                "
+              >
+                <strong>₹80 / bunch</strong>
+                <a class="btn btn-outline" href="#contact">Buy Now</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section id="gallery">
+        <div class="section-title">
+          <h3>Farm Gallery</h3>
+        </div>
+
+        <div class="grid gallery">
+          <img
+            src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=ddd444"
+            alt="g1"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1472393365320-db77a5abbecc?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=eee555"
+            alt="g2"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=fff666"
+            alt="g3"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=ggg777"
+            alt="g4"
+          />
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="section-title"><h3>About Us</h3></div>
+        <div
+          class="grid"
+          style="grid-template-columns: 1fr 1fr; gap: 24px; align-items: center"
+        >
+          <div>
+            <h4 style="margin-top: 0">Sustainable farming since 2010</h4>
+            <p class="muted">
+              We practice regenerative agriculture — building soil health,
+              conserving water and reducing chemical use. Our mission is to
+              provide nutritious food while protecting the environment for
+              future generations.
+            </p>
+
+            <ul style="margin-top: 12px">
+              <li>Certified organic plots</li>
+              <li>Local distribution network</li>
+              <li>Farm-to-door delivery</li>
+            </ul>
+          </div>
+          <div>
+            <div
+              style="
+                border-radius: 14px;
+                overflow: hidden;
+                box-shadow: 0 12px 30px rgba(20, 60, 10, 0.06);
+              "
+            >
+              <img
+                src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=hhh888"
+                alt="about"
+                style="width: 100%; height: 260px; object-fit: cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-title"><h3>Contact Us</h3></div>
+
+        <div class="contact-grid">
+          <div>
+            <p class="muted">
+              Have questions or want to place a bulk order? Fill the form and
+              we'll get back to you within 24 hours.
+            </p>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                margin-top: 16px;
+              "
+            >
+              <div
+                style="
+                  background: var(--card);
+                  padding: 12px;
+                  border-radius: 10px;
+                  border: 1px solid #eef7ee;
+                "
+              >
+                <strong>📍 Location</strong>
+                <div class="small muted">
+                  Rural Agricultural Zone, Near Riverbank
+                </div>
+              </div>
+              <div
+                style="
+                  background: var(--card);
+                  padding: 12px;
+                  border-radius: 10px;
+                  border: 1px solid #eef7ee;
+                "
+              >
+                <strong>📞 Phone</strong>
+                <div class="small muted">+91 98765 43210</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 12px; display: flex; gap: 12px">
+              <a class="btn btn-primary" href="tel:+919876543210">Call Now</a>
+              <a
+                class="btn btn-outline"
+                href="mailto:hello@greenharvest.example"
+                >Email Us</a
+              >
+            </div>
+          </div>
+
+          <form
+            class="form"
+            action="#"
+            onsubmit="alert('Thank you! Message sent (demo).');return false;"
+          >
+            <input type="text" placeholder="Your name" required />
+            <input type="email" placeholder="Email address" required />
+            <input type="text" placeholder="Subject" />
+            <textarea placeholder="Message"></textarea>
+            <div style="display: flex; justify-content: flex-end">
+              <button class="btn btn-primary" type="submit">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h4>GreenHarvest</h4>
+          <p class="small muted">
+            Fresh produce & sustainable farming — delivering goodness to your
+            table.
+          </p>
+        </div>
+
+        <div style="text-align: right">
+          <div class="small muted">Follow us</div>
+          <div
+            style="
+              margin-top: 8px;
+              display: flex;
+              gap: 8px;
+              justify-content: flex-end;
+            "
+          >
+            <a class="small" href="#">Instagram</a>
+            <a class="small" href="#">Facebook</a>
+            <a class="small" href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("menuItems");
+      btn.addEventListener("click", () => {
+        if (menu.style.display === "flex") menu.style.display = "none";
+        else menu.style.display = "flex";
+        menu.style.flexDirection = "column";
+        menu.style.gap = "12px";
+        menu.style.position = "absolute";
+        menu.style.right = "20px";
+        menu.style.top = "72px";
+        menu.style.background = "white";
+        menu.style.padding = "12px";
+        menu.style.borderRadius = "12px";
+        menu.style.boxShadow = "0 12px 30px rgba(20,60,10,0.08)";
+      });
+    </script>
+  </body>
+</html>

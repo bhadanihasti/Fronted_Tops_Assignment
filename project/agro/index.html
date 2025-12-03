@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;600&family=Lora:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="logo">GH</div>
+          <div>
+            <h1>GreenHarvest</h1>
+            <p class="small muted">Sustainable Farming & Produce</p>
+          </div>
+        </div>
+
+        <nav>
+          <button class="menu-btn" id="menuBtn">☰</button>
+          <ul id="menuItems">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <a class="cta" href="#contact">Get Quote</a>
+      </div>
+    </header>
+
+    <main class="container" id="home">
+      <section class="hero">
+        <div class="hero-left">
+          <h2>Fresh. Local. Sustainable.</h2>
+          <p>
+            We grow certified organic produce using eco-friendly methods —
+            connecting farms to your table. Explore our services, fresh products
+            and farm tours.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#products">Shop Produce</a>
+            <a class="btn btn-outline" href="#services">Our Services</a>
+          </div>
+
+          <div class="mb-8"></div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>15+</strong>
+              <div class="small muted">Years Farming</div>
+            </div>
+            <div class="stat">
+              <strong>120+</strong>
+              <div class="small muted">Products Grown</div>
+            </div>
+            <div class="stat">
+              <strong>5000+</strong>
+              <div class="small muted">Happy Customers</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <video width="600" autoplay loop muted playsinline>
+            <source src="images/v1.mp4" type="video/mp4" />
+          </video>
+
+          <div class="hero-text">
+            <div>
+              <div class="tag">Organic</div>
+              <h4 style="margin: 8px 0 0">Farm Fresh Vegetables</h4>
+              <div class="small muted">From our fields to your plate</div>
+            </div>
+            <a class="btn btn-outline" href="#contact">Order Now</a>
+          </div>
+        </aside>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="section-title">
+          <h3>Our Services</h3>
+        </div>
+
+        <div class="grid services">
+          <div class="service">
+            <div class="icon">A</div>
+            <div>
+              <h4>Crop Consulting</h4>
+              <p class="small muted">
+                Expert agronomy advice to increase yield and soil health.
+              </p>
+            </div>
+          </div>
+
+          <div class="service">
+            <div class="icon">I</div>
+            <div>
+              <h4>Irrigation Setup</h4>
+              <p class="small muted">
+                Efficient drip & sprinkler solutions for water-wise farming.
+              </p>
+            </div>
+          </div>
+
+          <div class="service">
+            <div class="icon">S</div>
+            <div>
+              <h4>Supply Chain</h4>
+              <p class="small muted">
+                From harvest logistics to direct-to-store distribution.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section id="products">
+        <div class="section-title">
+          <h3>Featured Produce</h3>
+        </div>
+
+        <div class="grid products">
+          <article class="card">
+            <img src="images/o5.jfif" alt="product" />
+            <div class="card-body">
+              <div class="tag">Vegetable</div>
+              <h4 style="margin-top: 8px">Organic Spinach</h4>
+              <p class="small muted">
+                Leafy greens harvested daily. Rich in iron and vitamins.
+              </p>
+              <div class="card-text">
+                <strong>₹60 / kg</strong>
+                <a class="btn btn-outline" href="#contact">Buy Now</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="images/o2.jfif" alt="product" />
+            <div class="card-body">
+              <div class="tag">Fruit</div>
+              <h4 style="margin-top: 8px">Fresh Strawberries</h4>
+              <p class="small muted">
+                Sweet and juicy — perfect for jams and desserts.
+              </p>
+              <div class="card-text">
+                <strong>₹220 / box</strong>
+                <a class="btn btn-outline" href="#contact">Buy Now</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="images/o1.jfif" alt="product" />
+            <div class="card-body">
+              <div class="tag">Herbs</div>
+              <h4 style="margin-top: 8px">Organic Basil</h4>
+              <p class="small muted">
+                Aromatic leaves for cooking and herbal remedies.
+              </p>
+              <div class="card-text">
+                <strong>₹80 / bunch</strong>
+                <a class="btn btn-outline" href="#contact">Buy Now</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section id="gallery">
+        <div class="section-title">
+          <h3>Farm Gallery</h3>
+        </div>
+
+        <div class="grid gallery">
+          <img src="images/g1.jfif" alt="g1" />
+          <img src="images/g3.jfif" alt="g2" />
+          <img src="images/g4.jfif" alt="g3" />
+          <img src="images/g6.jfif" alt="g4" />
+
+          <img src="images/g11.jfif" alt="g1" />
+          <img src="images/g13.jfif" alt="g2" />
+          <img src="images/g8.jfif" alt="g3" />
+          <img src="images/g14.jfif" alt="g4" />
+        </div>
+      </section>
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="section-title"><h3>About Us</h3></div>
+        <div class="grid about">
+          <div>
+            <h4>Sustainable farming since 2010</h4>
+            <p class="muted">
+              We practice regenerative agriculture — building soil health,
+              conserving water and reducing chemical use. Our mission is to
+              provide nutritious food while protecting the environment for
+              future generations.
+            </p>
+
+            <ul>
+              <li>Certified organic plots</li>
+              <li>Local distribution network</li>
+              <li>Farm-to-door delivery</li>
+            </ul>
+          </div>
+          <div>
+            <div>
+              <img src="images/o6.jfif" alt="about" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-title"><h3>Contact Us</h3></div>
+
+        <div class="contact-grid">
+          <div class="contact-text">
+            <p class="muted">
+              Have questions or want to place a bulk order? Fill the form and
+              we'll get back to you within 24 hours.
+            </p>
+            <div class="LP">
+              <div class="LP1">
+                <strong>📍 Location</strong>
+                <div class="small muted">
+                  Rural Agricultural Zone, Near Riverbank
+                </div>
+              </div>
+              <div class="LP2">
+                <strong>📞 Phone</strong>
+                <div class="small muted">+91 98765 43210</div>
+              </div>
+            </div>
+
+            <div class="contact-btn">
+              <a class="btn btn-primary" href="tel:+919876543210">Call Now</a>
+              <a
+                class="btn btn-outline"
+                href="mailto:hello@greenharvest.example"
+                >Email Us</a
+              >
+            </div>
+          </div>
+
+          <form
+            class="form"
+            action="#"
+            onsubmit="alert('Thank you! Message sent (demo).');return false;"
+          >
+            <input type="text" placeholder="Your name" required />
+            <input type="email" placeholder="Email address" required />
+            <input type="text" placeholder="Subject" />
+            <textarea placeholder="Message"></textarea>
+            <div style="display: flex; justify-content: flex-end">
+              <button class="btn btn-primary" type="submit">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h4>GreenHarvest</h4>
+          <p class="small muted">
+            Fresh produce & sustainable farming — delivering goodness to your
+            table.
+          </p>
+        </div>
+
+        <div style="text-align: right">
+          <div class="small muted">Follow us</div>
+
+          <a class="small" href="#">Instagram</a>
+          <a class="small" href="#">Facebook</a>
+          <a class="small" href="#">YouTube</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("menuItems");
+      btn.addEventListener("click", () => {
+        if (menu.style.display === "flex") menu.style.display = "none";
+        else menu.style.display = "flex";
+        menu.style.flexDirection = "column";
+        menu.style.gap = "12px";
+        menu.style.position = "absolute";
+        menu.style.right = "20px";
+        menu.style.top = "72px";
+        menu.style.background = "white";
+        menu.style.padding = "12px";
+        menu.style.borderRadius = "12px";
+        menu.style.boxShadow = "0 12px 30px rgba(20,60,10,0.08)";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+/* styles.css - compact but complete for assignment */
+:root{
+  --bg:#f5f7f2;
+  --card:#ffffff;
+  --muted:#6b6b6b;
+  --accent:#1b5e20;
+  --danger:#d32f2f;
+}
+[data-theme="dark"]{
+  --bg:#0e0f10;
+  --card:#121416;
+  --muted:#b6b6b6;
+  --accent:#66bb6a;
+  --danger:#ff8a80;
+  color:#eaeaea;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Arial; background:var(--bg); color:inherit; margin:0}
+.container{max-width:1100px;margin:0 auto;padding:18px}
+.site-header{background:var(--card);position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(0,0,0,0.06)}
+.header-grid{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{background:var(--accent);color:white;padding:10px;border-radius:8px;font-weight:700}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.header-actions{display:flex;gap:8px;align-items:center}
+.btn{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;text-decoration:none}
+.btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:inherit}
+.btn-danger{background:var(--danger);color:white}
+.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.06);margin-top:18px}
+.form-section h2{margin-bottom:12px}
+.grid{display:grid;gap:12px}
+.two-col{grid-template-columns:1fr 1fr}
+label{display:block;font-weight:600}
+input,select,textarea{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:transparent}
+textarea{resize:vertical}
+.form-actions{display:flex;gap:10px;margin-top:12px}
+.message-box{margin-top:12px;min-height:28px}
+.msg{padding:10px;border-radius:8px}
+.msg.success{background:#e6f4ea;color:#1a6f2b}
+.msg.error{background:#fdecea;color:#8b1d1d}
+.tips{margin-top:8px}
+.reports-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.report-card{background:linear-gradient(180deg,rgba(255,255,255,0.6),transparent);padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04)}
+.card-head h3{margin:0}
+.note{color:var(--muted)}
+.report-footer{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.report-footer .actions{display:flex;justify-content:flex-end}
+.controls .two-col{grid-template-columns:1fr auto}
+@media(max-width:900px){
+  .two-col{grid-template-columns:1fr}
+  .reports-grid{grid-template-columns:1fr}
+  .header-grid{flex-direction:column;gap:10px;align-items:flex-start}
+}

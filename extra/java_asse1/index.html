@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GreenHarvest — Plant Report</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-grid">
+        <div class="brand">
+          <div class="logo">GH</div>
+          <div>
+            <h1>GreenHarvest</h1>
+            <p class="muted small">Smart Plant Care — Admin Portal</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <a class="btn" href="view.html">View Reports</a>
+          <button id="themeToggle" class="btn btn-ghost">Dark</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="form-section card">
+        <h2>Submit Plant Care Report</h2>
+
+        <form id="plantForm" novalidate>
+          <div class="grid two-col">
+            <label>
+              Plant Name *
+              <input name="plantName" type="text" required minlength="3" />
+              <small class="error"></small>
+            </label>
+
+            <label>
+              Location in Home *
+              <select name="location" required>
+                <option value="">Choose...</option>
+                <option>Balcony</option>
+                <option>Bedroom</option>
+                <option>Kitchen</option>
+                <option>Living Room</option>
+                <option>Office</option>
+              </select>
+              <small class="error"></small>
+            </label>
+          </div>
+
+          <div class="grid two-col">
+            <label>
+              Watering Frequency (days) *
+              <input name="frequency" type="number" min="1" required />
+              <small class="error"></small>
+            </label>
+
+            <label>
+              Last Watered Date *
+              <input name="lastWatered" type="date" required />
+              <small class="error"></small>
+            </label>
+          </div>
+
+          <label>
+            Plant Condition Notes * (min 15 chars)
+            <textarea name="notes" rows="4" required minlength="15"></textarea>
+            <small class="error"></small>
+          </label>
+
+          <!-- Optional contact fields included to match 'Validation Rules' (phone/email) -->
+          <div class="grid two-col">
+            <label>
+              Owner Phone *
+              <input
+                name="phone"
+                type="tel"
+                pattern="[0-9]{10}"
+                required
+                placeholder="10 digits"
+              />
+              <small class="error"></small>
+            </label>
+
+            <label>
+              Owner Email *
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="name@example.com"
+              />
+              <small class="error"></small>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit Report</button>
+            <button type="button" id="resetBtn" class="btn btn-ghost">
+              Clear
+            </button>
+          </div>
+        </form>
+
+        <div id="messageBox" class="message-box" aria-live="polite"></div>
+      </section>
+
+      <section class="tips card">
+        <h3>Tips</h3>
+        <ul>
+          <li>Use clear plant name (≥3 characters).</li>
+          <li>Set realistic watering frequency (days &gt; 0).</li>
+          <li>Notes help diagnose — give at least 15 characters.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© GreenHarvest 2025 — Local demo using localStorage</small>
+      </div>
+    </footer>
+
+    <script type="module">
+      import { PlantReportHandler } from "./plantHandler.js";
+
+      const handler = new PlantReportHandler({
+        formSelector: "#plantForm",
+        msgSelector: "#messageBox",
+        storageKey: "plantReports",
+      });
+
+      // initialize (attach event delegation and real-time validation)
+      handler.init();
+
+      // theme toggle persisted in localStorage
+      const themeToggle = document.getElementById("themeToggle");
+      function applyTheme(t) {
+        document.documentElement.setAttribute("data-theme", t);
+        themeToggle.textContent = t === "dark" ? "Light" : "Dark";
+      }
+      const savedTheme = localStorage.getItem("gh_theme") || "light";
+      applyTheme(savedTheme);
+      themeToggle.addEventListener("click", () => {
+        const newTheme =
+          document.documentElement.getAttribute("data-theme") === "dark"
+            ? "light"
+            : "dark";
+        applyTheme(newTheme);
+        localStorage.setItem("gh_theme", newTheme);
+      });
+    </script>
+  </body>
+</html>

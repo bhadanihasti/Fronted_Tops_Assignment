@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="gu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JS Interactions: alert, prompt, confirm</title>
+    <style>
+      /* Simple, clean styling */
+      :root {
+        font-family: "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+        --bg: #f5f7fb;
+        --card: #ffffff;
+        --accent: #3b82f6;
+        --muted: #6b7280;
+        --success: #10b981;
+      }
+      body {
+        margin: 0;
+        padding: 32px;
+        background: var(--bg);
+        color: #111827;
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      header {
+        grid-column: 1 / -1;
+        margin-bottom: 6px;
+      }
+      h1 {
+        margin: 0 0 6px 0;
+        font-size: 20px;
+      }
+      p.lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .card {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      }
+
+      button {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 0;
+        cursor: pointer;
+        font-weight: 600;
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 6px 14px rgba(59, 130, 246, 0.18);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--accent);
+        border: 2px solid rgba(59, 130, 246, 0.12);
+        box-shadow: none;
+      }
+
+      .result {
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: #fbfdff;
+        color: #0f172a;
+        font-size: 14px;
+        border: 1px dashed rgba(15, 23, 42, 0.06);
+      }
+
+      .full {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      footer {
+        grid-column: 1 / -1;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+        margin-top: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1>JavaScript Interaction Examples</h1>
+        <p class="lead">
+          alert(), prompt(), confirm() — સરળ ઉદાહરણો અને પરિણામ બતાવવું
+        </p>
+      </header>
+
+      <!-- Alert example -->
+      <div class="card">
+        <h3>1) alert()</h3>
+        <p class="lead">
+          સરળ સૂચના બતાવવા માટે — નોંધ: alert સુધી બ્રાઉઝર રોકાય છે.
+        </p>
+        <div style="margin-top: 10px">
+          <button id="btnAlert">Alert બતાવો</button>
+        </div>
+        <div id="resAlert" class="result" style="display: none"></div>
+      </div>
+
+      <!-- Prompt example -->
+      <div class="card">
+        <h3>2) prompt()</h3>
+        <p class="lead">વપરાશકર્તા પાસેથી લખાણ મેળવો અને એ દેખાવો.</p>
+        <div style="margin-top: 10px">
+          <button id="btnPrompt">તમારુ નામ પૂછો</button>
+          <button
+            id="btnPromptClear"
+            class="btn-ghost"
+            style="margin-left: 8px"
+          >
+            ફરી સેટ કરો
+          </button>
+        </div>
+        <div id="resPrompt" class="result" style="display: none"></div>
+      </div>
+
+      <!-- Confirm example -->
+      <div class="card">
+        <h3>3) confirm()</h3>
+        <p class="lead">હા/ના માહિતી સાથે બહેતર નિર્ણય અને રોજિંદા ક્રિયા.</p>
+        <div style="margin-top: 10px">
+          <button id="btnConfirm">Delete item</button>
+        </div>
+        <div id="resConfirm" class="result" style="display: none"></div>
+      </div>
+
+      <div class="card full">
+        <div>
+          <strong>How to test:</strong>
+          <div style="color: var(--muted); margin-top: 6px; font-size: 13px">
+            બટન ક્લિક કરો અને બ્રાઉઝર દ્વારા વિન્ડોઝ/ડાયલોગ દેખાશે. પરિણામ નીચે
+            દેખાશે.
+          </div>
+        </div>
+        <div style="text-align: right; color: var(--muted); font-size: 13px">
+          Example by you — try editing the code!
+        </div>
+      </div>
+
+      <footer>ઉદાહરણો: alert(), prompt(), confirm() — બનાવવામાં સહેલું</footer>
+    </div>
+
+    <script>
+      // ALERT
+      const btnAlert = document.getElementById("btnAlert");
+      const resAlert = document.getElementById("resAlert");
+      btnAlert.addEventListener("click", () => {
+        alert("આ એક alert() સંદેશો છે — Hello from JavaScript!");
+        // show a small confirmation in the page too
+        resAlert.style.display = "block";
+        resAlert.textContent =
+          "alert() બંધ કર્યા પછી એ અવરોધિત કર્યું અને એક ટેક્સ્ટ લાયકાવ્યું.";
+      });
+
+      // PROMPT
+      const btnPrompt = document.getElementById("btnPrompt");
+      const btnPromptClear = document.getElementById("btnPromptClear");
+      const resPrompt = document.getElementById("resPrompt");
+
+      btnPrompt.addEventListener("click", () => {
+        // default value and a message
+        const name = prompt("તમારું નામ কি છે?", "તમારું નામ અહીં લખો");
+        if (name === null) {
+          // user pressed Cancel
+          resPrompt.style.display = "block";
+          resPrompt.textContent = "તમારે નામ આપવા નાખ્યું નહીં — (Cancel).";
+        } else if (name.trim() === "") {
+          resPrompt.style.display = "block";
+          resPrompt.textContent =
+            "તમે ખાલી સ્ટ્રિંગ આપ્યો. કૃપા કરી સાચું નામ આપો.";
+        } else {
+          resPrompt.style.display = "block";
+          resPrompt.innerHTML = `નમસ્તે, <strong>${escapeHtml(
+            name
+          )}</strong>! તમને મદદ કરવા માટે તૈયાર છે.`;
+        }
+      });
+
+      btnPromptClear.addEventListener("click", () => {
+        resPrompt.style.display = "none";
+        resPrompt.textContent = "";
+      });
+
+      // CONFIRM
+      const btnConfirm = document.getElementById("btnConfirm");
+      const resConfirm = document.getElementById("resConfirm");
+
+      btnConfirm.addEventListener("click", () => {
+        const ok = confirm("શું તમે આ item ને સંપૂર્ણપણે ડિલીટ કરવા માંગો છો?");
+        if (ok) {
+          // user clicked OK
+          resConfirm.style.display = "block";
+          resConfirm.textContent =
+            "Item ડિલીટ થઈ ગયો છે. (એને ડેમો માટે પેજ પર બતાવ્યું).";
+        } else {
+          // user clicked Cancel
+          resConfirm.style.display = "block";
+          resConfirm.textContent = "ડિલીટ રદ કરાઈ — કઈં બદલાયું નથી.";
+        }
+      });
+
+      // small helper to avoid simple XSS when injecting prompt input into page
+      function escapeHtml(str) {
+        return str.replace(/[&<>"'`=\/]/g, function (s) {
+          return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+            "/": "&#x2F;",
+            "`": "&#x60;",
+            "=": "&#x3D;",
+          }[s];
+        });
+      }
+    </script>
+  </body>
+</html>

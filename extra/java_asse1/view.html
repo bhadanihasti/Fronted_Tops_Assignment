@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GreenHarvest — View Reports</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-grid">
+        <div class="brand">
+          <div class="logo">GH</div>
+          <div>
+            <h1>Reports</h1>
+            <p class="muted small">All submitted plant care reports</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <a class="btn" href="index.html">New Report</a>
+          <button id="themeToggle2" class="btn btn-ghost">Dark</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="controls card">
+        <div class="grid two-col">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search by plant or location..."
+          />
+          <div style="display: flex; gap: 8px; justify-content: flex-end">
+            <button id="exportBtn" class="btn">Export JSON</button>
+            <label class="btn btn-ghost">
+              Import
+              <input
+                id="importFile"
+                type="file"
+                accept="application/json"
+                style="display: none"
+              />
+            </label>
+          </div>
+        </div>
+
+        <div
+          style="margin-top: 8px; display: flex; gap: 12px; align-items: center"
+        >
+          <div>Last viewed: <strong id="lastViewed">-</strong></div>
+          <button id="clearAll" class="btn btn-danger">Clear All</button>
+        </div>
+      </section>
+
+      <section id="reportsContainer" class="card">
+        <!-- Reports rendered here -->
+      </section>
+
+      <div
+        id="noData"
+        class="card muted"
+        style="display: none; margin-top: 12px"
+      >
+        No data found.
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© GreenHarvest 2025</small>
+      </div>
+    </footer>
+
+    <script type="module">
+      import { PlantReportHandler } from "./plantHandler.js";
+
+      const handler = new PlantReportHandler({
+        viewMode: true,
+        containerSelector: "#reportsContainer",
+        searchSelector: "#searchInput",
+        storageKey: "plantReports",
+      });
+
+      handler.initView();
+
+      // Last viewed date store in sessionStorage
+      const lastViewed = document.getElementById("lastViewed");
+      const last = new Date().toLocaleString();
+      sessionStorage.setItem("gh_last_viewed", last);
+      lastViewed.textContent = last;
+
+      // theme toggle
+      const themeToggle = document.getElementById("themeToggle2");
+      function applyTheme(t) {
+        document.documentElement.setAttribute("data-theme", t);
+        themeToggle.textContent = t === "dark" ? "Light" : "Dark";
+      }
+      const savedTheme = localStorage.getItem("gh_theme") || "light";
+      applyTheme(savedTheme);
+      themeToggle.addEventListener("click", () => {
+        const newTheme =
+          document.documentElement.getAttribute("data-theme") === "dark"
+            ? "light"
+            : "dark";
+        applyTheme(newTheme);
+        localStorage.setItem("gh_theme", newTheme);
+      });
+    </script>
+  </body>
+</html>

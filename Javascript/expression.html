@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let printMsg = function () {
+        console.log("function as expression example");
+      };
+      printMsg();
+
+      //callback function
+
+      function checkEvenOdd(even, odd) {
+        let num = prompt("enter num : ");
+        if (num % 2 == 0) {
+          even(num);
+        } else {
+          odd(num);
+        }
+      }
+      function evenPrint(num) {
+        alert(`${num} is even`);
+      }
+      function oddPrint(num) {
+        alert(`${num} is odd`);
+      }
+      checkEvenOdd(evenPrint, oddPrint);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .hero-div {
+        height: 700px;
+        width: 100%;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+      }
+      #img-2 {
+        display: none;
+      }
+      #img-3 {
+        display: none;
+      }
+      .left {
+        position: absolute;
+        top: 350px;
+        left: 50px;
+      }
+      .right {
+        position: absolute;
+        top: 350px;
+        right: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero-div">
+      <button onclick="sliderLeft()" class="left">Left</button>
+      <button onclick="sliderRight()" class="right">Right</button>
+      <img src="1.jfif" alt="" id="img-1" />
+      <img src="2.jfif" alt="" id="img-2" />
+      <img src="3.jfif" alt="" id="img-3" />
+    </div>
+  </body>
+
+  <script>
+    let counter = 1;
+    function sliderRight() {
+      if (counter >= 3) {
+        document.getElementById("img-3").style.display = "block";
+      } else {
+        document.getElementById("img-" + counter).style.display = "none";
+        counter++;
+        document.getElementById("img-" + counter).style.display = "block";
+      }
+    }
+
+    function sliderLeft() {
+      if (counter <= 1) {
+        document.getElementById("img-1").style.display = "block";
+      } else {
+        document.getElementById("img-" + counter).style.display = "none";
+        counter--;
+        document.getElementById("img-" + counter).style.display = "block";
+      }
+    }
+  </script>
+</html>

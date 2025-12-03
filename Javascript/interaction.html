@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactions Tasks</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        background: linear-gradient(150deg, #0cbaba, #380036);
+        font-family: "Poppins", sans-serif;
+      }
+
+      button {
+        /* padding: 18px 35px; */
+        height: 100px;
+        width: 200px;
+        background: #ffffff;
+        color: #380036;
+        font-size: 20px;
+        font-weight: 600;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      button:hover {
+        background: #0cbaba;
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="alertMessage()">Alert</button>
+    <button onclick="promptMessage()">Prompt</button>
+    <button onclick="confirmMessage()">Confirm</button>
+    <button onclick="addNumbers()">Add Numbers</button>
+
+    <script>
+      function alertMessage() {
+        alert("Hello Tops Student!!");
+      }
+
+      function promptMessage() {
+        let name = prompt("Enter Name", "XYZ");
+        alert(`Welcome ${name}`);
+      }
+
+      function confirmMessage() {
+        let conf = confirm("Are you sure?");
+        alert(conf);
+      }
+
+      function addNumbers() {
+        let n1 = prompt("First Number :");
+        let n2 = prompt("Second Number :");
+
+        let total = Number(n1) + Number(n2);
+        alert(`Total is ${total}`);
+      }
+    </script>
+  </body>
+</html>

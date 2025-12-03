@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenHarvest Admin</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial;
+      }
+
+      body {
+        display: flex;
+        background: #f5f7f2;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 250px;
+        height: 100vh;
+        background: #1b5e20;
+        color: white;
+        padding: 25px 0;
+        position: fixed;
+      }
+
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 28px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+      }
+
+      .sidebar ul li {
+        padding: 15px 25px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .sidebar ul li:hover {
+        background: #2e7d32;
+      }
+
+      /* Main Content */
+      .main {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+        padding: 20px;
+      }
+
+      .header {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px lightgray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header h1 {
+        font-size: 28px;
+        color: #1b5e20;
+      }
+
+      /* Cards */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 25px;
+      }
+
+      .card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px #d3d3d3;
+        text-align: center;
+      }
+
+      .card h3 {
+        color: #1b5e20;
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+
+      .card p {
+        font-size: 26px;
+        font-weight: bold;
+      }
+
+      /* Table Section */
+      .table-section {
+        margin-top: 30px;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #d3d3d3;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      table th,
+      table td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+
+      table th {
+        background: #1b5e20;
+        color: white;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .sidebar {
+          position: absolute;
+          width: 200px;
+        }
+        .main {
+          margin-left: 0;
+          width: 100%;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>🌿 GreenHarvest</h2>
+
+      <ul>
+        <li>Dashboard</li>
+        <li>Orders</li>
+        <li>Products</li>
+        <li>Farmers</li>
+        <li>Customers</li>
+        <li>Reports</li>
+        <li>Settings</li>
+        <li>Logout</li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <div class="header">
+        <h1>Admin Dashboard</h1>
+        <p>Welcome, Admin 👋</p>
+      </div>
+
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card">
+          <h3>Total Orders</h3>
+          <p>120</p>
+        </div>
+        <div class="card">
+          <h3>Products</h3>
+          <p>58</p>
+        </div>
+        <div class="card">
+          <h3>Farmers</h3>
+          <p>32</p>
+        </div>
+        <div class="card">
+          <h3>Revenue</h3>
+          <p>₹2,45,000</p>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-section">
+        <h2 style="color: #1b5e20">Recent Orders</h2>
+
+        <table>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+
+          <tr>
+            <td>#1024</td>
+            <td>Ravi Patel</td>
+            <td>Organic Wheat</td>
+            <td>₹850</td>
+            <td>Completed</td>
+          </tr>
+
+          <tr>
+            <td>#1025</td>
+            <td>Neha Shah</td>
+            <td>Fresh Vegetables</td>
+            <td>₹420</td>
+            <td>Pending</td>
+          </tr>
+
+          <tr>
+            <td>#1026</td>
+            <td>Amit Kumar</td>
+            <td>Fruits Pack</td>
+            <td>₹960</td>
+            <td>Completed</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

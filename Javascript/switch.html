@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        height: 200px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="1.jfif" alt="" id="img1" />
+    <br />
+    <button onclick="buttonclick('blur')">Blur</button>
+    <button onclick="buttonclick('gray')">Gray Scale</button>
+    <button onclick="buttonclick('hue')">Hue Rotate</button>
+    <button onclick="buttonclick('Opacity')">Opacity</button>
+  </body>
+
+  <script>
+    function buttonclick(stylename) {
+      let img1 = document.getElementById("img1");
+      switch (stylename) {
+        case "blur": {
+          img1.style.filter = "blur(5px)";
+          break;
+        }
+
+        case "gray": {
+          img1.style.filter = "grayscale(50%)";
+          break;
+        }
+
+        case "hue": {
+          img1.style.filter = "hue-rotate(90deg)";
+          break;
+        }
+
+        case "Opacity": {
+          img1.style.filter = "opacity(50%)";
+          break;
+        }
+        default:
+          none;
+      }
+    }
+  </script>
+</html>

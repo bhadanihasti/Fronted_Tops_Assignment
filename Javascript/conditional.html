@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset>
+      <h1>Positive number</h1>
+      <label for="">Enter Number</label>
+      <input type="text" name="" id="n1" />
+      <br /><br />
+
+      <button onclick="positiveNegative()">Click</button>
+    </fieldset>
+  </body>
+
+  <script>
+    function positiveNegative() {
+      let n1 = document.getElementById("n1").value;
+
+      let msg =
+        n1 >= 0 ? `${n1} is Positive Number}` : `${n1} is Negaitive Number`;
+      alert(msg);
+    }
+  </script>
+</html>
