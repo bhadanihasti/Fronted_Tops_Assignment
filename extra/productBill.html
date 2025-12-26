@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Bill</title>
+    <link rel="stylesheet" href="productStyle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <label for="">Product Name</label>
+      <input
+        type="text"
+        name=""
+        id="pName"
+        placeholder="enter product name"
+      /><br /><br />
+
+      <label for="">Product Price</label>
+      <input
+        type="text"
+        name=""
+        id="price"
+        placeholder="enter product Price"
+      /><br /><br />
+
+      <label for="">Product Qty</label>
+      <input
+        type="text"
+        name=""
+        id="pQty"
+        placeholder="enter product Qty"
+      /><br /><br />
+
+      <button onclick="" id="Add">Add</button>
+      <button onclick="" id="Remove">Remove Last Product</button>
+      <button onclick="" id="printBill">Print Bill</button>
+      <button onclick="" id="Count">Count Product</button>
+      <button onclick="" id="Hide">Hide Bill</button>
+      <button onclick="" id="Show" style="display: none">Show Bill</button>
+      <button onclick="" id="Clear">Clear Bill</button>
+    </div>
+
+    <div class="product-table" id="Bill">
+      <div class="product-data">
+        <h1>Print Table</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Product Price</th>
+              <th>Product Qty</th>
+              <th>SubTotal</th>
+            </tr>
+          </thead>
+          <tbody id="tbdy"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      let billArray = [];
+      let pName = document.getElementById("pName");
+      let price = document.getElementById("price");
+      let pQty = document.getElementById("pQty");
+      let Add = document.getElementById("Add");
+      let Remove = document.getElementById("Remove");
+      let Clear = document.getElementById("Clear");
+      let Count = document.getElementById("Count");
+      let Hide = document.getElementById("Hide");
+      let Show = document.getElementById("Show");
+      let printBtn = document.getElementById("printBill");
+      printBtn.disabled = true;
+
+      let extrcode = () => {
+        let str = "";
+        let total = 0;
+
+        for (i = 0; i < billArray.length; i++) {
+          total += billArray[i].price * billArray[i].pQty;
+          str += `<tr>
+              <td>${billArray[i].pName}</td>
+              <td>${billArray[i].price}</td>
+              <td>${billArray[i].pQty}</td>
+              <td>${billArray[i].price * billArray[i].pQty}</td>
+            </tr>`;
+        }
+        str += `<tr>
+                  <th>Total Is : ${total}</th>
+              </tr>
+
+             `;
+        document.getElementById("tbdy").innerHTML = str;
+      };
+
+      let cleardata = () => {
+        if (billArray.length == 0) {
+          document.getElementById("tbdy").innerHTML = "";
+          printBtn.disabled = true;
+          return;
+        }
+      };
+      Add.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        let product = {
+          pName: pName.value,
+          pQty: Number(pQty.value),
+          price: Number(price.value),
+        };
+
+        billArray.push(product);
+        console.log(billArray);
+        pName.value = "";
+        price.value = "";
+        pQty.value = "";
+        printBtn.disabled = false;
+      });
+
+      let printBill = document
+        .getElementById("printBill")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.getElementById("Bill").style.display = "flex";
+
+          extrcode();
+        });
+
+      Remove.addEventListener("click", function (e) {
+        e.preventDefault();
+        billArray.pop();
+        console.log(billArray);
+        extrcode();
+      });
+
+      Clear.addEventListener("click", function (e) {
+        e.preventDefault();
+        billArray = [];
+        console.log(billArray);
+        cleardata();
+      });
+
+      Count.addEventListener("click", function (e) {
+        e.preventDefault();
+        alert("Total products: " + billArray.length);
+      });
+
+      Hide.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        document.getElementById("Bill").style.display = "none";
+        document.getElementById("Hide").style.display = "none";
+        document.getElementById("Show").style.display = "block";
+      });
+
+      Show.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        document.getElementById("Bill").style.display = "flex";
+        document.getElementById("Hide").style.display = "block";
+        document.getElementById("Show").style.display = "none";
+      });
+    </script>
+  </body>
+</html>

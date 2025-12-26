@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js_task6</title>
+  </head>
+  <body>
+    <fieldset>
+      <h3>
+        Write a function greetUser that accepts a user’s name as a parameter and
+        displaysa greeting message (e.g., "Hello, John!").
+      </h3>
+      <script>
+        function greetUser(name) {
+          document.write("Hello, " + name + "!");
+        }
+        let userName = prompt("Enter your name:");
+        greetUser(userName);
+      </script>
+    </fieldset>
+
+    <fieldset>
+      <h3>
+        Create a JavaScript function calculateSum that takes two numbers as
+        parameters,adds them, and returns the result.
+      </h3>
+      <script>
+        function calculateSum(num1, num2) {
+          let sum = num1 + num2;
+          document.write(`The sum of ${num1} and ${num2} is : ${sum}`);
+        }
+        let num1 = Number(prompt("Enter Number 1:"));
+        let num2 = Number(prompt("Enter Number 2:"));
+        calculateSum(num1, num2);
+      </script>
+    </fieldset>
+  </body>
+</html>

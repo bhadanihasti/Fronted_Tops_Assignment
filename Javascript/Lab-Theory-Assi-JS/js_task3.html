@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js_task3</title>
+  </head>
+  <body>
+    <fieldset>
+      <label for="">Enter Number 1 : </label>
+      <input type="text" id="n1" /><br /><br />
+      <label for="">Enter Number 2 : </label>
+      <input type="text" id="n2" /><br /><br />
+      <button onclick="operator()">Submit</button>
+
+      <div id="result"></div>
+    </fieldset>
+
+    <script>
+      function operator() {
+        let n1 = document.getElementById("n1").value;
+        let n2 = document.getElementById("n2").value;
+
+        n1 = Number(n1);
+        n2 = Number(n2);
+
+        let str = `<b>====================== arithmetic operators ====================<br>
+
+                                addition =${n1 + n2}<br>
+                                substraction =${n1 - n2}<br>
+                                multiplication =${n1 * n2}<br>
+                                division =${n1 / n2}<br>
+                                module =${n1 % n2}<br>
+
+                   ====================== comparison operators ====================<br>
+                                
+                                Equal To =${n1 == n2}<br>
+                                equal value and equal type =${n1 === n2}<br>
+                                not equal =${n1 != n2}<br>
+                                greater than =${n1 > n2}<br>
+                                less than =${n1 < n2}<br>
+                                greater than or equal to =${n1 >= n2}<br>
+                                less than or equal to =${n1 <= n2}<br>
+
+                   ====================== Logical operators ====================<br>
+                                
+                                logicalCheck =${n1 > 10 && n2 < 5}<br>
+                                </b>
+
+        `;
+
+        document.getElementById("result").innerHTML = str;
+      }
+    </script>
+  </body>
+</html>

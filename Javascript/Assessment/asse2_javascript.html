@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenHarvest — Plant Report</title>
+    <link rel="stylesheet" href="asse2_style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-grid">
+        <div class="brand">
+          <div class="logo">GH</div>
+          <div>
+            <h1>GreenHarvest</h1>
+            <p class="muted small">Smart Plant Care — Admin Portal</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <a href="view.html" class="btn">View Report</a>
+          <button id="themeToggle" class="btn btn-ghost">Dark</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="form-section card">
+        <h2>Submit Plant Care Report</h2>
+        <form action="">
+          <div class="grid two-col">
+            <label>
+              Plant Name *
+              <input name="plantName" type="text" required minlength="3" />
+              <small class="error"></small>
+            </label>
+
+            <label>
+              Location in Home *
+              <select name="location" required>
+                <option value="">Choose...</option>
+                <option>Balcony</option>
+                <option>Bedroom</option>
+                <option>Kitchen</option>
+                <option>Living Room</option>
+                <option>Office</option>
+              </select>
+              <small class="error"></small>
+            </label>
+          </div>
+
+          <div class="grid two-col">
+            <label>
+              Watering Frequency (days) *
+              <input name="frequency" type="number" required min="1" />
+              <small class="error"></small>
+            </label>
+
+            <label>
+              Last Watered Date *
+              <input type="date" name="lastWatered" id="" />
+              <small class="error"></small>
+            </label>
+          </div>
+          <label>
+            Plant Condition Notes * (min 15 chars)
+            <textarea name="notes" rows="4" required minlength="15"></textarea>
+            <small class="error"></small>
+          </label>
+
+          <div class="grid two-col">
+            <label>
+              Owner Phone *
+              <input
+                name="phone"
+                type="tel"
+                pattern="[0-9]{10}"
+                required
+                placeholder="10 digits"
+              />
+              <small class="error"></small>
+            </label>
+
+            <label>
+              Owner Email *
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="name@example.com"
+              />
+              <small class="error"></small>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Submit Report</button>
+            <button type="button" id="resetBtn" class="btn btn-ghost">
+              Clear
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="tips card">
+        <h3>Tips</h3>
+        <ul>
+          <li>Use clear plant name (≥3 characters).</li>
+          <li>Set realistic watering frequency (days &gt; 0).</li>
+          <li>Notes help diagnose — give at least 15 characters.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© GreenHarvest 2025 — Local demo using localStorage</small>
+      </div>
+    </footer>
+
+    <script>
+      let toggleBtn = document.getElementById("themeToggle");
+
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+
+        if (this.innerText === "dark") {
+          this.innerText = "Light";
+        } else {
+          this.innerText = "dark";
+        }
+      });
+    </script>
+  </body>
+</html>

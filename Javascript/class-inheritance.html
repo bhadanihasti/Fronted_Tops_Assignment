@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class child {
+        constructor(salary) {
+          this.salary = salary;
+        }
+      }
+      class parent extends child {
+        constructor(name, age, sal) {
+          super(sal);
+          this.name = name;
+          this.age = age;
+        }
+        show() {
+          console.log(`Name is :${this.name}`);
+          console.log(`Age is :${this.age}`);
+          console.log(`salary is :${this.salary}`);
+        }
+      }
+
+      let msg = new parent("hasti", 20, 10000);
+      msg.show();
+    </script>
+  </body>
+</html>

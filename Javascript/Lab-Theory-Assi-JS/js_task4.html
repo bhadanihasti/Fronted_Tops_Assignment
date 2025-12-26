@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js_task4.html</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>
+        <b>
+          Task 4: Check Positive, Negative, or Zero /
+          <br />
+          Day of the Week (Switch Case)
+        </b>
+      </legend>
+
+      <script>
+        let n1 = Number(prompt("Enter A Number : "));
+        let dayName = "";
+        if (n1 > 0) {
+          document.write(`<b>${n1}</b> Number Is Positive`);
+        } else if (n1 < 0) {
+          document.write(`<b>${n1}</b> Number Is Negative`);
+        } else {
+          document.write(`<b>Number Is Zero</b>`);
+        }
+
+        switch (n1) {
+          case 1:
+            dayName = "Monday";
+            break;
+          case 2:
+            dayName = "Tuesday";
+            break;
+          case 3:
+            dayName = "Wednesday";
+            break;
+          case 4:
+            dayName = "Thursday";
+            break;
+          case 5:
+            dayName = "Friday";
+            break;
+          case 6:
+            dayName = "Saturday";
+            break;
+          case 7:
+            dayName = "Sunday";
+            break;
+          default:
+            dayName = "Invalid Input! Enter 1–7.";
+        }
+
+        document.write("</br></br></br>Day is:<b> " + dayName + "</b>");
+      </script>
+    </fieldset>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js_task4.html</title>
+    <style>
+      .btn {
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 10px;
+      }
+      label {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      input {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <label for="">Enter Number : </label>
+      <input type="text" id="n1" /><br /><br />
+      <button onclick="ifelse()" class="btn">Positive/Negative</button>
+      <button onclick="switchstatment()" class="btn">Day Check</button>
+
+      <div id="result"></div>
+    </fieldset>
+    <script>
+      function ifelse() {
+        let n1 = Number(document.getElementById("n1").value);
+        let str = "";
+
+        if (n1 > 0) {
+          str = `<b>${n1} Number Is Positive</b>`;
+        } else if (n1 < 0) {
+          str = `<b>${n1} Number Is Negative</b>`;
+        } else {
+          str = `<b>Number Is Zero</b>`;
+        }
+
+        document.getElementById("result").innerHTML = str;
+      }
+
+      function switchstatment(str) {
+        let n1 = Number(document.getElementById("n1").value);
+        let day = "";
+        switch (n1) {
+          case 1: {
+            day = "<b>The Day Is Monday";
+            break;
+          }
+          case 2: {
+            day = "<b>The Day Is Tuesday</b>";
+            break;
+          }
+          case 3: {
+            day = "<b>The Day Is Wednesday</b>";
+            break;
+          }
+          case 4: {
+            day = "<b>The Day Is Thursday</b>";
+            break;
+          }
+          case 5: {
+            day = "<b>The Day Is Friday</b>";
+            break;
+          }
+          case 6: {
+            day = "<b>The Day Is Saturday</b>";
+            break;
+          }
+          case 7: {
+            day = "<b>The Day Is Sunday</b>";
+            break;
+          }
+          default:
+            day = "<b>Invalid Number (Enter 1 to 7)</b>";
+        }
+        document.getElementById("result").innerHTML = day;
+      }
+    </script>
+  </body>
+</html> -->

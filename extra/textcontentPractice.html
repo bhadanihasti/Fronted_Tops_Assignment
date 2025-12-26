@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="name" />
+    <button onclick="show()">Show</button>
+    <p id="msg"></p>
+
+    <script>
+      function show() {
+        // name input mathi value lavi
+        let name = document.getElementById("name").value;
+
+        // msg paragraph ma show karo using textContent
+        document.getElementById("msg").textContent = `Hello ${name}!`;
+      }
+    </script>
+  </body>
+</html>

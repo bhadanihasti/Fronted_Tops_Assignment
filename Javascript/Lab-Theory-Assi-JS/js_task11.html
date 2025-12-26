@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>The setTimeout() and clearTimeout() Methods</h2>
+
+    <p>
+      1 : A program that changes the background color of a webpage after 5
+      seconds using setTimeout().
+    </p>
+
+    <button onclick="myStopFunction()">Stop!</button>
+
+    <script>
+      const myTimeout = setTimeout(myGreeting, 5000);
+
+      function myGreeting() {
+        document.body.style.backgroundColor = "lightblue";
+      }
+
+      function myStopFunction() {
+        clearTimeout(myTimeout);
+      }
+    </script>
+
+    <h2>Digital Clock</h2>
+    <p>
+      2 : Create a digital clock that updates every second using
+      <span><h2>setInterval()</h2></span>
+    </p>
+
+    <h1 id="clock"></h1>
+    <script>
+      setInterval(time, 1000);
+      function time() {
+        let d = new Date();
+        document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+      }
+    </script>
+  </body>
+</html>

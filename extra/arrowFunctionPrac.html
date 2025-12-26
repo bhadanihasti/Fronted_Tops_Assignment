@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h5 {
+        background-color: lightblue;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <h5>Example 1: કોઈપણ number print કરો</h5>
+      <script>
+        let printNumber = (n) => {
+          return n;
+        };
+        document.write(printNumber(10));
+      </script>
+
+      <h5>Example 2: Two number નું sum</h5>
+      <script>
+        let sum = (a, b) => a + b;
+        document.write(sum(10, 20));
+      </script>
+
+      <h5>Example 3: Dynamic Two number નું sum કરો</h5>
+
+      Num1 :<input type="text" name="" id="num1" /><br /><br />
+      Num2 :<input type="text" name="" id="num2" />
+      <button onclick="Dynamicsum(); square()" on>Add</button>
+      <div id="result"></div>
+
+      <script>
+        let Dynamicsum = () => {
+          let num1 = +document.getElementById("num1").value;
+          let num2 = +document.getElementById("num2").value;
+          let str = "";
+          str += num1 + num2;
+          document.getElementById("result").innerHTML = `sum is :${str}`;
+        };
+      </script>
+
+      <h3>🎯 Beginners માટે Super Easy Tasks (Practice)</h3>
+      <h5>
+        Task 1: Arrow function લખો જે "Good Morning" "Good Night" return કરે.
+      </h5>
+      <script>
+        let gm = () => {
+          document.write("good Morning");
+        };
+        gm();
+
+        let gn = () => "Good Night";
+        document.write(`<br> ${gn()}`);
+      </script>
+
+      <h5>Task 2: એક number લો અને એનું square return કરો.</h5>
+      <fieldset>
+        <script>
+          let square1 = (n) => n * n;
+          document.write(`Static Square Is : ${square1(5)}`);
+        </script>
+        <h4>Dynamic Square Mate Add number in above textbox</h4>
+        <script>
+          let square = () => {
+            let num1 = +document.getElementById("num1").value;
+            let square = num1 * num1;
+            document.getElementById(
+              "square"
+            ).innerHTML = `Dynamic Square Is : ${square}`;
+          };
+        </script>
+        <div id="square"></div>
+      </fieldset>
+
+      <h5>Task 3: Arrow function જે userનું name લઈને greeting આપે</h5>
+      <input type="text" name="" id="name" placeholder="Enter Your Name" />
+      <button id="btn">Click</button>
+      <div id="greeting"></div>
+      <script>
+        let greeting = () => {
+          let greeting = document.getElementById("name").value;
+          document.getElementById("greeting").innerHTML = `Hello,${greeting}!`;
+        };
+        document.getElementById("btn").addEventListener("click", greeting);
+      </script>
+
+      <h5>Task 4: Above string ની length return કર.</h5>
+      <script>
+        let checkLength = () => {
+          let str = "";
+          let checkLength = document.getElementById("name").value;
+          str += checkLength.length;
+
+          document.getElementById(
+            "length"
+          ).innerHTML = `Above string Length is :${str}`;
+        };
+        document.getElementById("btn").addEventListener("click", checkLength);
+      </script>
+      <div id="length"></div>
+
+      <h5>Task 5: Above String uppercase માં convert કર.</h5>
+      <script>
+        let upperCaseString = () => {
+          let str = "";
+          let uppercase1 = document.getElementById("name").value;
+          str += uppercase1.toUpperCase();
+          document.getElementById(
+            "upper"
+          ).innerHTML = `Above string Converted in UpperCase is :${str}`;
+        };
+        document
+          .getElementById("btn")
+          .addEventListener("click", upperCaseString);
+      </script>
+      <div id="upper"></div>
+
+      <h5>Task 6: Arrow functionથી even/odd ચેક કરો</h5>
+      <input type="text" name="" id="num3" placeholder="enter any number" />
+      <button onclick="evenOdd();" on>Add</button>
+      <div id="evenOdd"></div>
+      <script>
+        let evenOdd = () => {
+          let evenOdd = +document.getElementById("num3").value;
+          // Validation: NaN check
+          if (isNaN(evenOdd) || evenOdd === "") {
+            document.getElementById(
+              "evenOdd"
+            ).innerHTML = `Please Enter Any Number Not A String??`;
+            return;
+          }
+
+          if (evenOdd % 2 === 0) {
+            document.getElementById(
+              "evenOdd"
+            ).innerHTML = `${evenOdd} Number Is Even`;
+          } else {
+            document.getElementById(
+              "evenOdd"
+            ).innerHTML = `${evenOdd} Number Is Odd`;
+          }
+        };
+      </script>
+    </fieldset>
+  </body>
+</html>

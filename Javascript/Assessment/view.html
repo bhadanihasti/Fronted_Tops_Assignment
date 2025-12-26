@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GreenHarvest — View Reports</title>
+    <link rel="stylesheet" href="asse2_style.css" />
+    <style>
+      /* Dark Mode
+      body.dark {
+        background-color: #0e0f10;
+        color: #e5e7eb;
+      }
+      body.dark .b1,
+      body.dark .logo {
+        background-color: #66bb6a;
+      }
+      body.dark .btn-danger {
+        background-color: #ff8a80;
+      }
+      body.dark .card {
+        background-color: #121416;
+        color: #e5e7eb;
+      }
+
+      body.dark .site-header {
+        background-color: #121416;
+      }
+
+      body.dark input {
+        color: #e5e7eb;
+      }
+      body.dark .btn {
+        color: white;
+      } */
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-grid">
+        <div class="brand">
+          <div class="logo">GH</div>
+          <div>
+            <h1>Reports</h1>
+            <p class="muted small">All submitted plant care reports</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <a class="btn b1" href="asse2_javascript.html">New Report</a>
+          <button id="themeToggle2" class="btn btn-ghost">Dark</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="controls card">
+        <div class="grid two-col">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search by plant or location..."
+            style="background: transparent"
+          />
+          <div style="display: flex; gap: 8px; justify-content: flex-end">
+            <button id="exportBtn" class="btn b1">Export JSON</button>
+            <label class="btn btn-ghost">
+              Import
+              <input
+                id="importFile"
+                type="file"
+                accept="application/json"
+                style="display: none"
+              />
+            </label>
+          </div>
+        </div>
+
+        <div
+          style="margin-top: 8px; display: flex; gap: 12px; align-items: center"
+        >
+          <div>Last viewed: <strong id="lastViewed">-</strong></div>
+          <button id="clearAll" class="btn btn-danger">Clear All</button>
+        </div>
+      </section>
+
+      <section id="reportsContainer" class="card">
+        <!-- Reports rendered here -->
+      </section>
+
+      <div
+        id="noData"
+        class="card muted"
+        style="display: none; margin-top: 12px"
+      >
+        No data found.
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© GreenHarvest 2025</small>
+      </div>
+    </footer>
+
+    <script>
+      let toggleBtn = document.getElementById("themeToggle2");
+
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+
+        // Button text change
+        if (document.body.classList.contains("dark")) {
+          toggleBtn.textContent = "Light";
+        } else {
+          toggleBtn.textContent = "Dark";
+        }
+      });
+    </script>
+
+    <!-- <script>
+      const themeToggle = document.getElementById("themeToggle2");
+
+      function applyTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        themeToggle.textContent = theme === "dark" ? "Light" : "Dark";
+      }
+
+      // page load પર saved theme apply
+      const savedTheme = localStorage.getItem("gh_theme") || "light";
+      applyTheme(savedTheme);
+
+      // toggle theme
+      themeToggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const nextTheme = current === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        localStorage.setItem("gh_theme", nextTheme);
+      });
+    </script> -->
+  </body>
+</html>

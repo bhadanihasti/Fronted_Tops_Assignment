@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js_task5</title>
+    <style>
+      .btn {
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 10px;
+      }
+      label {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      input {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <label for="">Enter Number : </label>
+      <input type="text" id="num" /><br /><br />
+      <button onclick="forloop()" class="btn">Print Number (for loop)</button>
+      <button onclick="whileloop()" class="btn">
+        Even Number + Sum (while loop)
+      </button>
+      <button onclick="dowhileloop()" class="btn">
+        Number > 10 check (do–while)
+      </button>
+      <div id="result"></div>
+      <div id="total"></div>
+    </fieldset>
+    <script>
+      function forloop() {
+        let num = Number(document.getElementById("num").value);
+        let str = "";
+
+        for (i = 1; i <= num; i++) {
+          str += i + "<br>";
+        }
+        document.getElementById("result").innerHTML = str;
+      }
+
+      function whileloop() {
+        let num = Number(document.getElementById("num").value);
+        let even = "";
+        let total = 0;
+        let a = 0;
+        while (a <= num) {
+          if (a % 2 === 0) {
+            even += a + "<br>";
+            total += a;
+          }
+          a++;
+        }
+        document.getElementById("result").innerHTML = even;
+        document.getElementById("total").innerHTML = `<b>Sum is = ${total}</b>`;
+      }
+
+      function dowhileloop() {
+        let num = Number(document.getElementById("num").value);
+        do {
+          if (isNaN(num)) {
+            document.getElementById("result").innerHTML =
+              "<b>Please enter a valid number!</b>";
+            return;
+          }
+          if (num <= 10) {
+            document.getElementById("result").innerHTML =
+              "<b>Number must be greater than 10!</b>";
+            return;
+          }
+        } while (num <= 10);
+
+        document.getElementById("result").innerHTML = `
+          <b>You entered a number greater than 10 = ${num}</b>`;
+      }
+    </script>
+  </body>
+</html>

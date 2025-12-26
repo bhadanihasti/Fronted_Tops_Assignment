@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let product = [
+        {
+          pid: 1,
+          pname: "Coocker",
+          price: 21900,
+          category: "home utility",
+        },
+        {
+          pid: 2,
+          pname: "Tv",
+          price: 25500,
+          category: "electronic",
+        },
+      ];
+
+      function getPro(cat) {
+        let productFilter;
+        if (cat == "home") {
+          productFilter = product.filter(
+            (index) => index.category == "home utility"
+          );
+          console.log(productFilter);
+        } else if (cat == "ele") {
+          productFilter = product.filter(
+            (index) => index.category == "electronic"
+          );
+          console.log(productFilter);
+        } else {
+          productFilter = product;
+        }
+        let str = "";
+        productFilter.forEach((index) => {
+          str += `<div class='product'
+          <h3>
+            ${index.pname}
+            </h3>
+            <p><b>${index.price}</b></p>
+            </div>`;
+        });
+        document.getElementById("productdata").innerHTML = str;
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="getPro('home')">Home Utility</button>
+    <button onclick="getPro('ele')">electronic</button>
+    <div id="productdata"></div>
+  </body>
+</html>

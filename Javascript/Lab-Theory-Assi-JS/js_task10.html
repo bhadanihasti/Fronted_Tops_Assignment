@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello, World!</p>
+    <button id="btn">Change The Text</button>
+
+    <script>
+      document.getElementById("btn").addEventListener("click", function () {
+        let p = document.querySelector("p");
+        p.textContent = "Javascript is Fun!";
+        p.style.color = "blue";
+      });
+    </script>
+  </body>
+</html>

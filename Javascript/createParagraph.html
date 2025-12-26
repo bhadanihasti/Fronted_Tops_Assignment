@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button onclick="addBox()">Add Box</button>
+
+    <style>
+      .box {
+        height: 100px;
+        width: 100px;
+        background: lightblue;
+        margin: 10px;
+      }
+    </style>
+
+    <script>
+      function addBox() {
+        let div = document.createElement("div");
+        div.className = "box";
+        document.body.appendChild(div);
+      }
+    </script> -->
+
+    <!-- <button onclick="elementCreate()">Click Me</button>
+
+    <script>
+      let elementCreate = () => {
+        let h2 = document.createElement("h2");
+        h2.textContent = "Welcome";
+        document.body.appendChild(h2);
+      };
+    </script> -->
+    <!-- 
+    <script>
+      // let div = document.createElement("div");
+
+      // div.textContent = "Welcome";
+      // document.body.append(div);
+
+      // document.body.append(div); // moves, not duplicate
+      // console.log(div);
+
+      let span = document.createElement("span");
+      span.textContent = "Hi";
+
+      document.body.append("Start ", span, " End");
+    </script> -->
+
+    <!-- <p id="para">Hello World</p>
+    <button onclick="removePara()">Remove</button>
+
+    <script>
+      function removePara() {
+        document.getElementById("para").remove();
+      }
+    </script> -->
+
+    <h1>Final Task</h1>
+    <!-- <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul> -->
+
+    <ul id="list"></ul>
+    <button onclick="Removeli()">Remove</button>
+    <button onclick="removeLastChild()">RemoveChild</button>
+    <script>
+      let ul = document.getElementById("list");
+      let list = ["coffee", "tea", "milk"];
+
+      list.forEach((item) => {
+        let li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+      function Removeli() {
+        let ul = document.getElementById("list");
+        let lastLi = ul.lastElementChild.remove();
+      }
+      function removeLastChild() {
+        let ul = document.getElementById("list");
+        let lastLi = ul.lastElementChild;
+        ul.removeChild(lastLi);
+      }
+    </script>
+  </body>
+</html>

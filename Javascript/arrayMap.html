@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let salary = [10000, 20000, 30000, 40000];
+      let newSalary = salary.map((index, i) => {
+        return index + index * 0.1;
+      });
+
+      let totalSalary = salary.reduce((sum, current) => sum + current, 0);
+      console.log(totalSalary);
+
+      console.log(newSalary);
+      function compareNumeric(a, b) {
+        if (a > b) return 1;
+        if (a == b) return 0;
+        if (a < b) return -1;
+      }
+      let numArray = [1, 2, 77, 33, 9, 23];
+      console.log("sort array", numArray.sort(compareNumeric));
+
+      let hobby = ["sport", "moive"];
+      let hobbystr = hobby.join("-");
+      console.log(hobbystr);
+
+      let hobbynew = hobbystr.split("-");
+      console.log(hobbynew);
+    </script>
+  </body>
+</html>

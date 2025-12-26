@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .quiz-container {
+        background: #fff;
+        padding: 20px;
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+      .option {
+        background: #eee;
+        padding: 10px;
+        margin: 8px 0;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .option:hover {
+        background: #dcdcdc;
+      }
+      button {
+        margin-top: 10px;
+        width: 100%;
+        padding: 10px;
+        background: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h2 id="question">Question</h2>
+      <div id="options"></div>
+      <button onclick="nextQuestion()">Next</button>
+      <h3 id="score"></h3>
+    </div>
+
+    <script>
+      const quiz = [
+        {
+          question: "JavaScript ni full form shu che?",
+          options: [
+            "Java Source",
+            "JavaScript",
+            "Java Script Language",
+            "None",
+          ],
+          answer: "Java Script Language",
+        },
+        {
+          question: "HTML shu che?",
+          options: [
+            "Programming Language",
+            "Markup Language",
+            "Database",
+            "None",
+          ],
+          answer: "Markup Language",
+        },
+        {
+          question: "JS ma variable declare karva mate shu use thay che?",
+          options: ["int", "var", "string", "float"],
+          answer: "var",
+        },
+      ];
+
+      let index = 0;
+      let score = 0;
+
+      const questionEl = document.getElementById("question");
+      const optionsEl = document.getElementById("options");
+      const scoreEl = document.getElementById("score");
+
+      function loadQuestion() {
+        questionEl.innerText = quiz[index].question;
+        optionsEl.innerHTML = "";
+
+        quiz[index].options.forEach((option) => {
+          let div = document.createElement("div");
+          div.classList.add("option");
+          div.innerText = option;
+          div.onclick = () => checkAnswer(option);
+          optionsEl.appendChild(div);
+        });
+      }
+
+      function checkAnswer(selected) {
+        if (selected === quiz[index].answer) {
+          score++;
+        }
+        nextQuestion();
+      }
+
+      function nextQuestion() {
+        index++;
+        if (index < quiz.length) {
+          loadQuestion();
+        } else {
+          questionEl.innerText = "Quiz Completed 🎉";
+          optionsEl.innerHTML = "";
+          scoreEl.innerText = `Score: ${score} / ${quiz.length}`;
+        }
+      }
+
+      loadQuestion();
+    </script>
+  </body>
+</html>

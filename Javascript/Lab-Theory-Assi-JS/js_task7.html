@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset>
+      <h3>Declare an array of fruits</h3>
+      <script>
+        let fruits = ["apple", "banana", "cherry"];
+        document.writeln("Original Array :-" + fruits + "<br>");
+        fruits.push("kiwi");
+        document.writeln(
+          "Add a fruit to the end of the Array :-" + fruits + "<br>"
+        );
+        fruits.shift();
+        document.writeln(
+          "Remove the first fruit from the Array :-" + fruits + "<br>"
+        );
+
+        console.log(fruits);
+      </script>
+
+      <h3>Dynamic array Declare of fruits</h3>
+      <script>
+        let n = +prompt("Array ma ketla Fruites mukva che?");
+        let arr = [];
+        let fruit;
+
+        for (i = 0; i < n; i++) {
+          arr[i] = prompt(`Enter Fruit ${i + 1}:`);
+        }
+        document.writeln("Original Fruit Array :- " + arr + "<br>");
+        let newFruit = prompt(
+          "Add a fruit to the array (" + arr.join(", ") + "):"
+        );
+
+        arr.push(newFruit);
+        document.writeln("Updated Fruit Array :- " + arr + "<br>");
+
+        arr.shift();
+        document.writeln(
+          "Updated Remove  First Fruit Of The Array :- " + arr + "<br>"
+        );
+      </script>
+    </fieldset>
+
+    <fieldset>
+      <h3>
+        Write a program to find the sum of all elements in an array of numbers.
+      </h3>
+      <script>
+        let sum = [10, 20, 30, 40, 50];
+        let add = 0;
+        document.writeln("Original Array :-" + sum + "<br>");
+        for (i = 0; i < sum.length; i++) {
+          add += sum[i];
+        }
+        document.writeln("Addition Of Array :-" + add + "<br>");
+      </script>
+
+      <h3>Dynamic Array Sum</h3>
+      <script>
+        let num = +prompt("Array ma ketla numbers mukva che?");
+        let arr1 = [];
+        let sum1 = 0;
+        for (j = 0; j < num; j++) {
+          arr1[j] = +prompt(`Enter Array ${j + 1}`);
+          sum1 += arr1[j];
+        }
+        document.writeln("Original Of Array :-" + arr1 + "<br>");
+        document.writeln("Addition Of Array :-" + sum1 + "<br>");
+      </script>
+    </fieldset>
+  </body>
+</html>
