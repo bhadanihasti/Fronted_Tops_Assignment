@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scroll Number Counter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: #f4f6f8;
+      }
+
+      .hero {
+        height: 100vh;
+        background: linear-gradient(135deg, #1e40af, #2563eb);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+      }
+
+      .stats-section {
+        padding: 140px 60px;
+        background: #fff;
+        text-align: center;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .stat {
+        background: #f8fafc;
+        padding: 50px 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat h2 {
+        font-size: 60px;
+        color: #1e40af;
+      }
+
+      .stat p {
+        font-size: 18px;
+        color: #333;
+        margin-top: 10px;
+      }
+
+      /* Reveal animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(80px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 900px) {
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">Scroll Down ⬇</div>
+
+    <section class="stats-section reveal">
+      <h1 style="font-size: 40px">Our Achievements</h1>
+
+      <div class="stats">
+        <div class="stat">
+          <h2 class="counter" data-target="52">0</h2>
+          <p>Cases Solved</p>
+        </div>
+
+        <div class="stat">
+          <h2 class="counter" data-target="164">0</h2>
+          <p>Trained Experts</p>
+        </div>
+
+        <div class="stat">
+          <h2 class="counter" data-target="38">0</h2>
+          <p>Branches</p>
+        </div>
+
+        <div class="stat">
+          <h2 class="counter" data-target="100">0</h2>
+          <p>Satisfied Clients</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const counters = document.querySelectorAll(".counter");
+      const sections = document.querySelectorAll(".reveal");
+
+      function startCount(counter) {
+        counter.innerText = "0";
+        const target = +counter.dataset.target;
+        const speed = 120;
+
+        const updateCount = () => {
+          const current = +counter.innerText;
+          const increment = Math.ceil(target / speed);
+
+          if (current < target) {
+            counter.innerText = current + increment;
+            setTimeout(updateCount, 25);
+          } else {
+            counter.innerText = target;
+          }
+        };
+
+        updateCount();
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+
+              entry.target.querySelectorAll(".counter").forEach((counter) => {
+                startCount(counter);
+              });
+            } else {
+              entry.target.classList.remove("active");
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+    </script>
+  </body>
+</html>

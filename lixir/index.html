@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Footer</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      .footer {
+        background-color: #3f4f6d;
+        color: #fff;
+        padding: 60px 80px 30px;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      /* LEFT BOX */
+      .subscribe-box {
+        background-color: #2f3e5c;
+        padding: 40px;
+        border-radius: 10px;
+        max-width: 450px;
+      }
+
+      .subscribe-box h2 {
+        margin-bottom: 10px;
+      }
+
+      .subscribe-box p {
+        margin-bottom: 20px;
+        color: #d1d6e0;
+      }
+
+      .subscribe-form {
+        display: flex;
+        gap: 10px;
+      }
+
+      .subscribe-form input {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+      }
+
+      .subscribe-form button {
+        background-color: #ffd633;
+        border: none;
+        padding: 12px 25px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+
+      /* LINKS */
+      .footer-links,
+      .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      /* 🔥 underline ONLY on hover */
+      .footer a {
+        color: #fff;
+        text-decoration: none;
+        position: relative;
+        width: fit-content;
+      }
+
+      .footer a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0%;
+        height: 2px;
+        background-color: #fff;
+        transition: 0.3s;
+      }
+
+      .footer a:hover::after {
+        width: 100%;
+      }
+
+      .social-links i {
+        margin-right: 10px;
+      }
+
+      /* BOTTOM */
+      .footer-bottom {
+        margin-top: 50px;
+        padding-top: 20px;
+        background-color: #ffd633;
+        border-top: 1px solid #556481;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- LEFT -->
+        <div class="subscribe-box">
+          <h2>Sign up for email alerts</h2>
+          <p>Stay current with our latest insights</p>
+
+          <div class="subscribe-form">
+            <input type="email" placeholder="Enter Email Here" />
+            <button>Submit</button>
+          </div>
+        </div>
+
+        <!-- MIDDLE -->
+        <div class="footer-links">
+          <a href="#">Contact Us</a>
+          <a href="#">FAQ</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Global Office</a>
+          <a href="#">Local Office</a>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
+          <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
+          <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
+          <a href="#"><i class="fab fa-google-plus-g"></i>Google+</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© Copyright 2025 Elixir Inc.</p>
+        <p>Made with ❤️ by ThemeWagon</p>
+      </div>
+    </footer>
+  </body>
+</html>

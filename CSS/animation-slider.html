@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Slider</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* ================= HERO ================= */
+      .hero {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.05);
+        transition: opacity 1s ease, transform 1.2s ease;
+      }
+
+      .slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* overlay */
+      .slide::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+      }
+
+      /* ================= TEXT ================= */
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        text-align: center;
+        z-index: 2;
+        max-width: 700px;
+      }
+
+      .hero-content h1 {
+        font-size: 60px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+      }
+
+      .hero-content p {
+        margin: 20px 0;
+        font-size: 18px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease 0.2s;
+      }
+
+      .slide.active .hero-content h1,
+      .slide.active .hero-content p {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ================= BUTTONS ================= */
+      .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: #fff;
+        font-size: 40px;
+        width: 55px;
+        height: 55px;
+        cursor: pointer;
+        z-index: 3;
+      }
+
+      .prev {
+        left: 20px;
+      }
+      .next {
+        right: 20px;
+      }
+
+      .nav-btn:hover {
+        background: #facc15;
+        color: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="hero">
+      <!-- Slide 1 -->
+      <div
+        class="slide active"
+        style="background-image: url('https://picsum.photos/id/1015/1600/900')"
+      >
+        <div class="hero-content">
+          <h1>Growth Partners</h1>
+          <p>Connect with top consultants hand-picked by Elixir</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div
+        class="slide"
+        style="background-image: url('https://picsum.photos/id/1005/1600/900')"
+      >
+        <div class="hero-content">
+          <h1>Business Solutions</h1>
+          <p>We help businesses grow with smart strategies</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div
+        class="slide"
+        style="background-image: url('https://picsum.photos/id/1011/1600/900')"
+      >
+        <div class="hero-content">
+          <h1>Trusted Advisors</h1>
+          <p>Professional consulting for modern companies</p>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <button class="nav-btn prev">&#10094;</button>
+      <button class="nav-btn next">&#10095;</button>
+    </section>
+
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      const nextBtn = document.querySelector(".next");
+      const prevBtn = document.querySelector(".prev");
+
+      let index = 0;
+      let autoSlide;
+
+      /* show slide */
+      function showSlide(i) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[i].classList.add("active");
+      }
+
+      /* next */
+      function nextSlide() {
+        index = (index + 1) % slides.length;
+        showSlide(index);
+      }
+
+      /* prev */
+      function prevSlide() {
+        index = (index - 1 + slides.length) % slides.length;
+        showSlide(index);
+      }
+
+      /* auto play */
+      function startAuto() {
+        autoSlide = setInterval(nextSlide, 5000);
+      }
+
+      function resetAuto() {
+        clearInterval(autoSlide);
+        startAuto();
+      }
+
+      nextBtn.addEventListener("click", () => {
+        nextSlide();
+        resetAuto();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        prevSlide();
+        resetAuto();
+      });
+
+      startAuto();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Text Loader Animation</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .loader h1 {
+        font-size: 40px;
+        color: #222;
+        letter-spacing: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader">
+      <h1 id="text"></h1>
+    </div>
+
+    <script>
+      const text = "Loading...";
+      let index = 0;
+
+      function typeText() {
+        if (index < text.length) {
+          document.getElementById("text").innerHTML += text.charAt(index);
+          index++;
+          setTimeout(typeText, 150);
+        } else {
+          setTimeout(() => {
+            document.getElementById("text").innerHTML = "";
+            index = 0;
+            typeText();
+          }, 1000);
+        }
+      }
+
+      typeText();
+    </script>
+  </body>
+</html>

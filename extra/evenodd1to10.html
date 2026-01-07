@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let i;
+      // for (i = 1; i <= 10; i++) {
+      //   if (checkevenOdd(i) === "even") {
+      //     document.write(i + " is even <br>");
+      //   }
+      // }
+      // for (i = 1; i <= 10; i++) {
+      //   if (checkevenOdd(i) === "odd") {
+      //     document.write(i + " is Odd <br>");
+      //   }
+      // }
+
+      // function checkevenOdd(i) {
+      //   if (i % 2 == 0) {
+      //     return "even";
+      //   } else {
+      //     return "odd";
+      //   }
+      // }
+
+      console.log("even odd check");
+
+      let even = [];
+      let odd = [];
+
+      for (let i = 1; i <= 10; i++) {
+        if (i % 2 === 0) {
+          even.push(i);
+        } else {
+          odd.push(i);
+        }
+      }
+      console.log("Even Numbers:");
+      for (let num of even) {
+        console.log(num);
+      }
+
+      // for (let j = 1; j <= 10; j++) {
+      //   console.log(j);
+      // }
+      // let even = j.filter((j) => j % 2 === 0);
+      // console.log(even);
+
+      /////////=========================================================================
+      console.log("use include method");
+
+      let numbers = [10, 20, 30, 40];
+
+      // check karo 20 array ma che ke nahi
+      console.log(numbers.includes(90));
+      //=================================================================================
+      console.log("slice method ");
+
+      let a = [1, 2, 3, 4, 5, 6, 7];
+      console.log(a.slice(1, 5));
+
+      let copy = a.slice();
+
+      console.log(copy); // full copy
+      console.log(a.slice(-2));
+      //=================================================================================
+      console.log("slice & splice method ");
+      let b = [5, 10, 15, 20, 25];
+
+      // Q1: slice use kari [10,15,20] banavo
+      console.log(b.slice(1, 4));
+      // Q2: splice use kari 15 remove karo
+      console.log(b.splice(2, 1));
+      console.log("After remove 15 :", b);
+
+      // Q3: splice use kari 100 between 10 & 20 add karo
+      console.log(b.splice(2, 0, 100));
+      console.log("add print 100 :", b);
+
+      //=======================================  Arrow Function Version (Modern 🔥)
+      let numbers1 = [10, 20, 30, 40, 50];
+      numbers1.forEach((num, index) => {
+        console.log(index + " => " + num);
+      });
+      //=========================================================================
+      let cart = ["Mobile", "Laptop", "Charger"];
+
+      cart.forEach((item, index) => {
+        console.log("Item: " + index + " => " + item);
+      });
+      //=========================================================================
+      let nums = [1, 2, 3];
+      console.log(nums);
+      nums.forEach((nums, index) => {
+        console.log(nums * 10);
+      });
+
+      console.log(nums); // [10,20,30]
+
+      //===========================================================PRACTICE (TRY KAR)
+      let names = ["Hasti", "Amit", "Ravi"];
+
+      // Q1: badha names console ma print karo
+      names.forEach(function (names) {
+        console.log(names);
+      });
+      // Q2: index sathe print karo
+      names.forEach((name, index) => {
+        console.log(index + "=>" + name);
+      });
+      // Q3: badha name ne uppercase ma print karo
+      names.forEach((name, index) => {
+        console.log(name.toUpperCase());
+      });
+      //==============================MAP Example======================================
+      let numbers2 = [1, 2, 3];
+
+      let doubled = numbers2.map(function (num) {
+        return num * 2;
+      });
+
+      console.log(doubled); // [2, 4, 6]
+      console.log(numbers2); // [1, 2, 3]
+
+      //===========================index in map=================================
+      let items = ["pen", "book", "bag"];
+
+      let result = items.map((item, index) => {
+        return index + 1 + ". " + item;
+      });
+
+      console.log(result);
+
+      //============================================================================
+      let numbers4 = [1, 2, 3, 4, 5];
+      numbers4.forEach((n, index) => {
+        console.log(index + 1 + "=>" + n * 2);
+      }); // ❌ no new array
+
+      //============================================practice============================
+      let marks = [45, 67, 89];
+      let students = ["hasti", "amit", "ravi"];
+
+      // Q1: badha marks ma 5 add karo
+      let add = marks.map((mark) => mark + 5);
+      console.log(add);
+
+      // Q2: badha marks ne percentage ma convert karo (out of 100)
+      let per = marks.map((mark) => mark + "%");
+      console.log(per);
+
+      // Q3: students na name uppercase ma convert karo
+      let uppercase = students.map((students) => students.toUpperCase());
+      console.log(uppercase);
+
+      //=====================Task 1======================
+      let nums1 = [1, 2, 3, 4];
+      // badha number ne 10 thi multiply karo
+      let mul = nums1.map((nums1) => nums1 * 10);
+      console.log(mul);
+
+      //===================Task 2===============================================
+      let prices = [100, 250, 400];
+      // badha prices ma 18% GST add karo
+      let gst = prices.map((prices) => prices + prices * 0.18);
+      console.log(gst);
+      //===================Task 3================================================
+      let names2 = ["hasti", "amit", "ravi"];
+
+      // badha name ne first letter capital karo
+      let capital = names2.map(
+        (names2) => names2.charAt(0).toUpperCase() + names2.slice(1)
+      );
+      console.log(capital);
+
+      // Output: ["Hasti", "Amit", "Ravi"]
+
+      let c = ["hasti", "bali"];
+      console.log(c);
+      let c1 = c.map((c) => c.slice(1));
+      //c.slice(1);
+      console.log(c1);
+      //===========================Task 4=======================================
+      let marks1 = [35, 67, 80, 22];
+
+      // badha marks ma "Pass" / "Fail" add karo
+      // (>=35 pass, else fail)
+
+      let result1 = marks1.map((marks1) => {
+        if (marks1 >= 35) {
+          return "pass";
+        } else {
+          return "fail";
+        }
+      });
+      console.log(result1);
+
+      // Output: ["Pass", "Pass", "Pass", "Fail"]
+
+      //========================Task 5===========================================================
+      let cart1 = [
+        { name: "Mobile", price: 10000 },
+        { name: "Laptop", price: 50000 },
+      ];
+
+      let object1 = cart1.map((cart1) => cart1.name + "- ₹" + cart1.price);
+      console.log(object1);
+
+      // output aavo joiye:
+      // ["Mobile - ₹10000", "Laptop - ₹50000"]
+
+      //===============================================Task 6==================================
+      let nums2 = [1, 2, 3, 4, 5];
+
+      let square = nums2.map((nums2) => nums2 + "^2 =" + nums2 * nums2);
+      console.log(square);
+
+      // square + string banavo
+      // Output: ["1^2 = 1", "2^2 = 4", ...]
+
+      //====================================FILTER PRACTICE==================================
+      let num3 = [1, 2, 3].filter((n) => n > 1);
+      console.log(num3);
+      // [2,3]
+
+      //=========================Task 1==================================================
+      let num4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      // sirf EVEN numbers nikalo
+      let Even = num4.filter((num4) => num4 % 2 === 0);
+      console.log(Even);
+
+      //==========================Task2 ==================================================
+      let marks2 = [23, 45, 67, 12, 90];
+      // sirf marks je 35 thi vadhare che
+      let result2 = marks2.filter((marks2) => marks2 >= 35);
+      console.log(result2);
+
+      //===================================Task3=======================================
+      let names1 = ["hasti", "amit", "ravi", "anil", "janki", "anisha"];
+      // sirf names je 'a' thi start thay che
+      let letterA = names1.filter((names1) => names1.startsWith("a"));
+      console.log(letterA);
+
+      //=============================Task4=============================================
+      let prices1 = [100, 450, 999, 1200, 300];
+      // sirf prices je 500 thi ochha che
+      let result3 = prices1.filter((prices1) => prices1 <= 500);
+      console.log(result3);
+
+      //===================================Task5==============================================
+      let users = [
+        { name: "Hasti", age: 22 },
+        { name: "Amit", age: 17 },
+        { name: "Ravi", age: 30 },
+      ];
+      // sirf users je 18+ che
+
+      let adults = users.filter((users) => users.age >= 18);
+      console.log(adults);
+
+      //=========================================Task6=============================
+      let words = ["apple", "car", "banana", "dog"];
+      // sirf words je length 4 thi vadhare che
+      let lengthOfWord = words.filter((words) => words.length >= 4);
+      console.log(lengthOfWord);
+
+      //==================================Reduce Practice===============================
+
+      let num5 = [90, 80, 99, 36, 18, 92, 44];
+      let max = num5.reduce((num5, cur) => {
+        return cur > num5 ? cur : num5;
+      }, num5[0]);
+      console.log(max);
+
+      //==============================Task 1==============================================
+      let num6 = [5, 10, 15, 20];
+      // badha numbers no TOTAL nikalo
+      let total = num6.reduce((acc, cur) => {
+        return acc + cur;
+      });
+      console.log(total);
+
+      //==================================Task 2========================================
+      let num7 = [2, 3, 4];
+      let mul1 = num7.reduce((acc, cur) => {
+        return acc * cur;
+      });
+      console.log(mul1);
+      // badha numbers ne multiply karo
+      // Output: 24
+
+      //==================================Task 3======================================
+      let num8 = [45, 12, 89, 3, 67];
+      // smallest number find karo
+      let smallest = num8.reduce((acc, cur) => {
+        return cur < acc ? cur : acc;
+      }, num8[0]);
+      console.log(smallest);
+
+      //===================================Task 4===========================================
+      let words1 = ["hi", "hello", "bye"];
+      // badha words ma total ketla letters che?
+      let letters = words1.reduce((acc, cur) => acc + cur.length, 1);
+      console.log(letters);
+
+      //====================================Task 5===========================================
+      let cart2 = [
+        { name: "Mobile", price: 10000 },
+        { name: "Laptop", price: 50000 },
+        { name: "Headphone", price: 20000 },
+        { name: "Headphone", price: 2000 },
+      ];
+      // total price nikalo
+      let cartTotal = cart2.reduce((acc, cur) => acc + cur.price, 0);
+      console.log(cartTotal);
+
+      //========================================Task 6========================================
+      let marks3 = [35, 67, 12, 90, 45];
+      // ketla students PASS che (>=35)?
+      let result4 = marks3.reduce((acc, cur) => (cur >= 35 ? acc + 1 : acc), 0);
+      console.log(result4);
+      //=============second rit=================
+      let result5 = marks3.reduce((acc, cur) => {
+        if (cur >= 35) {
+          return acc + 1;
+        } else {
+          return acc;
+        }
+      }, 0);
+      console.log(result5);
+
+      //=================================================Map ,Filter, Reduce MiX Task===========================================================
+
+      //====TASK 1
+      let num9 = [1, 2, 3, 4, 5, 6];
+
+      // sirf EVEN numbers lo
+      console.log("sirf EVEN numbers lo");
+      let EVEN = num9.filter((num9) => num9 % 2 === 0);
+      console.log(EVEN);
+
+      // tene square karo
+      console.log("tene square karo");
+      let square1 = EVEN.map((EVEN) => EVEN * EVEN);
+      console.log(square1);
+
+      // pachi badha squares no total nikalo
+      console.log("pachi badha squares no total nikalo");
+      let Total = square1.reduce((acc, cur) => acc + cur);
+      console.log(Total);
+
+      //====TASK 2
+
+      let marks4 = [35, 67, 12, 90, 45, 28];
+
+      console.log("// 1️⃣ sirf PASS marks lo (>=35)");
+      let passMarks = marks4.filter((marks4) => marks4 >= 35);
+      console.log(passMarks);
+
+      console.log(" // 2️⃣ pass marks ma 5 grace add karo");
+      let square2 = passMarks.map((passMarks) => passMarks + 5);
+      console.log(square2);
+
+      console.log("// 3️⃣ final total nikalo");
+      let Total1 = square2.reduce((acc, cur) => acc + cur);
+      console.log(Total1);
+
+      //=====TASK 3
+      let cart3 = [
+        { name: "Mobile", price: 10000 },
+        { name: "Laptop", price: 50000 },
+        { name: "Mouse", price: 500 },
+      ];
+
+      console.log(" // 1️⃣ sirf items lo je price > 1000 che");
+      let item = cart3.filter((cart3) => cart3.price >= 1000);
+      console.log(item);
+
+      console.log(" // 2️⃣ prices par 18% GST add karo");
+      let gst1 = item.map((item) => item.price + item.price * 0.18);
+      console.log(gst1);
+
+      console.log("// 3️⃣ final bill amount nikalo");
+      let bill = gst1.reduce((acc, item) => {
+        return acc + item;
+      });
+      console.log(bill);
+
+      console.log("======================");
+
+      let cart4 = [
+        { name: "Mobile", price: 10000 },
+        { name: "Laptop", price: 50000 },
+        { name: "Mouse", price: 500 },
+      ];
+
+      let bill1 = cart3
+        // 1️⃣ sirf items lo je price > 1000 che
+        .filter((item) => item.price > 1000)
+
+        // 2️⃣ prices par 18% GST add karo
+        .map((item) => item.price * 1.18)
+
+        // 3️⃣ final bill amount nikalo
+        .reduce((total, price) => total + price, 0);
+
+      console.log(bill1);
+
+      //=====TASK 4
+      let names3 = ["hasti", "amit", "ravi", "anila", "janki"];
+
+      console.log(`// 1️⃣ sirf names lo je 'a' thi start thay che`);
+      let getname = names3.filter((names3) => names3.startsWith("a"));
+      console.log(getname);
+
+      console.log("// 2️⃣ uppercase karo");
+      let uppercase1 = getname.map((getname) => getname.toUpperCase());
+      console.log(uppercase1);
+
+      console.log("// 3️⃣ total letters count karo");
+      let totalLetter = uppercase1.reduce((acc, cur) => acc + cur.length, 0);
+      console.log(totalLetter);
+    </script>
+  </body>
+</html>
