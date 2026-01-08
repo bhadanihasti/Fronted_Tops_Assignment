@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //=============Object
+      let person = {
+        name: "hasti",
+        age: "21",
+        city: "surat",
+      };
+      console.log(person);
+      //Access dot(.)Notation
+      console.log(person.name);
+      //Access Brackets[]Notation
+      console.log(person["age"]);
+      console.log(person["city"]);
+
+      //===============Object ADD ,UPDATE,DELETE Property
+      person.gender = "Female"; //Add
+      person.age = 22; //Update
+      delete person.city; //Delete
+      console.log(person);
+
+      //===================Object + Methods
+      let person1 = {
+        name: "Bali",
+        age: "21",
+        city: "surat",
+
+        info1() {
+          console.log(
+            "hello Bali !!<br> Your Age Is :-" +
+              person1.age +
+              "<br>Your City Is :-" +
+              person1.city
+          );
+        },
+      };
+      person1.info1();
+
+      //===================Nested Object
+      let person2 = {
+        name: "Vishva",
+        age: "21",
+        city: "surat",
+
+        marks: {
+          math: 90,
+          science: 80,
+        },
+      };
+
+      console.log(person2);
+      console.log(person2.name);
+      console.log(person2.marks);
+
+      //====================Object inside Array
+
+      let users = [
+        {
+          name: "hasti",
+          age: 21,
+        },
+        {
+          name: "Bali",
+          age: 22,
+        },
+      ];
+      console.log(users.name);
+      console.log(users[0], users[1].name);
+
+      ////OBJECT COPY
+      let user = {
+        name: "Amit",
+        skills: {
+          js: "good",
+        },
+      };
+
+      console.log(user);
+      console.log("// shallow copy kari ne change karo");
+      let user1 = { ...user };
+
+      user1.name = "hasti";
+      user1.skills.js = "Bad";
+      console.log(user);
+      //nested object hoy to shallow copy kam ny kare user1 change karishu to user ma pn change thashe
+      console.log(user1.skills.js);
+
+      console.log("// deep copy kari ne change karo");
+      let user2 = JSON.parse(JSON.stringify(user));
+      console.log(user2);
+      user2.skills.js = "Pass";
+      console.log(user);
+    </script>
+  </body>
+</html>

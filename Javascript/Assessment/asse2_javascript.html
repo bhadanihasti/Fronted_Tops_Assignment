@@ -6,6 +6,7 @@
     <title>GreenHarvest — Plant Report</title>
     <link rel="stylesheet" href="asse2_style.css" />
   </head>
+
   <body>
     <header class="site-header">
       <div class="container header-grid">
@@ -27,11 +28,17 @@
     <main class="container">
       <section class="form-section card">
         <h2>Submit Plant Care Report</h2>
-        <form action="">
+        <form action="" method="post" id="myForm">
           <div class="grid two-col">
             <label>
               Plant Name *
-              <input name="plantName" type="text" required minlength="3" />
+              <input
+                name="plantName"
+                type="text"
+                required
+                minlength="3"
+                id="plantName"
+              />
               <small class="error"></small>
             </label>
 
@@ -86,6 +93,7 @@
               <input
                 name="email"
                 type="email"
+                id="Email"
                 required
                 placeholder="name@example.com"
               />
@@ -118,18 +126,8 @@
       </div>
     </footer>
 
-    <script>
-      let toggleBtn = document.getElementById("themeToggle");
-
-      toggleBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-
-        if (this.innerText === "dark") {
-          this.innerText = "Light";
-        } else {
-          this.innerText = "dark";
-        }
-      });
-    </script>
+    <script src="toggle.js"></script>
+    <script src="Validation.js"></script>
+    <script src="report.js"></script>
   </body>
 </html>

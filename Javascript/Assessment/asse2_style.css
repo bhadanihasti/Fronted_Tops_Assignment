@@ -37,7 +37,7 @@
       .logo {
         background-color: #1b5e20;
         color: white;
-        font-weight: 700;
+  
         padding: 10px;
         border-radius: 8px;
       }
@@ -76,9 +76,7 @@
       .two-col {
         grid-template-columns: 1fr 1fr;
       }
-      label {
-        font-weight: 600;
-      }
+    
       input,
       select,
       textarea {
