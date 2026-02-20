@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        font-family: Arial, sans-serif;
+      }
+
+      button {
+        padding: 20px 40px;
+        font-size: 28px;
+        font-weight: bold;
+        border: none;
+        border-radius: 12px;
+        background-color: white;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      /* button:hover {
+        transform: scale(1.1);
+        background-color: #f1f1f1;
+      } */
+      .odd {
+        background-color: yellow;
+      }
+      .even {
+        background-color: green;
+      }
+
+      /* button:active {
+        transform: scale(0.95);
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="btn"><button>0</button></div>
+    <script>
+      let count = 0;
+      let countStr = localStorage.getItem("Count");
+      if (countStr !== 0) {
+        count = Number(countStr);
+      } else {
+        count = 0;
+      }
+
+      let btn = document.querySelector("button");
+      btn.innerText = countStr;
+      btn.addEventListener("click", function (e) {
+        count++;
+        btn.innerText = count;
+        btnColor();
+        localStorage.setItem("Count", JSON.stringify(count));
+      });
+
+      function btnColor() {
+        if (count % 2 == 0) {
+          btn.classList.add("even");
+          btn.classList.remove("odd");
+        } else {
+          btn.classList.add("odd");
+          btn.classList.remove("even");
+        }
+      }
+      btnColor();
+    </script>
+  </body>
+</html>

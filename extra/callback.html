@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset>
+      <h1>callback Function</h1>
+      <div class="box"></div>
+    </fieldset>
+    <script>
+      //=======================callback function
+
+      function greet(name) {
+        setTimeout(() => {
+          let h2 = document.createElement("h2");
+          h2.textContent = name;
+          let box = document.querySelector(".box");
+          box.appendChild(h2);
+        }, 1000);
+      }
+      function greetUser(callback) {
+        callback("To Tops Technology");
+      }
+
+      greetUser(greet);
+
+      //=======================callback function
+
+      function getData(callback) {
+        setTimeout(() => {
+          callback("How Are You!!");
+        }, 2000);
+      }
+      getData(function (data) {
+        let h2 = document.createElement("h2");
+        h2.textContent = data;
+        let box = document.querySelector(".box");
+        box.appendChild(h2);
+      });
+      //=======================callback function
+      function greet1(name, callback) {
+        let h2 = document.createElement("h2");
+        h2.textContent = "Hi " + name;
+        let box = document.querySelector(".box");
+        box.appendChild(h2);
+        callback();
+      }
+
+      greet1("Hasti", () => {
+        let h2 = document.createElement("h2");
+        h2.textContent = "Welcome!!";
+        let box = document.querySelector(".box");
+        box.appendChild(h2);
+      });
+
+      //=======================================================================================================
+    </script>
+    <fieldset>
+      <h1>🟢 PROJECT 1: Simple Calculator (Callback Basics)</h1>
+      <div id="box"></div>
+    </fieldset>
+    <script>
+      function calculate(a, b, operation) {
+        return operation(a, b);
+      }
+      function add(x, y) {
+        return x + y;
+      }
+      function sub(x, y) {
+        return x - y;
+      }
+      function mul(x, y) {
+        return x * y;
+      }
+      function div(x, y) {
+        return x / y;
+      }
+      let box = document.getElementById("box");
+
+      let h3Add = document.createElement("h3");
+      h3Add.textContent = "Addition is :- " + calculate(5, 3, add);
+
+      let h3Sub = document.createElement("h3");
+      h3Sub.textContent = "Subtraction is :- " + calculate(5, 3, sub);
+
+      let h3Mul = document.createElement("h3");
+      h3Mul.textContent = "Multiplication is :- " + calculate(5, 3, mul);
+
+      let h3Div = document.createElement("h3");
+      h3Div.textContent = "Division is :- " + calculate(10, 2, div);
+
+      box.appendChild(h3Add);
+      box.appendChild(h3Sub);
+      box.appendChild(h3Mul);
+      box.appendChild(h3Div);
+    </script>
+
+    <fieldset>
+      <h1>
+        🟢 PROJECT 1.2: Simple Calculator (Callback Basics) but user input value
+      </h1>
+
+      <fieldset>
+        <input
+          type="number"
+          name=""
+          id="num1"
+          placeholder="Enter Number 1"
+        /><br /><br />
+        <input
+          type="number"
+          name=""
+          id="num2"
+          placeholder="Enter Number 2"
+        /><br /><br />
+
+        <button onclick="calculateResult('add')">Add</button>
+        <button onclick="calculateResult('sub')">Sub</button>
+        <button onclick="calculateResult('mul')">Mul</button>
+        <button onclick="calculateResult('div')">Div</button>
+      </fieldset>
+      <h3 id="result"></h3>
+    </fieldset>
+    <script>
+      function calculate(a, b, operation) {
+        return operation(a, b);
+      }
+      function add(x, y) {
+        return x + y;
+      }
+      function sub(x, y) {
+        return x - y;
+      }
+      function mul(x, y) {
+        return x * y;
+      }
+      function div(x, y) {
+        return y == 0 ? "Cannot divide by zero" : x / y;
+      }
+      function calculateResult(value) {
+        let n1 = Number(document.getElementById("num1").value);
+        let n2 = Number(document.getElementById("num2").value);
+        let r1 = document.getElementById("result");
+        let result;
+
+        if (value === "add") {
+          result = calculate(n1, n2, add);
+          r1.textContent = "Addition Is : " + result;
+        } else if (value === "sub") {
+          result = calculate(n1, n2, sub);
+          r1.textContent = "Substraction Is : " + result;
+        } else if (value === "mul") {
+          result = calculate(n1, n2, mul);
+          r1.textContent = "Multiplication Is : " + result;
+        } else if (value === "div") {
+          result = calculate(n1, n2, div);
+          r1.textContent = "Division Is : " + result;
+        }
+      }
+    </script>
+
+    <fieldset>
+      <h1>🟢 PROJECT 2: PROJECT 2: Delayed Message App (Async Callback)</h1>
+
+      <h4 id="msg"></h4>
+    </fieldset>
+    <script>
+      function sendMessage(msg) {
+        setTimeout(() => {
+          document.getElementById("msg").innerText =
+            "welcome to Tops Technology" + msg;
+        }, 2000);
+      }
+
+      function showMessage(callback) {
+        callback("  Hello!! Js");
+      }
+      showMessage(sendMessage);
+    </script>
+
+    <fieldset>
+      <h1>🟡 PROJECT 3: Login System (Callback Flow)</h1>
+
+      <fieldset>
+        <input
+          type="text"
+          name=""
+          id="user"
+          placeholder="Enter UserName"
+        /><br /><br />
+        <input
+          type="text"
+          name=""
+          id="pwd"
+          placeholder="Enter Password"
+        /><br /><br />
+
+        <button onclick="Success()">Login</button>
+
+        <h3 id="login"></h3>
+      </fieldset>
+    </fieldset>
+    <script>
+      function login(username, password, callback) {
+        return callback(username, password);
+      }
+
+      function onsuccess() {
+        return "you are login successfully";
+      }
+
+      function Success() {
+        let user = document.getElementById("user").value;
+        let pwd = document.getElementById("pwd").value;
+        let data;
+
+        if (user === "admin" && pwd === "1234") {
+          document.getElementById("login").innerText = login(
+            user,
+            pwd,
+            onsuccess,
+          );
+        } else {
+          document.getElementById("login").innerText =
+            "please enter Right Data";
+        }
+      }
+    </script>
+  </body>
+</html>

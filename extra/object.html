@@ -97,6 +97,382 @@
       console.log(user2);
       user2.skills.js = "Pass";
       console.log(user);
+
+      //==================Task 1
+      let product = {
+        mobile: 10000,
+        laptop: 50000,
+        mouse: 500,
+      };
+
+      console.log("// 1️⃣ badha product name print karo");
+      console.log(Object.keys(product));
+
+      console.log("// 2️⃣ total price nikalo");
+      console.log(Object.values(product).reduce((acc, cur) => acc + cur, 0));
+
+      console.log("// 3️⃣ sirf price > 1000 vala product filter karo");
+      console.log(
+        Object.entries(product).filter(([name, price]) => price > 1000)
+      );
+
+      //================Array of objects
+
+      let students = [
+        { name: "Amit", marks: 80 },
+        { name: "Hasti", marks: 90 },
+        { name: "Ravi", marks: 60 },
+      ];
+      console.log(students);
+      console.log(students[0].name);
+
+      students.forEach((students) => {
+        console.log(students.name, students.marks);
+      });
+
+      //============Object with Array inside
+
+      let classroom = {
+        name: "Fronted Batch",
+        students: ["hasti", "bansi", "bali"],
+      };
+      console.log(classroom);
+      console.log(classroom.students);
+      classroom.students.forEach((std) => console.log(std));
+
+      //================Object inside Object + Array
+      let company = {
+        name: "TechSoft",
+        departments: [
+          {
+            name: "IT",
+            employees: ["Amit", "Ravi"],
+          },
+          {
+            name: "HR",
+            employees: ["Hasti"],
+          },
+        ],
+      };
+
+      // company.forEach((departments) => {
+      //   console.log(departments.employees);
+      // });
+
+      let totalEmp = company.departments.reduce(
+        (total, dept) => total + dept.employees.length,
+        0
+      );
+      console.log(totalEmp);
+
+      //==========Task 2
+      let orders = [
+        {
+          id: 101,
+          items: ["mobile", "mouse", "keybord"],
+          total: 10500,
+        },
+        {
+          id: 102,
+          items: ["laptop"],
+          total: 50000,
+        },
+      ];
+
+      console.log(" // 1️⃣ badha order id print karo");
+      let idPrint = orders.map((orders) => orders.id);
+      console.log(idPrint);
+
+      console.log("// 2️⃣ total revenue nikalo");
+      let revenue = orders.reduce((acc, cur) => acc + cur.total, 0);
+      console.log(revenue);
+
+      console.log("// 3️⃣ sirf orders jema total > 20000");
+      let printOrder = orders.filter((orders) => orders.total > 20000);
+      console.log(printOrder);
+
+      console.log("// 4️⃣ badha items ne ek array ma lao (flat array)");
+      // orders.forEach((orders) => console.log(orders.items));
+      let allItems = orders.flatMap((order) => order.items);
+      console.log(allItems);
+
+      // Output: ["mobile", "mouse", "keybord", "laptop"]
+
+      console.log("// 5️⃣ ketla total items che?");
+      let totalItems = orders.reduce(
+        (total, item) => total + item.items.length,
+        0
+      );
+      console.log(totalItems);
+
+      //===========THIS + CLASS
+
+      class User {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+      }
+
+      let u1 = new User("Hasti", 22);
+      let u2 = new User("Amit", 25);
+
+      console.log(u1.name); // Hasti
+      console.log(u2.name); // Amit
+
+      //==============this inside class method
+
+      class User1 {
+        constructor(name) {
+          this.name = name;
+        }
+        sayHello() {
+          console.log(`Hello ${this.name} !!`);
+        }
+      }
+      let u3 = new User1("hasti");
+      u3.sayHello();
+
+      //==============this inside class method  using setTime out
+
+      class User2 {
+        constructor(name) {
+          this.name = name;
+        }
+        sayHello() {
+          setTimeout(() => {
+            console.log(this.name);
+          }, 4000);
+        }
+      }
+      let u4 = new User2("hasti");
+      u4.sayHello();
+
+      ////============================================Bank Account
+
+      class BankAccount {
+        constructor(name, balance) {
+          this.name = name;
+          this.balance = balance;
+        }
+
+        deposit(amount) {
+          this.balance += amount;
+        }
+
+        withdraw(amount) {
+          this.balance -= amount;
+        }
+
+        showBalance() {
+          setTimeout(() => {
+            console.log(this.name + " balance: " + this.balance);
+          }, 5000);
+        }
+      }
+
+      let acc = new BankAccount("Hasti", 1000);
+      let a = new BankAccount("Amit", 2000);
+      let b = new BankAccount("Ravi", 5000);
+
+      acc.deposit(500);
+      acc.withdraw(200);
+      acc.showBalance(); // Hasti balance: 1300
+
+      a.showBalance(); // Amit
+      b.showBalance(); // Ravi
+
+      //====================Practice Task
+
+      // class Student {
+      //   constructor(name, marks) {
+      //     this.name = name;
+      //     this.marks = marks;
+      //   }
+
+      //   isPass() {
+      //     console.log(
+      //       ` ${this.name} " , Marks :-" ${this.marks}  ", Result :"  ${
+      //         this.marks > 30 ? "pass" : "fail"
+      //       }`
+      //     );
+      //   }
+      // }
+
+      // let result = new Student("Hasti", 45);
+      // let result1 = new Student("Bali", 15);
+      // result.isPass();
+      // result1.isPass();
+
+      //=================📝 Task: School Students with Bonus Marks
+
+      class Students {
+        constructor(name, marks) {
+          this.name = name;
+          this.marks = marks;
+        }
+
+        isPass() {
+          return this.marks >= 35 ? "pass" : "fail";
+        }
+      }
+
+      class SpecialStudent extends Students {
+        constructor(name, marks, bonusMarks) {
+          super(name, marks);
+          this.bonusMarks = bonusMarks;
+        }
+        finalMarks() {
+          return this.marks + this.bonusMarks;
+        }
+
+        // finalResult() {
+        //   return this.finalMarks() >= 35 ? "pass" : "fail";
+        // }
+
+        finalResult() {
+          this.marks = this.finalMarks(); // update marks
+          return super.isPass();
+        }
+      }
+
+      let s1 = new Students("Hasti", 25);
+      console.log(s1.isPass());
+
+      let s2 = new SpecialStudent("sneha", 36, 10);
+      console.log(s2.finalMarks());
+      console.log("hello ! You Are :-" + s2.finalResult());
+      //====================================================================================
+      let users1 = {
+        name: "Hasti",
+      };
+
+      function sayHello(city) {
+        console.log("Hello " + this.name + " from " + city);
+      }
+      sayHello.call(users1, "Surat");
+
+      sayHello("Surat"); // ❌ this = window
+      //=================================================================================
+      class Button {
+        constructor(text) {
+          this.text = text;
+        }
+
+        click() {
+          setTimeout(
+            function () {
+              console.log(this.text);
+            }.bind(this),
+            1000
+          );
+        }
+      }
+
+      new Button("Submit").click(); // Submit
+
+      //============================CALL , APPLY, BIND
+
+      let car = { brand: "BMW" };
+
+      function showCar(model, year) {
+        console.log(this.brand, model, year);
+      }
+      // call()
+      showCar.call(car, 2017, 2022);
+      // apply()
+      showCar.apply(car, [2010, 2020]);
+      // bind()
+      let newFn = showCar.bind(car, 2004, 2021);
+      newFn();
+
+      //==================================Object.freeze() vs seal()
+
+      let settings = {
+        theme: "dark",
+        lang: "en",
+      };
+
+      // 1️⃣ seal karo, theme change karo
+      Object.seal(settings);
+      settings.theme = "light";
+      console.log(settings);
+
+      // 2️⃣ freeze karo, lang change try karo
+
+      Object.freeze(settings);
+      settings.lang = "guj";
+      console.log(settings);
+
+      //====================================DEEP FREEZE
+
+      function deepFreeze(obj) {
+        // object j hoy to j freeze karo
+        if (typeof obj !== "object" || obj === null) {
+          return obj;
+        }
+
+        // pehla badha nested object freeze karo
+        Object.keys(obj).forEach((key) => {
+          deepFreeze(obj[key]);
+        });
+
+        // pachi current object freeze karo
+        return Object.freeze(obj);
+      }
+
+      let user11 = {
+        name: "Hasti",
+        skills: {
+          js: "good",
+          react: "basic",
+        },
+      };
+
+      deepFreeze(user11);
+
+      user11.name = "Amit"; // ❌ change nahi
+      user11.skills.js = "bad"; // ❌ change nahi
+
+      console.log(user11);
+
+      //===========borrow Function
+
+      let car1 = {
+        brand: "BMW",
+      };
+
+      let car2 = {
+        brand: "Audi",
+      };
+
+      function info(model, year) {
+        console.log(this.brand, model, year);
+      }
+
+      // 👉 car1 & car2 banne sathe function borrow karo
+      info.call(car1, 2020, 2021);
+      info.call(car2, 2022, 2023);
+
+      //=========TASK 1
+      let student1 = { name: "Hasti", marks: 45 };
+      let student2 = { name: "Amit", marks: 20 };
+
+      function result() {
+        console.log(this.name, this.marks >= 35 ? "Pass" : "Fail");
+      }
+
+      // call / apply / bind use karo
+      result.call(student1);
+      result.apply(student2);
+      let newResult = result.bind(student1);
+      newResult();
+
+      let student3 = { name: "Ravi", marks: 35 };
+
+      let check = result.bind(student3);
+      // check ne call karjo
+      check();
     </script>
   </body>
 </html>

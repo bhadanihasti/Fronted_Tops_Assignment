@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body.light {
+        background: white;
+        color: black;
+      }
+      body.dark {
+        background: #111;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="light">
+    <fieldset>
+      <legend>TASK SET 1 — Basic Storage</legend>
+      <h1 id="text"></h1>
+      <button onclick="setLS()">Save</button>
+      <button onclick="getLS()">Print</button>
+    </fieldset>
+    <script>
+      ////////////////===================================TASK 1=====================================//////////////
+      let user = {
+        name: "Hasti",
+        age: 20,
+        city: "Surat",
+      };
+
+      //==========user object localStorage ma save kar
+
+      function setLS() {
+        try {
+          localStorage.setItem("user", JSON.stringify(user));
+        } catch (error) {
+          console.error("storage full", error);
+        }
+      }
+      //==========localStorage mathi get karine console.log kar
+      function getLS() {
+        try {
+          let data = localStorage.getItem("user");
+          let finalData = JSON.parse(data);
+          document.getElementById("text").innerHTML = JSON.stringify(
+            finalData,
+            null,
+            2,
+          );
+        } catch (error) {
+          console.error("storage full", error);
+        }
+      }
+      window.addEventListener("DOMContentLoaded", getLS);
+    </script>
+    <!-- ===================================================================================================================================== -->
+    <fieldset>
+      <legend>📝 TASK SET 2 — Error Handling</legend>
+      <h1 id="empty"></h1>
+      <h1 id="empty1"></h1>
+      <h1 id="empty2"></h1>
+    </fieldset>
+    <script>
+      ////////////////===================================TASK 2=====================================//////////////
+      let user1 = {
+        name: "Balii",
+        age: 20,
+        city: "Ahemdabad",
+      };
+      function setData(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch (error) {
+          console.error("storage full", error);
+        }
+      }
+      ///value set karya phela getdata
+      let getData1 = getData("user1", {});
+      document.getElementById("empty").innerHTML = JSON.stringify(
+        getData1,
+        null,
+        2,
+      );
+      setData("user1", user1);
+
+      function getData(key, defaultValue) {
+        try {
+          let value = localStorage.getItem(key);
+
+          if (value === null) {
+            return defaultValue;
+          }
+          return JSON.parse(value);
+        } catch (error) {
+          console.error("storage full", error);
+          return defaultValue;
+        }
+      }
+      //value set karya pachi getdata
+      let getData2 = getData("user1", {});
+      document.getElementById("empty1").innerHTML = JSON.stringify(
+        getData2,
+        null,
+        2,
+      );
+      //value set karya pachi getdata pn key wrong hoi tyare
+      let getData3 = getData("WrongKey", {});
+
+      document.getElementById("empty2").innerHTML = JSON.stringify(
+        getData3,
+        null,
+        2,
+      );
+    </script>
+    <!-- ===================================================================================================================================== -->
+    <fieldset>
+      <legend>TASK SET 3 — Counter Project with Storage</legend>
+      <h1 id="count">0</h1>
+      <button id="plus">+</button>
+      <button id="minus">-</button>
+
+      <h6 id="nullValue"></h6>
+    </fieldset>
+
+    <script>
+      ////////////////===================================TASK 3=====================================//////////////
+      let count = document.getElementById("count");
+      let plus = document.getElementById("plus");
+      let minus = document.getElementById("minus");
+
+      //===================1️⃣ count localStorage ma save kar
+      plus.addEventListener("click", () => {
+        let value = Number(count.innerText);
+        value++;
+        count.innerText = value;
+        localStorage.setItem("count", JSON.stringify(value));
+      });
+
+      minus.addEventListener("click", () => {
+        let value = Number(count.innerText);
+        value--;
+        count.innerText = value;
+        localStorage.setItem("count", JSON.stringify(value));
+      });
+
+      //===============2️⃣ page reload par count restore kar
+
+      function getCount() {
+        try {
+          let data = localStorage.getItem("count");
+          return data === null ? 0 : JSON.parse(data);
+        } catch {
+          return 0;
+        }
+      }
+      let value = getCount();
+      count.innerText = value;
+    </script>
+    <!-- ================================================================================================================================== -->
+    <fieldset>
+      <legend>TASK 5 — Form Save</legend>
+
+      <input id="name" placeholder="Name" />
+      <input id="email" placeholder="Email" />
+      <input id="city" placeholder="City" />
+    </fieldset>
+    <script>
+      //===============================Task 5=============================
+      let input = document.querySelectorAll("input");
+      // let input = document.querySelector("input");
+      let formdata = JSON.parse(localStorage.getItem("formData")) || {};
+      input.forEach((input) => {
+        input.value = formdata[input.id] || "";
+
+        input.addEventListener("input", () => {
+          formdata[input.id] = input.value;
+          localStorage.setItem("formData", JSON.stringify(formdata));
+        });
+      });
+    </script>
+    <!-- ================================================================================================================================== -->
+
+    <fieldset>
+      <legend>TASK 6 — Theme Toggle</legend>
+      <button id="themeBtn">Toggle Theme</button>
+    </fieldset>
+    <script>
+      //===============================Task 6=============================
+      let btn = document.getElementById("themeBtn");
+
+      btn.addEventListener("click", () => {
+        let theme = document.body.classList.contains("light")
+          ? "dark"
+          : "light";
+
+        document.body.classList = theme;
+        localStorage.setItem("Theme", theme);
+      });
+
+      let savedTheme = localStorage.getItem("Theme");
+
+      if (savedTheme) {
+        document.body.classList = savedTheme;
+      }
+    </script>
+  </body>
+</html>

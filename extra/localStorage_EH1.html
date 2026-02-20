@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LocalStorage Error Handling</title>
+  </head>
+  <body>
+    <script>
+      // ========================
+      // SAFE GET FUNCTION
+      // ========================
+      function getLS(key, defaultValue) {
+        try {
+          let value = localStorage.getItem(key);
+
+          // key not found
+          if (value === null) {
+            return defaultValue;
+          }
+
+          // parse JSON
+          return JSON.parse(value);
+        } catch (error) {
+          console.error("localStorage error:", error);
+          return defaultValue;
+        }
+      }
+
+      // ========================
+      // SAFE SET FUNCTION
+      // ========================
+      function setLS(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch (error) {
+          console.error("localStorage set error:", error);
+        }
+      }
+
+      // ========================
+      // TEST CASES
+      // ========================
+
+      // case 1: key does not exist
+      let profile = getLS("profile", {});
+      console.log("Profile:", profile);
+
+      // case 2: save valid object
+      setLS("profile", { name: "Hasti", age: 20 });
+
+      let profile2 = getLS("profile", {});
+      console.log("Profile After Save:", profile2);
+
+      // case 3: invalid JSON
+      localStorage.setItem("broken", JSON.stringify("abc"));
+
+      let brokenData = getLS("broken", {});
+      console.log("Broken Data:", brokenData);
+
+      // let brokenData1 = localStorage.getItem("broken", {});
+      // let bk = JSON.parse(brokenData1);
+      // console.log("Broken Data:", bk);
+    </script>
+  </body>
+</html>

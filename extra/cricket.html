@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Game</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      button {
+        background-color: transparent;
+        border: none;
+      }
+      img {
+        height: 100px;
+        width: 100px;
+      }
+      .resetbtn {
+        border: 1px solid black;
+        padding: 15px 30px;
+        background-color: brown;
+        font-size: 20px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bat Ball Stump Game</h1>
+
+    <button
+      onclick="
+        computerMove = generateComputerChoice();
+        resultMSG = getResult('Bat', computerMove);
+        showResult('Bat', computerMove, resultMSG);
+      "
+    >
+      <img src="Images/bat.png" alt="" />
+    </button>
+    <button
+      onclick="
+        computerMove = generateComputerChoice();
+        resultMSG = getResult('Ball', computerMove);
+        showResult('Ball', computerMove, resultMSG);
+      "
+    >
+      <img src="Images/ball.png" alt="" />
+    </button>
+    <button
+      onclick="
+        computerMove = generateComputerChoice();
+        resultMSG = getResult('Stump', computerMove);
+        showResult('Stump', computerMove, resultMSG);
+      "
+    >
+      <img src="Images/stump.png" alt="" />
+    </button>
+
+    <h3 id="move-user"></h3>
+    <h3 id="move-computer"></h3>
+    <h3 id="result"></h3>
+    <h3 id="score"></h3>
+
+    <button class="resetbtn" onclick="resetScore()">Reset</button>
+  </body>
+
+  <script>
+    function resetScore() {
+      score.win = 0;
+      score.lost = 0;
+      score.tie = 0;
+
+      localStorage.removeItem("score");
+
+      document.getElementById("move-user").innerHTML = "";
+      document.getElementById("move-computer").innerHTML = "";
+      document.getElementById("result").innerHTML = "";
+      document.getElementById("score").innerHTML = score.displayScore();
+    }
+    //========================object
+    let score;
+    let scoreStr = localStorage.getItem("score");
+    initializeScore();
+    function initializeScore() {
+      if (scoreStr !== null) {
+        score = JSON.parse(scoreStr);
+      } else
+        score = {
+          win: 0,
+          lost: 0,
+          tie: 0,
+        };
+      score.displayScore = function () {
+        return `(Win :${score.win},Lost :${score.lost},Tie :${score.tie})`;
+      };
+      showResult();
+    }
+
+    let resultMSG;
+    function generateComputerChoice() {
+      let randomNumber = Math.random() * 3;
+
+      if (randomNumber > 2) {
+        return "Stump";
+      } else if (randomNumber > 1) {
+        return "Ball";
+      } else {
+        return "Bat";
+      }
+    }
+
+    function getResult(userMove, computerMove) {
+      if (userMove == "Bat") {
+        if (computerMove == "Bat") {
+          score.tie++;
+          return `it's a tie`;
+        } else if (computerMove == "Ball") {
+          score.win++;
+          return `User Won`;
+        } else {
+          score.lost++;
+          return `Computer Won`;
+        }
+      } else if (userMove == "Ball") {
+        if (computerMove == "Ball") {
+          score.tie++;
+          return `it's a tie`;
+        } else if (computerMove == "Stump") {
+          score.win++;
+          return `User Won`;
+        } else {
+          score.lost++;
+          return `Computer Won`;
+        }
+      } else {
+        if (computerMove == "Stump") {
+          score.tie++;
+          return `it's a tie`;
+        } else if (computerMove == "Bat") {
+          score.win++;
+          return `User Won`;
+        } else {
+          score.lost++;
+          return `Computer Won`;
+        }
+      }
+    }
+
+    function showResult(userMove, computerMove, resultMSG) {
+      //============LOcal Storage
+      localStorage.setItem("score", JSON.stringify(score));
+
+      document.getElementById("move-user").innerHTML =
+        userMove !== undefined ? `You Have Choosen ${userMove}` : "";
+      document.getElementById("move-computer").innerHTML =
+        computerMove !== undefined
+          ? `Computer Have Choosen ${computerMove}`
+          : "";
+      document.getElementById("result").innerHTML =
+        resultMSG !== undefined ? `Result Is ${resultMSG}` : "";
+      document.getElementById("score").innerHTML = score.displayScore();
+    }
+  </script>
+</html>

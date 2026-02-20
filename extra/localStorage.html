@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LocalStorage Toggle</title>
+
+    <style>
+      .green {
+        color: green;
+        font-size: 30px;
+      }
+
+      .btn-on {
+        background-color: green;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-off {
+        background-color: red;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <p class="text">Box 1</p>
+      <button class="togglebtn" data-id="1">ON</button>
+
+      <p class="text">Box 2</p>
+      <button class="togglebtn" data-id="2">ON</button>
+
+      <p class="text">Box 3</p>
+      <button class="togglebtn" data-id="3">ON</button>
+    </fieldset>
+
+    <script>
+      let buttons = document.querySelectorAll(".togglebtn");
+      let allTexts = document.querySelectorAll(".text");
+
+      // ================== Load saved state
+
+      buttons.forEach((btn) => {
+        let id = btn.dataset.id;
+        let currentText = btn.previousElementSibling;
+        btn.classList.add("btn-on");
+        btn.addEventListener("click", () => {
+          let isActive = currentText.classList.toggle("green");
+          if (isActive) {
+            btn.textContent = "OFF";
+            btn.disabled = true;
+            btn.className = "btn-off";
+            localStorage.setItem("toggle_" + id, "off");
+          } else {
+            // ON state
+            btn.textContent = "ON";
+            btn.disabled = false;
+            btn.className = "btn-on";
+            localStorage.setItem("toggle_" + id, "on");
+          }
+        });
+        let savedState = localStorage.getItem("toggle_" + id);
+
+        if (savedState === "off") {
+          currentText.classList.add("green");
+          btn.textContent = "OFF";
+          btn.disabled = true;
+          btn.className = "btn-off";
+        }
+      });
+    </script>
+  </body>
+</html>

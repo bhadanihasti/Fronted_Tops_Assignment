@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      function fatchData() {
+        return new Promise((reslove) => {
+          setTimeout(() => {
+            console.log("Data Avi gya");
+          }, 2000);
+        });
+      }
+
+      async function getData() {
+        let result = await fatchData();
+        console.log(result);
+      }
+      getData();
+    </script>
+
+    <script>
+      async function getUsers() {
+        try {
+          let response = await fetch("https://fakestoreapi.com/products");
+          let data = await response.json();
+          console.log(data);
+        } catch (error) {
+          console.log("Error:", error);
+        }
+      }
+
+      getUsers();
+    </script> -->
+    <script>
+      //🟢 Task 1 (Callback)
+      // Ek function banao:
+      // 2 second pachi console ma "Welcome Hasti" print kare
+      // Callback use karine
+
+      function hello(name, callback) {
+        setTimeout(() => {
+          console.log("Task 1 (Callback)");
+          console.log("hello", name);
+          callback();
+        }, 2000);
+      }
+      function sayhii() {
+        console.log("welcome");
+      }
+      hello("hasti", sayhii);
+    </script>
+    <script>
+      // 🟢 Task 2 (Promise)
+      // Ek function banao:
+      // Number pass karo
+      // Jo number even hoy → resolve("Even number")
+      // Nahi to reject("Odd number")
+      console.log("Task 2 (Promise)");
+
+      let mypromise = new Promise(function (resolve, reject) {
+        let num = 9;
+        if (num % 2 == 0) {
+          console.log("Even Number");
+        } else {
+          console.log("Odd Number");
+        }
+      });
+      mypromise
+        .then(function result() {
+          console.log(result);
+        })
+        .catch(function result() {
+          console.log(result);
+        });
+    </script>
+    <script>
+      //🟢 Task 3 (Async Await)
+      // Ek function banao:
+      // setTimeout thi 3 second pachi data return kare
+      // async/await thi call karo
+
+      function fetchDta() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log(" Task 3 (Async Await)");
+
+            resolve("Data aavi gayu");
+          }, 2000);
+        });
+      }
+      async function getData() {
+        let result = await fetchDta();
+        console.log(result);
+      }
+      getData();
+    </script>
+    <script>
+      //🟢 Task 4 (Real Practice)
+      // API call karo:
+      // https://jsonplaceholder.typicode.com/posts
+      // Data fetch karo
+      // 5 post console ma print karo
+      // try catch use karo
+
+      async function getUsers() {
+        try {
+          let res = await fetch("https://jsonplaceholder.typicode.com/posts");
+          let data = await res.json();
+          for (let i = 0; i <= 5; i++) {
+            console.log(data[i]);
+          }
+
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      getUsers();
+    </script>
+    <script>
+      /*  Tamare shu karvu che?
+          Ek function banavvu
+          2 second pachi 10 return karvu
+          Await thi value levani
+          Console ma square print karvu */
+
+      function sum() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(10);
+          }, 2000);
+        });
+      }
+
+      async function square() {
+        let result = await sum();
+        console.log(result * result);
+      }
+      square();
+    </script>
+
+    <script>
+      /* Ek promise chain banao:
+        Step 1 → "User login"
+        Step 2 → "Get profile"
+        Step 3 → "Get posts"
+        Chain ma print karo. */
+
+      function login() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve("user Login");
+          }, 1000);
+        });
+      }
+      // function profile() {
+      //   return new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       resolve("Get profile");
+      //     }, 2000);
+      //   });
+      // }
+      // function posts() {
+      //   return new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       resolve("Get posts");
+      //     }, 3000);
+      //   });
+      // }
+
+      login()
+        .then(function (result) {
+          console.log(result);
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve("Get profile");
+            }, 1000);
+          });
+        })
+        .then(function (result) {
+          console.log(result);
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve("Get posts");
+            }, 1000);
+          });
+        })
+        .then(function (result) {
+          console.log(result);
+        });
+    </script>
+    <script>
+      async function demo() {
+        console.log("A");
+        await Promise.resolve();
+        console.log("B");
+      }
+
+      console.log("C");
+      demo();
+      console.log("D");
+    </script>
+  </body>
+</html>

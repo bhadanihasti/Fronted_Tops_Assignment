@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: aqua;
+      }
+      h1 {
+        text-align: center;
+      }
+      table,
+      tr,
+      th,
+      td {
+        margin-top: 10px;
+        font-size: 20px;
+        padding: 0px 30px;
+      }
+
+      input {
+        font-size: 20px;
+        padding: 10px 5px;
+      }
+
+      button {
+        color: white;
+        padding: 10px 30px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+      }
+      .add-btn {
+        background-color: rgba(10, 81, 10, 0.8);
+        width: 117px;
+      }
+      .btn {
+        background-color: rgba(255, 0, 0, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todo App</h1>
+
+    <table cellspacing="10" cellpadding="8">
+      <thead>
+        <tr>
+          <th>
+            <input
+              type="text"
+              name=""
+              id="topic"
+              placeholder="Enter Todo Here"
+              required
+            />
+          </th>
+          <th><input type="date" name="" id="dueDate" /></th>
+          <th><button onclick="addTodo()" class="add-btn">Add</button></th>
+        </tr>
+      </thead>
+      <tbody id="result"></tbody>
+    </table>
+    <script>
+      let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+
+      displayTodo();
+
+      function addTodo() {
+        let topic = document.querySelector("#topic");
+        let date = document.querySelector("#dueDate");
+
+        let todoitem = topic.value;
+        let dueDate = date.value;
+
+        todoList.push({ item: todoitem, dueDate: dueDate });
+
+        console.log(todoList);
+        displayTodo();
+        topic.value = "";
+        date.value = "";
+      }
+
+      function displayTodo() {
+        let result = document.getElementById("result");
+        result.innerText = "";
+
+        for (let i = 0; i < todoList.length; i++) {
+          let item = todoList[i].item;
+          let dueDate = todoList[i].dueDate;
+
+          result.innerHTML += `<tr>
+            <td>${item}</td>
+             <td>${dueDate}</td>
+            <td><Button class='btn'; onclick="todoList.splice(${i},1); displayTodo();">Delete</Button></td>
+            </tr>`;
+          localStorage.setItem("todoList", JSON.stringify(todoList));
+        }
+      }
+    </script>
+    <hr />
+    <hr />
+    <fieldset>
+      <h2>Anonymous Function As Value</h2>
+      <script>
+        let sum = function (n1, n2) {
+          return n1 + n2;
+        };
+        // console.log(sum(4, 5));
+
+        let third = function (n1, n2, n3, second) {
+          let finaltwo = second(n1, n2);
+          return second(finaltwo, n3);
+        };
+        console.log(third(4, 5, 6, sum));
+      </script>
+    </fieldset>
+  </body>
+</html>

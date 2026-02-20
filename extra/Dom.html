@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .red {
+      color: red;
+      font-size: 30px;
+    }
+    .green {
+      color: green;
+      font-size: 30px;
+    }
+    .btn {
+      content: "OFF";
+    }
+    .dark {
+      background-color: black;
+      color: white;
+    }
+
+    .dark button,
+    .dark input {
+      background-color: black;
+      color: white;
+    }
+
+    .btn-on {
+      background-color: green;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-off {
+      background-color: red;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      cursor: not-allowed;
+    }
+  </style>
+  <body class="dark">
+    <h1 id="count">0</h1>
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+    <script>
+      let count = document.getElementById("count");
+      let plus = document.getElementById("plus");
+      let minus = document.getElementById("minus");
+      // let countNum = 0;
+      // plus.addEventListener("click", () => {
+      //   countNum += 1;
+      //   count.innerHTML = countNum;
+      // });
+      // //2 rit
+      // minus.addEventListener("click", () => {
+      //   count.innerText = Number(count.innerText) - 1;
+      // });
+
+      //🧪 Next Small Challenge (Try karo)
+
+      // 1️⃣ count 0 thi niche na javu joiye
+      // 2️⃣ count 10 pachi alert aave
+
+      plus.addEventListener("click", () => {
+        let value = Number(count.innerText);
+
+        if (value >= 10) return;
+        value++;
+        count.innerText = value;
+
+        minus.disabled = false;
+
+        if (value === 10) plus.disabled = true;
+
+        if (value > 5) {
+          plus.style.background = "lightblue";
+        }
+      });
+
+      minus.addEventListener("click", () => {
+        let value = Number(count.innerText);
+
+        if (value <= 0) return;
+        value--;
+        count.innerText = value;
+        plus.disabled = false;
+
+        if (value === 0) minus.disabled = true;
+
+        if (value <= 5) {
+          plus.style.background = "none";
+        }
+      });
+    </script>
+    <br /><br /><br />
+    <fieldset>
+      <legend>Input</legend>
+      <input type="text" name="" id="name" />
+      <h3 id="result"></h3>
+    </fieldset>
+    <script>
+      //====================================================INPUT VALUE
+      let input = document.getElementById("name");
+      input.addEventListener("input", () => {
+        result.innerText = input.value;
+      });
+    </script>
+
+    <br /><br /><br />
+    <fieldset>
+      <legend>Practice Task</legend>
+      <input id="age" type="number" placeholder="Enter age" />
+      <button id="check">Check</button>
+      <p id="msg"></p>
+    </fieldset>
+    <script>
+      //======================================Practice Task
+      let age = document.getElementById("age");
+      let button = document.getElementById("check");
+      let msg = document.getElementById("msg");
+
+      button.addEventListener("click", () => {
+        if (age.value == "") {
+          alert("Please Enter The Age");
+        } else {
+          msg.innerText = age.value >= 18 ? "Eligible" : "Not Eligible";
+        }
+      });
+    </script>
+
+    <br /><br /><br />
+    <button class="btn">Button 1</button>
+    <button class="btn">Button 2</button>
+    <button class="btn">Button 3</button>
+    <p class="item">Apple</p>
+    <p class="item">Banana</p>
+    <p class="item">Mango</p>
+
+    <script>
+      let buttons = document.querySelectorAll(".btn");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          alert(btn.innerText + " clicked");
+        });
+      });
+      buttons.forEach((btn, index) => {
+        if (index === 1) {
+          btn.style.backgroundColor = "lightgreen";
+        }
+      });
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style.border = "2px solid red";
+      }
+
+      let items = document.querySelectorAll(".item");
+      console.log(items);
+      items.forEach((item) => {
+        console.log(item.innerText);
+      });
+      items.forEach((item) => {
+        item.style.color = "blue";
+      });
+    </script>
+
+    <br /><br /><br />
+    <fieldset>
+      <ul>
+        <li class="list">Item 1</li>
+        <li class="list">Item 2</li>
+        <li class="list">Item 3</li>
+      </ul>
+      <button id="color">Change Color</button>
+    </fieldset>
+    <script>
+      let list = document.querySelectorAll(".list");
+      document.getElementById("color").addEventListener("click", () => {
+        list.forEach((list, index) => {
+          list.style.color = "green";
+          if (index === 1) {
+            list.style.fontWeight = "bold";
+          }
+        });
+      });
+    </script>
+
+    <br /><br /><br />
+    <fieldset>
+      <p id="text">Hello Hasti !!</p>
+      <button id="addBtn">Add Class</button>
+      <button id="removeBtn">Remove Class</button>
+      <button id="toggle">Toggle Class</button>
+      <button id="dark">Dark</button>
+    </fieldset>
+    <script>
+      let text = document.getElementById("text");
+      let addBtn = document.getElementById("addBtn");
+      let removeBtn = document.getElementById("removeBtn");
+      let toggle = document.getElementById("toggle");
+      let dark = document.getElementById("dark");
+
+      addBtn.addEventListener("click", () => {
+        text.classList.add("red");
+      });
+      removeBtn.addEventListener("click", () => {
+        text.classList.remove("red");
+      });
+      toggle.addEventListener("click", () => {
+        text.classList.toggle("red");
+      });
+      dark.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+      });
+    </script>
+
+    <br /><br /><br />
+    <fieldset>
+      <p id="msgg">Hello User</p>
+      <button id="btnAdd" class="btn">ON</button>
+    </fieldset>
+    <script>
+      let msgg = document.getElementById("msgg");
+      let btnAdd = document.getElementById("btnAdd");
+
+      // let counter = 0;
+      // btnAdd.addEventListener("click", () => {
+      //   msgg.classList.toggle("green");
+      //   counter++;
+      //   if (counter == 1) {
+      //     document.getElementById("btnAdd").textContent = "OFF";
+      //   } else {
+      //     counter = 0;
+      //     document.getElementById("btnAdd").textContent = "On";
+      //   }
+      // });
+
+      // 🔁 Page reload par state reset
+      msgg.classList.remove("green");
+      btnAdd.textContent = "ON";
+      btnAdd.disabled = false;
+      btnAdd.className = "btn-on";
+
+      btnAdd.addEventListener("click", () => {
+        let isActive = msgg.classList.toggle("green");
+
+        if (isActive) {
+          // OFF state
+          btnAdd.textContent = "OFF";
+          btnAdd.disabled = true;
+          btnAdd.className = "btn-off";
+        }
+      });
+    </script>
+  </body>
+</html>

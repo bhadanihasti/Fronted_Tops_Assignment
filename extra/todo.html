@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      flex-direction: column;
+    }
+    table {
+      border: 1px solid black;
+      padding: 10px 20px;
+    }
+    td,
+    th {
+      border-bottom: 1px solid black;
+      padding: 10px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h2>My To Do List</h2>
+      <input type="text" name="" id="taskAdd" placeholder="enter a task..." />
+
+      <button id="addBtn">Add</button>
+      <button id="updateBtn" onclick="updateBtn()">Update</button>
+    </div>
+    <div class="result">
+      <table>
+        <thead>
+          <tr>
+            <th>Sr no</th>
+            <th>Task Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="taskdata"></tbody>
+      </table>
+    </div>
+
+    <script>
+      let todo = [];
+
+      let savedData = localStorage.getItem("todoList");
+
+      if (savedData) {
+        todo = JSON.parse(savedData);
+      } else {
+        todo = [];
+      }
+
+      let editIndex = null;
+      printTodo();
+
+      document.getElementById("addBtn").addEventListener("click", function () {
+        let taskname = document.getElementById("taskAdd").value;
+
+        if (taskname === "") {
+          alert("Please enter task");
+          return;
+        }
+
+        todo.push(taskname);
+        saveData();
+        document.getElementById("taskAdd").value = "";
+
+        printTodo();
+      });
+
+      function saveData() {
+        localStorage.setItem("todoList", JSON.stringify(todo));
+      }
+      function printTodo() {
+        let str = "";
+        todo.forEach((item, i) => {
+          str += `
+                 <tr>
+                <td>${i + 1}</td>
+                <td>${item}</td>
+                <td> <button onclick="editTask(${i})">Edit</button>
+                    <button onclick="deleteTask(${i})">DELETE</button></td>
+            </tr>
+               `;
+        });
+
+        document.getElementById("taskdata").innerHTML = str;
+      }
+
+      function editTask(id) {
+        document.getElementById("taskAdd").value = todo[id];
+        editIndex = id;
+      }
+
+      function updateBtn() {
+        if (editIndex === null) {
+          alert("Please select task to edit");
+          return;
+        }
+
+        todo[editIndex] = document.getElementById("taskAdd").value;
+        editIndex = null;
+        document.getElementById("taskAdd").value = "";
+        saveData();
+        printTodo();
+      }
+
+      function deleteTask(id) {
+        todo.splice(id, 1);
+        saveData();
+        printTodo();
+      }
+    </script>
+  </body>
+</html>

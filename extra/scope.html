@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //================================TASK 1=====================================//
+      let a = 10;
+      let x = 20;
+      function scope() {
+        console.log("a =" + a);
+      }
+      scope();
+      console.log("a =" + a);
+      //================================TASK 2=====================================//
+      function demo() {
+        var x = 5;
+        console.log(x);
+      }
+      demo();
+      console.log(x);
+      //================================TASK 3=====================================//
+      if (true) {
+        const b = 15;
+        console.log("b =" + b);
+        // var c = 25;
+        // console.log("b =" + b);
+        // console.log("c =" + c);
+      }
+
+      // // console.log("c =" + c);
+      // console.log("b =" + b);
+
+      //================================TASK 4=====================================//
+      if (true) {
+        var d = 10;
+        let b = 20;
+      }
+
+      console.log(d);
+      // console.log(b);
+
+      //================================TASK 5=====================================//
+      let t = 5;
+
+      function test() {
+        let y = 10;
+
+        if (true) {
+          let z = 15;
+          console.log(t);
+          console.log(y);
+          console.log(z);
+        }
+      }
+
+      test();
+
+      // Q: t, y, z — કયો scope belong કરે છે?
+    </script>
+
+    <script>
+      //================================Closure Task 1=====================================//
+      function outer() {
+        let name = "Hasti";
+
+        function inner() {
+          console.log(name);
+        }
+
+        return inner;
+      }
+
+      let fn = outer();
+      fn(); // Hasti
+
+      //================================Closure Task 2=====================================//
+      function count() {
+        let counter = 0;
+        function inner() {
+          counter++;
+          console.log(counter);
+        }
+        return inner;
+      }
+      let countFn = count();
+      countFn(); // 1
+      countFn(); // 2
+      countFn(); // 3
+
+      //================================Closure Task 3=====================================//
+      function makeCounter() {
+        var x = 0;
+        return function () {
+          x += 2;
+          console.log(x);
+        };
+      }
+      fn = makeCounter();
+      fn(); // 2
+      fn(); // 4
+      fn(); // 6
+
+      //==============================closure with setTimeOut===============================
+      // for (var i = 1; i <= 3; i++) {
+      //   setTimeout(function () {
+      //     console.log(i);
+      //   }, 1000);
+      // }
+
+      // for (let i = 1; i <= 3; i++) {
+      //   setTimeout(() => {
+      //     console.log(i);
+      //   }, i * 1000);
+      // }
+
+      // for (var i = 1; i <= 5; i++) {
+      //   setTimeout(() => {
+      //     console.log(i);
+      //   }, 1000);
+      // }
+
+      // function outer1() {
+      //   let msg = "JS";
+
+      //   setTimeout(() => {
+      //     console.log(msg);
+      //   }, 5000);
+      // }
+
+      // outer1();
+
+      //1
+      function outer2() {
+        setTimeout(() => {
+          for (i = 1; i <= 3; i++) {
+            console.log(i);
+          }
+        }, 1000);
+      }
+      outer2();
+      //2
+      function outer3() {
+        let msg = "Hello";
+        return function inner() {
+          setTimeout(() => {
+            console.log(msg + " js");
+          }, 1000);
+        };
+      }
+      let fn1 = outer3();
+      fn1();
+      //3
+
+      function counter() {
+        let count = 0;
+
+        return function () {
+          count++;
+          setTimeout(() => {
+            console.log("count " + count);
+          }, count * 1000);
+        };
+      }
+      let myCounter = counter();
+      myCounter();
+      myCounter();
+      myCounter();
+
+      for (let i = 1; i <= 3; i++) {
+        setTimeout(() => {
+          console.log("count" + i);
+        }, i * 1000);
+      }
+      //4
+      function outer4() {
+        var num = 0;
+        return function () {
+          num += 10;
+          console.log(num);
+        };
+      }
+      let fn2 = outer4();
+      fn2();
+      fn2();
+      fn2();
+    </script>
+  </body>
+</html>

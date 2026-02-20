@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Accordion</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #0f172a;
+        color: white;
+        padding: 50px;
+      }
+
+      .accordion {
+        max-width: 600px;
+        margin: auto;
+        background-color: aqua;
+      }
+
+      .item {
+        border-bottom: 1px solid #334155;
+      }
+
+      .title {
+        padding: 15px;
+        cursor: pointer;
+        font-size: 18px;
+        background: #020617;
+      }
+
+      .content {
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.4s ease;
+        padding: 0 15px;
+        opacity: 0;
+      }
+
+      .item.active .content {
+        max-height: 200px;
+        padding: 15px;
+        opacity: 1;
+        background-color: blanchedalmond;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>FAQ Accordion</h1>
+
+    <div class="accordion">
+      <div class="item">
+        <div class="title">What is JavaScript?</div>
+        <div class="content">JavaScript is a programming language.</div>
+      </div>
+
+      <div class="item">
+        <div class="title">What is classList?</div>
+        <div class="content">Used to manage CSS classes.</div>
+      </div>
+
+      <div class="item">
+        <div class="title">What is contains()?</div>
+        <div class="content">Checks if class exists.</div>
+      </div>
+    </div>
+
+    <script>
+      const titles = document.querySelectorAll(".title");
+
+      titles.forEach((title) => {
+        title.addEventListener("click", () => {
+          const item = title.parentElement;
+
+          // close others
+          document.querySelectorAll(".item").forEach((i) => {
+            if (i !== item) i.classList.remove("active");
+          });
+
+          // toggle current
+          if (item.classList.contains("active")) {
+            item.classList.remove("active");
+          } else {
+            item.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
