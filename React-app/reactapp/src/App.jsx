@@ -18,6 +18,9 @@ import Vote from "./components/Assignment_6/Vote";
 import FruitList from "./components/Assignment_7/FruitList";
 import UserList from "./components/Assignment_7/UserList";
 import UserDataForm from "./components/Assignment_8/UserDataForm";
+import Heart from "./components/Heart";
+import LikeButton from "./components/LikeButton";
+import UseEffectsTask from "./components/UseEffectsTask";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -82,6 +85,19 @@ function App() {
       <hr />
       <h4>Assignment 8</h4>
       <UserDataForm />
+
+      <hr />
+      <h4>===============Extra Work================</h4>
+      <div className="extra" style={{ display: "flex" }}>
+        <Heart title="React Post ❤️" />
+        <Heart title="js Post 💛" />
+
+        <LikeButton title="My React Post 😎" />
+        <LikeButton title="Learning React 🔥" />
+      </div>
+
+      <hr />
+      <UseEffectsTask />
     </>
   );
 }

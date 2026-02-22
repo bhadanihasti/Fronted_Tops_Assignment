@@ -4,7 +4,12 @@ function Form() {
   const [inputValue, setinputValue] = useState("");
 
   const handleChange = (e) => {
-    setinputValue(e.target.value);
+    const { name, value } = e.target;
+
+    setinputValue({
+      ...inputValue,
+      [name]: value,
+    });
   };
 
   return (
@@ -14,12 +19,22 @@ function Form() {
           type="text"
           name="text"
           placeholder="Type AnyThing"
-          value={inputValue}
+          value={inputValue.text}
+          onChange={handleChange}
+        />
+        <br />
+        <input
+          type="text"
+          name="age"
+          placeholder="Type AnyThing"
+          value={inputValue.age}
           onChange={handleChange}
         />
         <br />
 
-        <h3>You Typed :{inputValue}</h3>
+        <h3>You Typed :{inputValue.text}</h3>
+
+        <h3>You Typed :{inputValue.age}</h3>
       </form>
     </div>
   );
