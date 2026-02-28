@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Simple Calculator</legend>
+      <label for="">Enter Number 1 :</label>
+      <input type="text" name="" id="n1" /><br /><br />
+
+      <label for="">Enter Number 2 :</label>
+      <input type="text" name="" id="n2" /><br /><br />
+
+      <input type="button" value="Submit" onclick="Calculator()" />
+
+      <div id="result"></div>
+    </fieldset>
+
+    <script>
+      function Calculator() {
+        let n1 = document.getElementById("n1").value;
+        let n2 = document.getElementById("n2").value;
+
+        // let str = Number(n1) + Number(n2);
+
+        n1 = Number(n1);
+        n2 = Number(n2);
+
+        let str = `addition =${n1 + n2}<br>
+        substraction =${n1 - n2}<br>
+        multiplication =${n1 * n2}<br>
+        division =${n1 / n2}<br>
+        module =${n1 % n2}<br> 
+        `;
+
+        // console.log(str);
+
+        document.getElementById("result").innerHTML = str;
+      }
+    </script>
+  </body>
+</html>

@@ -21,14 +21,15 @@ function Adminproduct() {
           productArray.push({ ...doc.data(), id: doc.id });
         });
         console.log(productArray);
-
         setProducts(productArray);
       });
     } catch (error) {
       console.log(error);
     }
   };
-
+  useEffect(() => {
+    getData();
+  }, []);
   const deleteProduct = async (pid) => {
     try {
       let docRef = doc(db, "Products", pid);
@@ -42,10 +43,6 @@ function Adminproduct() {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    getData();
-  }, []);
   return (
     <div className="container bg-gray-200 mx-auto p-12">
       <h2 className="text-3xl mb-10">Product Details</h2>
