@@ -21,6 +21,7 @@ import UserDataForm from "./components/Assignment_8/UserDataForm";
 import Heart from "./components/Heart";
 import LikeButton from "./components/LikeButton";
 import UseEffectsTask from "./components/UseEffectsTask";
+import UiModel from "./components/UiModel";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -98,6 +99,8 @@ function App() {
 
       <hr />
       <UseEffectsTask />
+      <hr />
+      <UiModel />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Vote() {
-  const [Vote, setVote] = useState("18");
+  const [Vote, setVote] = useState();
   const handleChange = (e) => {
     setVote(e.target.value);
   };

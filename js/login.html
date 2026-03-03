@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login</title>
+  <style>
+    :root{--bg:#f3f6fb;--card:#ffffff;--accent:#3b82f6;--muted:#6b7280}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#eef2ff 0%,var(--bg) 60%);display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{width:100%;max-width:420px;background:var(--card);border-radius:12px;box-shadow:0 8px 24px rgba(15,23,42,0.08);padding:28px}
+    h1{margin:0 0 8px;font-size:20px}
+    p.lead{margin:0 0 18px;color:var(--muted);font-size:14px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:#374151}
+    .field{margin-bottom:14px}
+    input[type="email"],input[type="password"]{width:100%;Padding:10px 12px;border:1px solid #e6e9ef;border-radius:8px;font-size:14px}
+    .row{display:flex;align-items:center;justify-content:space-between}
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+    .btn.secondary{background:#eef2ff;color:var(--accent);border:1px solid rgba(59,130,246,0.12)}
+    .muted{color:var(--muted);font-size:13px}
+    .error{color:#b91c1c;font-size:13px;margin-top:6px}
+    .small{font-size:13px}
+    .toggle-pass{background:transparent;border:0;color:var(--muted);cursor:pointer}
+    .success{background:#ecfdf5;color:#065f46;padding:10px;border-radius:8px;margin-bottom:12px}
+    @media (max-width:420px){.card{padding:20px}}
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <h1>Welcome back</h1>
+    <p class="lead">Sign in to continue to your account</p>
+
+    <div id="message" aria-live="polite" style="display:none"></div>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        <div id="emailError" class="error" aria-hidden="true"></div>
+      </div>
+
+      <div class="field">
+        <div class="row">
+          <label for="password">Password</label>
+          <button type="button" id="showBtn" class="toggle-pass small">Show</button>
+        </div>
+        <input id="password" name="password" type="password" placeholder="Enter password" required />
+        <div id="passError" class="error" aria-hidden="true"></div>
+      </div>
+
+      <div class="row" style="margin-bottom:16px">
+        <label class="small"><input type="checkbox" id="remember" /> Remember me</label>
+        <a href="#" class="small muted">Forgot?</a>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn">Sign in</button>
+        <button type="button" id="demo" class="btn secondary">Demo</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passError = document.getElementById('passError');
+    const message = document.getElementById('message');
+    const showBtn = document.getElementById('showBtn');
+    const demoBtn = document.getElementById('demo');
+
+    function validateEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
+
+    function clearErrors(){emailError.textContent='';emailError.setAttribute('aria-hidden','true');passError.textContent='';passError.setAttribute('aria-hidden','true');}
+
+    form.addEventListener('submit', e=>{
+      e.preventDefault();
+      clearErrors();
+      let ok=true;
+      if(!validateEmail(email.value.trim())){emailError.textContent='Please enter a valid email.';emailError.setAttribute('aria-hidden','false');ok=false}
+      if(password.value.length < 6){passError.textContent='Password must be at least 6 characters.';passError.setAttribute('aria-hidden','false');ok=false}
+      if(!ok) return;
+
+      // Simulate authentication (replace with real request)
+      message.style.display='block';
+      message.className='success';
+      message.textContent='Signed in successfully — redirecting...';
+      setTimeout(()=>{
+        message.style.display='none';
+        form.reset();
+      },1200);
+    });
+
+    showBtn.addEventListener('click', ()=>{
+      if(password.type === 'password'){password.type='text';showBtn.textContent='Hide'}
+      else{password.type='password';showBtn.textContent='Show'}
+    });
+
+    demoBtn.addEventListener('click', ()=>{
+      email.value='demo@example.com';
+      password.value='password123';
+    });
+
+    // Live validation (friendly)
+    email.addEventListener('input', ()=>{
+      if(email.value && !validateEmail(email.value)) {emailError.textContent='Invalid email format';emailError.setAttribute('aria-hidden','false')}
+      else {emailError.textContent='';emailError.setAttribute('aria-hidden','true')}
+    });
+
+    password.addEventListener('input', ()=>{
+      if(password.value && password.value.length < 6){passError.textContent='Too short';passError.setAttribute('aria-hidden','false')}
+      else {passError.textContent='';passError.setAttribute('aria-hidden','true')}
+    });
+  </script>
+</body>
+</html>

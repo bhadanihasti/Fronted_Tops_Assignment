@@ -6,6 +6,7 @@ import ApiFatch from "./components/ApiFatch";
 import LodingState from "./components/LodingState";
 import ErrorHandling from "./components/ErrorHandling";
 import ThemeChanger from "./components/ThemeChanger";
+import FormValidation from "./components/FormValidation";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,8 +15,9 @@ function App() {
     <>
       {/* {/* <ApiFatch />
       <LodingState /> */}
-      <ErrorHandling />
-      <ThemeChanger />
+      {/* <ErrorHandling />
+      <ThemeChanger /> */}
+      <FormValidation />
     </>
   );
 }

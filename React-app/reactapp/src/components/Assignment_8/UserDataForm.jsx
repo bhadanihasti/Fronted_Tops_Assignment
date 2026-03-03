@@ -86,7 +86,7 @@ function UserDataForm() {
             value={userData.email}
             onChange={handleChange}
           />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+          <p style={{ color: "red" }}>{errors.email}</p>
         </div>
         <br />
         <div>
@@ -102,7 +102,7 @@ function UserDataForm() {
             value={userData.password}
             onChange={handleChange}
           />
-          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
+          <p style={{ color: "red" }}>{errors.password}</p>
         </div>
         <br />
         <div>

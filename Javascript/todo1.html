@@ -3,44 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo with Description</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f2f2f2;
+        text-align: center;
+      }
+
+      table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        width: 70%;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #000;
+        padding: 8px;
+      }
+    </style>
   </head>
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f2f2f2;
-      justify-content: center;
-      align-items: center;
-      height: 50vh;
-    }
-  </style>
+
   <body>
     <div class="container">
       <h2>My To Do List</h2>
-      <input type="text" name="" id="taskAdd" placeholder="enter a task..." />
-      <input type="hidden" name="" id="hiddenid" />
+
+      <input type="text" id="taskAdd" placeholder="Enter task..." />
+      <input type="text" id="taskDesc" placeholder="Enter description..." />
+      <input type="hidden" id="hiddenid" />
+
       <button id="addBtn">Add</button>
-      <button id="updateBtn" onclick="updateBtn()">Update</button>
+      <button onclick="updateBtn()">Update</button>
     </div>
+
     <div class="result">
       <table>
         <thead>
           <tr>
             <th>Sr no</th>
             <th>Task Name</th>
+            <th>Description</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody id="taskdata"></tbody>
       </table>
     </div>
+
     <script>
-      let todo = [];
+      // 🔹 Load data from localStorage or empty array
+      let todo = JSON.parse(localStorage.getItem("todoData")) || [];
+
+      function saveToLocal() {
+        localStorage.setItem("todoData", JSON.stringify(todo));
+      }
+
       document.getElementById("addBtn").addEventListener("click", function () {
         let taskname = document.getElementById("taskAdd").value;
-        todo.push(taskname);
+        let description = document.getElementById("taskDesc").value;
+
+        if (!taskname || !description) {
+          alert("Please fill all fields");
+          return;
+        }
+
+        todo.push({
+          name: taskname,
+          desc: description,
+        });
+
+        saveToLocal(); // 🔥 Save after add
+
         document.getElementById("taskAdd").value = "";
-        console.log(todo);
+        document.getElementById("taskDesc").value = "";
+
         printTodo();
       });
 
@@ -49,34 +88,50 @@
 
         todo.forEach((item, i) => {
           str += `
-                 <tr>
-                <td>${i + 1}</td>
-                <td>${item}</td>
-                <td> <button onclick="editTask(${i})">Edit</button></td>
-                <td> <button onclick="deleteTask(${i})">Delete</button></td>
-            </tr>
-               `;
+        <tr>
+          <td>${i + 1}</td>
+          <td>${item.name}</td>
+          <td>${item.desc}</td>
+          <td>
+            <button onclick="editTask(${i})">Edit</button>
+            <button onclick="deleteTask(${i})">Delete</button>
+          </td>
+        </tr>
+      `;
         });
+
         document.getElementById("taskdata").innerHTML = str;
       }
 
       window.onload = printTodo;
 
       function editTask(id) {
-        alert(id);
-        document.getElementById("taskAdd").value = todo[id];
+        document.getElementById("taskAdd").value = todo[id].name;
+        document.getElementById("taskDesc").value = todo[id].desc;
         document.getElementById("hiddenid").value = id;
       }
 
       function updateBtn() {
         let id = document.getElementById("hiddenid").value;
-        let val = document.getElementById("taskAdd").value;
-        todo[id] = val;
+        let taskname = document.getElementById("taskAdd").value;
+        let description = document.getElementById("taskDesc").value;
+
+        todo[id] = {
+          name: taskname,
+          desc: description,
+        };
+
+        saveToLocal(); // 🔥 Save after update
+
+        document.getElementById("taskAdd").value = "";
+        document.getElementById("taskDesc").value = "";
+
         printTodo();
       }
 
       function deleteTask(id) {
         todo.splice(id, 1);
+        saveToLocal(); // 🔥 Save after delete
         printTodo();
       }
     </script>
