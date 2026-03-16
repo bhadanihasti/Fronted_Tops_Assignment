@@ -2,102 +2,102 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      body {
-        text-align: center;
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-      fieldset {
-        border: 1px solid #ccc;
-        padding: 20px;
-        max-width: 400px;
-      }
-      label {
-        display: inline-block;
-        width: 100px;
-      }
-      input[type="text"],
-      input[type="email"] {
-        width: 200px;
-        padding: 5px;
-      }
-      input[type="submit"] {
-        margin-top: 10px;
-        padding: 5px 15px;
-      }
-      .error {
-        color: red;
-      }
-    </style>
+    <title>Student Records</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <fieldset>
-      <legend>Form Validation Example</legend>
-      <form id="myForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
-        <span class="error" id="userError"></span>
 
-        <br /><br />
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-        <span class="error" id="emailError"></span>
+  <body class="bg-light">
 
-        <br /><br />
-        <button id="btnSubmit" type="submit">Submit</button>
-      </form>
-    </fieldset>
+    <h2 class="text-center mt-4">Student Records</h2>
 
-    <script>
-      // let btnSubmit = document.getElementById("btnSubmit");
-      // btnSubmit.document.addEventListener("submit", function (e) {
-      document
-        .getElementById("myForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+    <div class="container mt-4">
 
-          let userInput = document.getElementById("username");
-          let emailInput = document.getElementById("email");
+      <table class="table table-striped table-hover text-center">
 
-          let username = userInput.value;
-          let email = emailInput.value;
+        <thead class="table-primary">
+          <tr>
+            <th>SRNO</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Course</th>
+            <th>Skills</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-          let isValid = true;
+        <tbody id="taskList"></tbody>
 
-          if (username.length < 5) {
-            document.getElementById("userError").innerText =
-              "please enter valid user name";
-            userInput.focus();
-            isValid = false;
-          } else {
-            document.getElementById("userError").innerText = "";
-          }
-          //====================================EMail
-          const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          function validateEmail(email) {
-            console.log(emailRegex.test(email));
+      </table>
 
-            return emailRegex.test(email);
-          }
+    </div>
 
-          if (!validateEmail(email)) {
-            document.getElementById("emailError").innerText =
-              "please enter valid Email";
-            emailInput.focus();
-            isValid = false;
-          } else {
-            document.getElementById("emailError").innerText = "";
-          }
 
-          if (isValid) {
-            alert("Form Submitted Successfully ✅");
-            userInput.value = "";
-            emailInput.value = "";
-          }
-        });
-    </script>
+<script>
+
+let allFormData = JSON.parse(localStorage.getItem("formDataArray")) || [];
+
+function fetchAndDisplayData(){
+
+let str="";
+
+allFormData.forEach((data,index)=>{
+
+str+=`
+<tr>
+
+<td>${index+1}</td>
+<td>${data.fullName}</td>
+<td>${data.email}</td>
+<td>${data.age}</td>
+<td>${data.gender}</td>
+<td>${data.course}</td>
+<td>${data.skill}</td>
+
+<td>
+
+<button onclick="editTask(${index})" class="btn btn-warning btn-sm">Edit</button>
+
+<button onclick="deleteTask(${index})" class="btn btn-danger btn-sm">Delete</button>
+
+</td>
+
+</tr>
+`;
+
+});
+
+document.getElementById("taskList").innerHTML=str;
+
+}
+
+document.addEventListener("DOMContentLoaded",fetchAndDisplayData);
+
+
+function deleteTask(id){
+
+allFormData.splice(id,1);
+
+localStorage.setItem("formDataArray",JSON.stringify(allFormData));
+
+fetchAndDisplayData();
+
+}
+
+function editTask(id){
+
+localStorage.setItem("editIndex",id);
+
+window.location.href="RegForm.html";
+
+}
+
+</script>
+
   </body>
 </html>
