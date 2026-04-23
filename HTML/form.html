@@ -1,41 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form</title>
-  </head>
-  <body align="center">
-    <h1>Form Details</h1>
-    <form action="" method="get">
-      <label for="">Name :</label>
-      <input type="text" /><br /><br />
-      <label for="">Email :</label>
-      <input type="email" name="" id="" /><br /><br />
-      Gender :
-      <input type="radio" name="Male" id="" />Male
-      <input type="radio" name="Female" id="" />Female <br /><br />
-      Hobby :
-      <input type="checkbox" name="writing" id="" />writing
-      <input type="checkbox" name="Reading" id="" />Reading <br /><br />
-      Address :
-      <textarea name="" id=""></textarea><br /><br />
-      city :
-      <select name="" id="">
-        <option value="">Surat</option>
-        <option value="">Rajkot</option>
-        <br /><br />
-        color :
-        <input type="color" name="" id="" /><br /><br />
-        Date :
-        <input type="date" name="" id="" /><br /><br />
-        DateTime :
-        <input type="datetime-local" name="" id="" /><br /><br />
-        File :
-        <input type="file" name="" id="" /><br /><br />
+    <title>Image Slider</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #111;
+      }
 
-        <input type="submit" value="Submit" />
-      </select>
-    </form>
+      .slider {
+        width: 400px;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .slider img {
+        width: 100%;
+        height: 100%;
+        display: none;
+        object-fit: cover;
+      }
+
+      .slider img.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <img src="images/domino.jpg" class="active" />
+      <img src="images/cocktails.jpg" />
+      <img src="images/balaji.jpg" />
+    </div>
+
+    <script>
+      let images = document.querySelectorAll(".slider img");
+      let index = 0;
+
+      setInterval(() => {
+        images[index].classList.remove("active");
+
+        index = (index + 1) % images.length;
+
+        images[index].classList.add("active");
+      }, 3000); // 3 seconds
+    </script>
   </body>
 </html>

@@ -1,0 +1,377 @@
+.hero-section {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+.deco {
+  position: absolute;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.deco.curly {
+  top: 100px;
+  left: 15%;
+}
+
+.deco.crown {
+  top: 120px;
+  right: 15%;
+}
+
+.hero-content {
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+  margin-top: 40px;
+}
+
+.hero-title {
+  font-size: 64px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+  letter-spacing: -1.5px;
+}
+
+.hl-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hl-text {
+  color: var(--accent-green);
+  position: relative;
+  z-index: 1;
+}
+
+.hl-ellipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 140%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 auto 40px auto;
+  max-width: 700px;
+}
+
+.get-started-btn {
+  background-color: #ffffff;
+  color: var(--dark-green);
+  border: none;
+  border-radius: 40px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 60px;
+}
+
+.get-started-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.scroll-indicator {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mouse-icon {
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Widgets */
+.floating-left {
+  position: absolute;
+  left: 50px;
+  bottom: 80px;
+  z-index: 2;
+}
+
+.stats-box {
+  background: var(--floating-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 24px;
+  width: 220px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  text-align: left;
+}
+
+.stat-item {
+  padding: 12px 0;
+}
+
+.stat-item.border-bottom {
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 20px;
+  margin-bottom: 12px;
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stat-item h2 {
+  font-size: 32px;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.stat-item .text-green {
+  color: var(--accent-green);
+}
+
+.stat-item p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.arrow-btn {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.arrow-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.floating-right {
+  position: absolute;
+  right: 0;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 2;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  animation: slideInRight 1s ease-out;
+}
+
+.feature-item span {
+  font-size: 14px;
+  color: var(--text-main);
+  text-align: right;
+  line-height: 1.4;
+}
+
+.icon-wrapper {
+  background: var(--floating-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.line-connector {
+  position: absolute;
+  right: -5px; /* extends slightly off screen */
+  top: 50%;
+  width: 100px;
+  height: 1px;
+  background: var(--glass-border);
+  z-index: 1;
+}
+
+/* Creating the stepped line effect */
+.line-connector::before {
+  content: '';
+  position: absolute;
+  right: 15px; /* from the icon */
+  top: 0;
+  width: 30px;
+  height: 20px;
+  border-bottom: 1px solid var(--glass-border);
+  border-left: 1px solid var(--glass-border);
+  border-bottom-left-radius: 8px;
+  transform: translateY(-20px);
+}
+
+.line-connector::after {
+  content: '';
+  position: absolute;
+  right: 45px;
+  top: -20px;
+  width: 60px;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+.line-connector.bot-connector::before {
+  border-bottom: none;
+  border-top: 1px solid var(--glass-border);
+  border-left: 1px solid var(--glass-border);
+  border-top-left-radius: 8px;
+  transform: translateY(0);
+  height: 20px;
+}
+
+.line-connector.bot-connector::after {
+  top: 20px;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 48px;
+  }
+  .floating-left, .floating-right {
+    display: none;
+  }
+}
+
+/* --- Pure CSS Replacements --- */
+/* Wavy Deco */
+.css-wavy { position: relative; width: 60px; height: 20px; opacity: 0.8; }
+.css-wavy .w-up { position: absolute; top: 5px; width: 10px; height: 10px; border: 2px solid var(--grid-color); border-bottom: none; border-left: none; transform: rotate(45deg); border-radius: 2px; }
+.css-wavy .w-dn { position: absolute; top: -2px; width: 10px; height: 10px; border: 2px solid var(--grid-color); border-top: none; border-right: none; transform: rotate(45deg); border-radius: 2px;}
+.css-wavy .w-up:nth-child(1) { left: 0px; }
+.css-wavy .w-dn:nth-child(2) { left: 10px; }
+.css-wavy .w-up:nth-child(3) { left: 20px; }
+.css-wavy .w-dn:nth-child(4) { left: 30px; }
+.css-wavy .w-up:nth-child(5) { left: 40px; }
+.css-wavy .w-dn:nth-child(6) { left: 50px; }
+
+/* Crown Deco */
+.css-crown { position: relative; width: 40px; height: 30px; overflow: hidden; opacity: 0.8; }
+.css-crown-base { position: absolute; bottom: 2px; left: 3px; width: 34px; height: 2px; background: var(--grid-color); border-radius: 2px; }
+.css-crown-diamond { position: absolute; width: 12px; height: 12px; border: 2px solid var(--grid-color); transform: rotate(45deg); border-radius: 2px;}
+.css-crown-diamond:nth-child(2) { left: 5px; bottom: -6px; }
+.css-crown-diamond:nth-child(3) { left: 23px; bottom: -6px; }
+.css-crown-dot { position: absolute; width: 4px; height: 4px; background: var(--grid-color); border-radius: 50%; }
+.c-dot1 { left: 9px; top: 12px; }
+.c-dot2 { left: 27px; top: 12px; }
+.c-dot3 { left: 18px; top: 16px; }
+
+/* HL Ellipse */
+.css-hl-ellipse {
+  position: absolute;
+  top: 50%; left: 50%; width: 110%; height: 120%;
+  border: 3px solid var(--accent-green);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-2deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Mouse Icon */
+.css-mouse {
+  position: relative;
+  display: block; width: 20px; height: 30px;
+  border: 2px solid var(--text-main); border-radius: 10px; box-sizing: border-box;
+  margin: 0 auto;
+}
+.css-mouse .m-wheel {
+  position: absolute; left: 7px; top: 6px; width: 2px; height: 6px;
+  background: var(--text-main); border-radius: 2px;
+  animation: scrollWheel 2s infinite ease-in-out;
+}
+@keyframes scrollWheel { 
+  0% { top: 4px; opacity: 1; } 
+  80% { top: 14px; opacity: 0; } 
+  100% { top: 4px; opacity: 0; }
+}
+
+/* Curved Scroll Text */
+.css-scroll-text {
+  position: absolute; width: 100px; height: 100px;
+  animation: spin 10s linear infinite; border-radius: 50%;
+  top: 0; left: 0;
+}
+.css-scroll-text span {
+  position: absolute; top: 0; left: 45px; width: 10px; height: 50px;
+  transform-origin: bottom center;
+  font-size: 10px; color: var(--text-muted); 
+  display: flex; justify-content: center;
+  font-weight: 600; letter-spacing: 2px;
+}
+
+/* Arrow Btn */
+.css-arrow-up-right {
+  width: 12px; height: 12px; position: relative; display: inline-block;
+}
+.css-arrow-up-right::before {
+  content: ""; position: absolute; right: 0; top: 0; width: 8px; height: 8px;
+  border-top: 2px solid var(--text-main); border-right: 2px solid var(--text-main); border-radius: 1px; box-sizing: border-box;
+}
+.css-arrow-up-right::after {
+  content: ""; position: absolute; left: 0; bottom: 0; width: 15px; height: 2px;
+  background: var(--text-main); transform: rotate(-45deg); transform-origin: left bottom; border-radius: 2px;
+}
+
+/* Target Icon */
+.css-target { position: relative; width: 24px; height: 24px; transform: scale(0.66); flex-shrink: 0;}
+.css-target .t-out { position: absolute; left: 2px; top: 2px; width: 20px; height: 20px; border: 2px solid #9eaeab; border-radius: 50%; box-sizing: border-box; }
+.css-target .t-in { position: absolute; left: 8px; top: 8px; width: 8px; height: 8px; border: 2px solid #9eaeab; border-radius: 50%; box-sizing: border-box; }
+.css-target .t-l1 { position: absolute; left: 11px; top: 0px; width: 2px; height: 4px; background: #9eaeab; border-radius: 2px;}
+.css-target .t-l2 { position: absolute; left: 11px; bottom: 0px; width: 2px; height: 4px; background: #9eaeab; border-radius: 2px;}
+.css-target .t-l3 { position: absolute; left: 0px; top: 11px; width: 4px; height: 2px; background: #9eaeab; border-radius: 2px;}
+.css-target .t-l4 { position: absolute; right: 0px; top: 11px; width: 4px; height: 2px; background: #9eaeab; border-radius: 2px;}
+
+/* Headphone Icon */
+.css-headphone { position: relative; width: 24px; height: 24px; transform: scale(0.7); flex-shrink: 0;}
+.css-headphone .h-band { position: absolute; left: 3px; top: 3px; width: 18px; height: 16px; border: 2px solid #9eaeab; border-bottom: none; border-radius: 18px 18px 0 0; box-sizing: border-box; }
+.css-headphone .h-pad-l { position: absolute; left: 1px; top: 13px; width: 6px; height: 8px; border: 2px solid #9eaeab; border-radius: 4px; box-sizing: border-box;}
+.css-headphone .h-pad-r { position: absolute; right: 1px; top: 13px; width: 6px; height: 8px; border: 2px solid #9eaeab; border-radius: 4px; box-sizing: border-box;}
