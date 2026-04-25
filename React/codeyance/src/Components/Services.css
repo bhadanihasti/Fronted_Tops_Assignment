@@ -1,0 +1,163 @@
+.services-section {
+  background-color: #f9f9f9;
+  padding: 80px 16px 120px;
+  width: 100%;
+}
+
+
+.services-block {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.services-header {
+  max-width: 100%;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.services-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #318241;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.services-title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111111;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.services-highlight {
+  color: #3FD45D;
+}
+
+.services-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 100%;
+}
+
+.service-card {
+  padding: 20px 50px;
+  border-radius: 0;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.light-card {
+  background-color: #FFFFFF;
+}
+
+.dark-card {
+  background-color: #005511;
+}
+
+.black-card {
+  background-color: #000000;
+}
+
+.card-heading-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+
+.card-heading-wrap h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+  letter-spacing: -0.5px;
+}
+
+.card-arrow {
+  font-size: 32px;
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+.service-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  margin-top: 0;
+  max-width: 820px;
+}
+
+.light-card p,
+.light-card h3,
+.light-card .card-arrow {
+  color: #000000;
+}
+
+.dark-card p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.service-list li {
+  font-size: 13px;
+  color: inherit;
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+  font-weight: 600;
+}
+
+.light-card .service-list li {
+  color: #222222;
+}
+
+.dark-card .service-list li {
+  color: #FFFFFF;
+}
+
+.service-list li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: inherit;
+  font-weight: bold;
+}
+
+.light-card .service-list li:before {
+  color: #222222;
+}
+
+.dark-card .service-list li:before {
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .services-section {
+    padding: 60px 16px 80px;
+  }
+
+  .services-title {
+    font-size: 32px;
+  }
+
+  .service-card {
+    padding: 32px;
+  }
+}

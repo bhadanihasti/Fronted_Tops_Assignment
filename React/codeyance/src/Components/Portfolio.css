@@ -1,0 +1,242 @@
+.portfolio-section {
+  background-color: #f9f9f9;
+  padding: 16px;
+  width: 100%;
+  color: #000000;
+}
+
+.portfolio-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+
+.portfolio-title-wrapper {
+  max-width: 800px;
+}
+
+.portfolio-subtitle {
+  color: var(--dark-green);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.portfolio-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: #000000;
+}
+
+.text-green {
+  color: var(--accent-green, #3FD45D);
+}
+
+.view-all-btn {
+  background-color: var(--accent-green, #3FD45D);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  /* Align nicely with text baseline */
+}
+
+.view-all-btn:hover {
+  background-color: #35b850;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.portfolio-card {
+  background-color: #CFCFCF;
+  /* Grey background matching Figma */
+  border-radius: 0;
+  /* Boxy look in Figma */
+  aspect-ratio: 493 / 520;
+  /* Proportions from Figma */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card 1 specific styles */
+.card-large {
+  justify-content: flex-end;
+  padding: 30px;
+}
+
+.card-content {
+  z-index: 2;
+}
+
+.card-content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 10px 0;
+}
+
+.card-content p {
+  font-size: 14px;
+  color: #FFFFFF;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.card-icon {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 20px;
+  z-index: 2;
+}
+
+/* Placeholder Phones for Card 2 & 3 */
+.card-image {
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-phones {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-silhouette {
+  width: 120px;
+  height: 240px;
+  background-color: #000000;
+  border-radius: 20px;
+  position: absolute;
+  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.phone-silhouette::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 10px;
+  background-color: #CFCFCF;
+  /* Match background to simulate notch */
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.phone-left {
+  transform: rotate(-15deg) translate(-30px, 20px);
+  z-index: 2;
+}
+
+.phone-right {
+  transform: rotate(15deg) translate(30px, -20px);
+  z-index: 1;
+}
+
+.placeholder-phones-3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-silhouette-small {
+  width: 100px;
+  height: 200px;
+  background-color: #000000;
+  border-radius: 15px;
+  position: absolute;
+}
+
+.phone-silhouette-small::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 8px;
+  background-color: #CFCFCF;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.phone-s-left {
+  transform: translateX(-90px) scale(0.9);
+  z-index: 1;
+}
+
+.phone-s-center {
+  z-index: 2;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.phone-s-right {
+  transform: translateX(90px) scale(0.9);
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .portfolio-title {
+    font-size: 36px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-section {
+    padding: 60px 5%;
+  }
+}

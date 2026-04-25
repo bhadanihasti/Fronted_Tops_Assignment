@@ -1,0 +1,46 @@
+.partners-section {
+  background-color: #ECF3ED;
+  padding: 30px;
+  width: 100%;
+}
+
+.logo-row {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 60px;
+
+}
+
+.partner-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.9;
+  transition: opacity 0.25s ease;
+}
+
+.partner-logo:hover {
+  opacity: 1;
+}
+
+.partner-logo img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.15);
+}
+
+@media (max-width: 768px) {
+  .logo-row {
+    gap: 30px;
+    padding: 16px;
+  }
+
+  .partner-logo img {
+    height: 24px;
+  }
+}

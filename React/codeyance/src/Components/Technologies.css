@@ -1,0 +1,159 @@
+.tech-section {
+  background-color: var(--bg-color, #001404);
+  padding: 100px 16px;
+  width: 100%;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  /* Add the soft green radial gradient in the background */
+  background-image: radial-gradient(circle at 50% 50%, rgba(63, 212, 93, 0.08) 0%, rgba(0, 20, 4, 0) 60%);
+}
+
+.tech-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tech-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.tech-subtitle {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.tech-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.tech-title .text-green {
+  color: var(--accent-green, #3FD45D);
+}
+
+.tech-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tech-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.tech-tab {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tech-tab:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.tech-tab.active {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.tech-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.tech-card {
+  background-color: rgba(255, 255, 255, 0.03); /* Subtle dark box */
+  border-radius: 12px;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.tech-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.tech-name {
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .tech-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-section {
+    padding: 60px 16px;
+  }
+  
+  .tech-title {
+    font-size: 32px;
+  }
+  
+  .tech-card {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-card {
+    width: 100%;
+  }
+}

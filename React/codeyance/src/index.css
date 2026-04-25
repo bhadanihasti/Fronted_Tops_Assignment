@@ -12,7 +12,9 @@
   --floating-bg: #141f16;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -33,13 +35,19 @@ body {
   height: 100vh;
   z-index: -1;
   background-size: 60px 60px;
-  background-image: 
+  background-image:
     linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
 
 .app-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-screen {
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
