@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Timezone App</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #0f172a;
+      }
+
+      .container {
+        width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #111827;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        outline: none;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        background: #2563eb;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #1d4ed8;
+      }
+
+      .result {
+        margin-top: 20px;
+        line-height: 35px;
+      }
+
+      .result h2 {
+        text-align: center;
+        margin-bottom: 10px;
+        color: #111827;
+        text-transform: uppercase;
+      }
+
+      span {
+        color: #2563eb;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Timezone App</h1>
+
+      <input type="text" id="location" placeholder="Enter city name" />
+
+      <button onclick="getTimezone()">Get Timezone</button>
+
+      <div class="result">
+        <h2 id="city">City</h2>
+
+        <p>
+          <strong>Timezone :</strong>
+          <span id="timezone">--</span>
+        </p>
+
+        <p>
+          <strong>Date & Time :</strong>
+          <span id="time">--</span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // GET LATITUDE & LONGITUDE
+
+      const geocodedata = (city) => {
+        return new Promise((resolve, reject) => {
+          const url = `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=68eec9e1c5d3434d9f78a77944bbb904`;
+
+          fetch(url)
+            .then((resp) => resp.json())
+            .then((data) => {
+              if (data.results.length === 0) {
+                alert("City not found");
+                return;
+              }
+
+              const lat = data.results[0].geometry.lat;
+              const lng = data.results[0].geometry.lng;
+
+              resolve({ lat, lng });
+            })
+            .catch((err) => {
+              reject(err);
+            });
+        });
+      };
+
+      // GET TIMEZONE DATA
+
+      const timezoneData = (lat, lng) => {
+        return new Promise((resolve, reject) => {
+          const url = `https://timeapi.io/api/TimeZone/coordinate?latitude=${lat}&longitude=${lng}`;
+
+          fetch(url)
+            .then((resp) => resp.json())
+            .then((data) => {
+              const timezone = data.timeZone;
+              const time = data.currentLocalTime;
+
+              resolve({ timezone, time });
+            })
+            .catch((err) => {
+              reject(err);
+            });
+        });
+      };
+
+      // MAIN FUNCTION
+
+      const getTimezone = () => {
+        const location = document.getElementById("location").value;
+
+        if (location === "") {
+          alert("Please enter city name");
+          return;
+        }
+
+        geocodedata(location)
+          .then((result) => {
+            return timezoneData(result.lat, result.lng);
+          })
+          .then((data) => {
+            document.getElementById("city").innerHTML = location;
+
+            document.getElementById("timezone").innerHTML = data.timezone;
+
+            document.getElementById("time").innerHTML = data.time;
+          })
+          .catch((err) => {
+            console.log(err);
+
+            alert("Something went wrong");
+          });
+      };
+    </script>
+  </body>
+</html>

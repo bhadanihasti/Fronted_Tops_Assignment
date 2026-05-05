@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        font-size: 1.5em;
+        padding: 10px 20px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>0</h1>
+    <button onclick="incre()">+</button>
+
+    <button onclick="decre()">-</button>
+  </body>
+  <script>
+    let count = 0;
+    function incre() {
+      count++;
+      document.querySelector("h1").innerText = count;
+    }
+
+    function decre() {
+      count--;
+      document.querySelector("h1").innerText = count;
+    }
+  </script>
+</html>
