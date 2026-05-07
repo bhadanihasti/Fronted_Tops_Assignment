@@ -1,9 +1,11 @@
 import { useState } from "react";
 
 export const Create = ({ addProduct }) => {
-  var [name, setName] = useState();
-  const SubmitData = () => {
+  var [name, setName] = useState("");
+  const SubmitData = (e) => {
+    e.preventDefault();
     addProduct(name);
+    setName("");
   };
   return (
     <>
@@ -12,10 +14,12 @@ export const Create = ({ addProduct }) => {
           type="text"
           placeholder="Enter product name"
           className="form-control"
+          value={name}
           onChange={(e) => {
             setName(e.target.value);
           }}
         />
+
         <button className="btn btn-success" onClick={SubmitData}>
           Submit
         </button>

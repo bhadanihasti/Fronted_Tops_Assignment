@@ -11,6 +11,9 @@ const App = () => {
   const addProduct = (name) => {
     setProduct([...product, name]);
   };
+  const deleteProduct = (name) => {
+    setProduct(product.filter((ele, index) => index !== name));
+  };
   return (
     <>
       <div className="container">
@@ -20,7 +23,11 @@ const App = () => {
             <hr />
             <Create addProduct={addProduct} />
             <br />
-            {product.length > 0 ? <Display product={product} /> : <Error />}
+            {product.length > 0 ? (
+              <Display product={product} deleteProduct={deleteProduct} />
+            ) : (
+              <Error />
+            )}
           </div>
         </div>
       </div>
