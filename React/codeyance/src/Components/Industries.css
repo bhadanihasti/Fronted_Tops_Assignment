@@ -1,0 +1,130 @@
+.industries-section {
+  background-color: #F7F7F7;
+  padding: 100px 16px;
+  width: 100%;
+}
+
+.industries-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.industries-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.industries-subtitle {
+  color: #005511;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.industries-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: #001404;
+}
+
+.industries-title .text-green {
+  color: #3FD45D;
+}
+
+.industries-grid-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  background-color: transparent;
+}
+
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid rgba(0, 85, 17, 0.15);
+  border-left: 1px solid rgba(0, 85, 17, 0.15);
+}
+
+.industry-card {
+  border-right: 1px solid rgba(0, 85, 17, 0.15);
+  border-bottom: 1px solid rgba(0, 85, 17, 0.15);
+  padding: 40px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F7F7F7;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.industry-card:first-child {
+  background-color: #FFFFFF;
+}
+
+.industry-card:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+  z-index: 2;
+  position: relative;
+}
+
+.industry-icon {
+  color: #005511;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ECF3ED;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.industry-icon i {
+  font-size: 28px;
+}
+
+.industry-name {
+  color: #001404;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .industries-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .industries-section {
+    padding: 60px 16px;
+  }
+  
+  .industries-title {
+    font-size: 32px;
+  }
+  
+  .industries-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

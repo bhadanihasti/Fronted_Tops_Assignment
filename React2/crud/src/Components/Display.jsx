@@ -1,7 +1,7 @@
 import React from "react";
 import List from "./List";
 
-function Display({ students, deleteStudent }) {
+function Display({ students, deleteStudent, EditHandler }) {
   return (
     <div className="card shadow border-0 rounded-4">
       <div className="card-header bg-primary text-white text-center py-3 rounded-top-4">
@@ -28,6 +28,7 @@ function Display({ students, deleteStudent }) {
                   ele={ele}
                   index={index}
                   deleteStudent={deleteStudent}
+                  EditHandler={EditHandler}
                 />
               ))}
             </tbody>

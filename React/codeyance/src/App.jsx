@@ -5,6 +5,9 @@ import Partners from "./Components/Partners";
 import Services from "./Components/Services";
 import Portfolio from "./Components/Portfolio";
 import Technologies from "./Components/Technologies";
+import Industries from "./Components/Industries";
+import Testimonials from "./Components/Testimonials";
+import DrivingGrowth from "./Components/DrivingGrowth";
 import "./index.css";
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
       <Services />
       <Portfolio />
       <Technologies />
+      <Industries />
+      <Testimonials />
+      <DrivingGrowth />
     </div>
   );
 }
